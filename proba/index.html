@@ -21,13 +21,17 @@
     -webkit-mask-image:radial-gradient(circle, #000 calc(var(--r,0)*1%), transparent calc(var(--r,0)*1% + 26%));
     mask-image:radial-gradient(circle, #000 calc(var(--r,0)*1%), transparent calc(var(--r,0)*1% + 26%))}
   .win img{display:block;max-width:min(66vw,1000px);max-height:56vh;width:auto;height:auto}
-  /* кіно: темна плівка з перфорацією зверху і знизу */
-  .win.film .fr{background:#0B0817;padding:30px 14px}
-  .win.film .fr::before,.win.film .fr::after{content:"";position:absolute;left:16px;right:16px;height:13px;
-    background-image:repeating-linear-gradient(90deg, rgba(243,229,245,.13) 0 16px, transparent 16px 34px);
-    border-radius:3px}
+  /* кіно: тепла плівкова підложка, скруглені перфорації, крайова печать */
+  .win.film .fr{background:#1A1114;padding:32px 14px 48px}
+  .win.film .fr::before,.win.film .fr::after{content:"";position:absolute;left:16px;right:16px;height:14px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='14'%3E%3Crect x='2' y='1' width='17' height='12' rx='3.5' fill='%23F3E5F5' fill-opacity='0.13'/%3E%3C/svg%3E");
+    background-repeat:repeat-x}
   .win.film .fr::before{top:9px}
   .win.film .fr::after{bottom:9px}
+  .win.film .ec{position:absolute;bottom:29px;font:600 8px/1 system-ui;letter-spacing:.42em;
+    color:rgba(255,196,130,.45);text-transform:uppercase;white-space:nowrap}
+  .win.film .ec.l{left:20px}
+  .win.film .ec.r{right:20px;letter-spacing:.3em}
   /* фото: поля відбитка, знизу ширше, папір ледь лавандовий */
   .win.photo .fr{background:#E9DFEC;padding:16px 16px 48px}
   .win figcaption{position:relative;margin-top:14px;text-align:center;font-family:"Cormorant SC",serif;font-weight:300;
@@ -55,13 +59,13 @@
 <div id="introbg"></div>
 <div id="intro"><h1>AMATA&nbsp;LYNNER</h1><p>SCROLL</p></div>
 
-<figure class="win film" data-i="0"><div class="halo"></div><span class="fr"><img src="img/wana.jpg" alt=""></span>
+<figure class="win film" data-i="0"><div class="halo"></div><span class="fr"><img src="img/wana.jpg" alt=""><i class="ec l">Amata Lynner · 35 mm</i><i class="ec r">▸ 024 A</i></span>
   <figcaption>WE ARE NOT ALONE<a href="https://www.amatalynner.com/films">FILMS</a></figcaption></figure>
 <figure class="win photo" data-i="1"><div class="halo"></div><span class="fr"><img src="img/forge.jpg" alt=""></span>
   <figcaption>INTERPIPE STEEL<a href="https://www.amatalynner.com/projects">PROJECTS</a></figcaption></figure>
 <figure class="win photo" data-i="2"><div class="halo"></div><span class="fr"><img src="img/wreath.jpg" alt=""></span>
   <figcaption>PHOTOGRAPHY<a href="https://www.amatalynner.com/people">PEOPLE</a></figcaption></figure>
-<figure class="win film" data-i="3"><div class="halo"></div><span class="fr"><img src="img/step.jpg" alt=""></span>
+<figure class="win film" data-i="3"><div class="halo"></div><span class="fr"><img src="img/step.jpg" alt=""><i class="ec l">Amata Lynner · 35 mm</i><i class="ec r">▸ 117 B</i></span>
   <figcaption>STEP SEQUENCE<a href="https://www.amatalynner.com/step-sequence">FILM</a></figcaption></figure>
 <figure class="win photo" data-i="4"><div class="halo"></div><span class="fr"><img src="img/bridge.jpg" alt=""></span>
   <figcaption>URBAN LINES<a href="https://www.amatalynner.com/projects">PROJECTS</a></figcaption></figure>
@@ -79,7 +83,9 @@
 
 <script>
 // Проба проходу: скролл = час. Детермінована сцена, її палітра, закон видимості на вході.
-const V = new URLSearchParams(location.search).get('v') || 'a';   // a: коридор по центру · b: вогні врозкид
+const PARAMS = new URLSearchParams(location.search);
+const V = PARAMS.get('v') || 'a';   // a: коридор по центру · b: вогні врозкид
+const TDBG = parseFloat(PARAMS.get('t'));  // ?t=0.3 — замерти в точці проходу (відладка/розглядання)
 const XOFF = V==='b' ? [-16, 13, -11, 15, 0] : [0,0,0,0,0];       // vw
 
 const cv = document.getElementById('night'), cx = cv.getContext('2d');
@@ -127,7 +133,8 @@ let tTarget = 0, t = 0;
 addEventListener('scroll', ()=>{ tTarget = scrollY / (document.body.scrollHeight - innerHeight); }, {passive:true});
 
 function frame(now){
-  t += (tTarget - t) * 0.09;            // кінематографічна інерція
+  if (!isNaN(TDBG)) { t = tTarget = TDBG; }
+  else t += (tTarget - t) * 0.09;       // кінематографічна інерція
   const W = cv.width, H = cv.height, time = now/1000;
 
   // ніч: індиго, ледь глибше до країв
