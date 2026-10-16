@@ -42,7 +42,8 @@
   #introbg{position:fixed;inset:0;background:url(img/dusk.jpg) center/cover;opacity:0;pointer-events:none}
   #intro{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
   #intro h1{font-family:"Cormorant SC",serif;font-weight:300;letter-spacing:.5em;font-size:clamp(17px,2.6vw,28px);margin:0}
-  #intro p{letter-spacing:.35em;font-size:10px;opacity:.5;margin-top:3em}
+  #intro p{letter-spacing:.35em;font-size:10px;opacity:.85;margin-top:3em}
+  a:focus-visible{outline:1px solid rgba(243,229,245,.8);outline-offset:3px;opacity:1}
   #finale{position:fixed;inset:0;display:grid;place-items:center;opacity:0;pointer-events:none}
   #finale .bg{position:absolute;inset:0;background:url(img/dusk.jpg) center/cover;opacity:.18}
   #finale .in{position:relative;text-align:center}
@@ -59,15 +60,15 @@
 <div id="introbg"></div>
 <div id="intro"><h1>AMATA&nbsp;LYNNER</h1><p>SCROLL</p></div>
 
-<figure class="win film" data-i="0"><div class="halo"></div><span class="fr"><img src="img/wana.jpg" alt=""><i class="ec l">Amata Lynner · 35 mm</i><i class="ec r">▸ 024 A</i></span>
-  <figcaption>WE ARE NOT ALONE<a href="https://www.amatalynner.com/films">FILMS</a></figcaption></figure>
-<figure class="win photo" data-i="1"><div class="halo"></div><span class="fr"><img src="img/forge.jpg" alt=""></span>
+<figure class="win film" data-i="0" inert><div class="halo"></div><span class="fr"><img src="img/wana.jpg" alt="We Are Not Alone — film still"><i class="ec l">Amata Lynner · rendered at home</i><i class="ec r">▸ 2026</i></span>
+  <figcaption><a href="https://www.amatalynner.com/films">FILMS</a></figcaption></figure>
+<figure class="win photo" data-i="1" inert><div class="halo"></div><span class="fr"><img src="img/forge.jpg" alt="Interpipe Steel — photograph"></span>
   <figcaption>INTERPIPE STEEL<a href="https://www.amatalynner.com/projects">PROJECTS</a></figcaption></figure>
-<figure class="win photo" data-i="2"><div class="halo"></div><span class="fr"><img src="img/wreath.jpg" alt=""></span>
+<figure class="win photo" data-i="2" inert><div class="halo"></div><span class="fr"><img src="img/wreath.jpg" alt="People photography"></span>
   <figcaption>PHOTOGRAPHY<a href="https://www.amatalynner.com/people">PEOPLE</a></figcaption></figure>
-<figure class="win film" data-i="3"><div class="halo"></div><span class="fr"><img src="img/step.jpg" alt=""><i class="ec l">Amata Lynner · 35 mm</i><i class="ec r">▸ 117 B</i></span>
-  <figcaption>STEP SEQUENCE<a href="https://www.amatalynner.com/step-sequence">FILM</a></figcaption></figure>
-<figure class="win photo" data-i="4"><div class="halo"></div><span class="fr"><img src="img/bridge.jpg" alt=""></span>
+<figure class="win film" data-i="3" inert><div class="halo"></div><span class="fr"><img src="img/step.jpg" alt="Step Sequence — film still"><i class="ec l">Amata Lynner · rendered at home</i><i class="ec r">▸ 2026</i></span>
+  <figcaption><a href="https://www.amatalynner.com/step-sequence">FILM</a></figcaption></figure>
+<figure class="win photo" data-i="4" inert><div class="halo"></div><span class="fr"><img src="img/bridge.jpg" alt="Urban lines — photograph"></span>
   <figcaption>URBAN LINES<a href="https://www.amatalynner.com/projects">PROJECTS</a></figcaption></figure>
 
 <div id="finale"><div class="bg"></div><div class="in">
@@ -88,6 +89,7 @@ const V = PARAMS.get('v') || 'a';   // a: коридор по центру · b:
 const TDBG = parseFloat(PARAMS.get('t'));  // ?t=0.3 — замерти в точці проходу (відладка/розглядання)
 const XOFF = V==='b' ? [-16, 13, -11, 15, 0] : [0,0,0,0,0];       // vw
 
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches; // тихий режим: без мерехтіння і живого зерна
 const cv = document.getElementById('night'), cx = cv.getContext('2d');
 const wins = [...document.querySelectorAll('.win')];
 const intro = document.getElementById('intro'), finale = document.getElementById('finale'),
@@ -135,7 +137,7 @@ addEventListener('scroll', ()=>{ tTarget = scrollY / (document.body.scrollHeight
 function frame(now){
   if (!isNaN(TDBG)) { t = tTarget = TDBG; }
   else t += (tTarget - t) * 0.09;       // кінематографічна інерція
-  const W = cv.width, H = cv.height, time = now/1000;
+  const W = cv.width, H = cv.height, time = RM ? 0 : now/1000;
 
   // ніч: індиго, ледь глибше до країв
   const g = cx.createRadialGradient(W/2,H*.45,0, W/2,H*.45, Math.max(W,H)*.8);
@@ -195,12 +197,12 @@ function frame(now){
 
   // вступ: кадр ледь видимий фоном (як у фіналі — створки) + імʼя, обоє тануть у ніч
   introbg.style.opacity = Math.max(0, .16 - t*1.6);
-  intro.style.opacity = Math.max(0, .85 - t*9) * (0.55 + 0.1*Math.sin(time*.8));
+  intro.style.opacity = Math.max(0, .95 - t*9) * (0.82 + 0.08*Math.sin(time*.8));
 
   // вікна: точка світла → кадр → відпускання
   wins.forEach((w,i)=>{
     const [a,b] = SEG[i], p = (t-a)/(b-a);
-    if (p < -0.08 || p > 1.3){ w.style.opacity = 0; return; }
+    if (p < -0.08 || p > 1.3){ w.style.opacity = 0; w.inert = true; return; }
     const grow = ease((p-0.22)/0.52);            // світло ПРОЯВЛЯЄ кадр: ірис, повільніше
     const leave = ease((p-1)*4);                 // після 1 — відпускання вгору
     const s = 0.94 + grow*0.06;
@@ -213,11 +215,13 @@ function frame(now){
     fr.style.filter = `brightness(${1+2.0*(1-ease(grow*1.3))}) blur(${(1-ease(grow*1.2))*12}px)`;
     w.querySelector('.halo').style.opacity = Math.max(0, .9 - grow*1.1);
     w.querySelector('figcaption').style.opacity = ease((p-.55)*4) * (1-leave);
-    w.style.pointerEvents = (p>.4 && p<1.05) ? 'auto' : 'none';
+    const live = (p>.4 && p<1.05);
+    w.style.pointerEvents = live ? 'auto' : 'none';
+    w.inert = !live;                              // невидиме не ловиться табом
   });
 
   // зерно поверх усього: ламає смуги, дає плівку
-  { const fi = Math.floor(now/41.7), gw = mul(fi+13);
+  { const fi = RM ? 0 : Math.floor(now/41.7), gw = mul(fi+13);
     const ox = (gw()*192)|0, oy = (gw()*192)|0;
     cx.save(); cx.globalCompositeOperation = 'overlay'; cx.globalAlpha = GRAIN_A;
     cx.translate(-ox,-oy);
@@ -229,6 +233,7 @@ function frame(now){
   const f = ease((t-.88)/.09);
   finale.style.opacity = f;
   finale.style.pointerEvents = f>.5 ? 'auto' : 'none';
+  finale.inert = f<=.5;
 
   requestAnimationFrame(frame);
 }
