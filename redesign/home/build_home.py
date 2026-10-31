@@ -5,11 +5,14 @@ Machine side -> one endless strip of every film's opening frame (films/*.html)
 Texts are hers, from about.html.  Run after the album and film builders:  python build_home.py
 """
 import re
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 RD = HERE.parent
 SITE = RD.parent
+sys.path.insert(0, str(RD))
+import chrome  # noqa: E402
 ALBUMS_ON_HOME = ["normandie", "ukraine-one", "kherson-2023"]
 
 
@@ -54,6 +57,9 @@ def main():
     one = (f'<div class="set"><div class="perf"></div><div class="frames">{openers}</div><div class="perf"></div></div>')
     hidden = one.replace('<div class="set">', '<div class="set" aria-hidden="true">')
     out = ((HERE / "template.html").read_text(encoding="utf-8")
+           .replace("{{CHROME_CSS}}", chrome.CSS)
+           .replace("{{TOPBAR}}", chrome.topbar())
+           .replace("{{FOOTER}}", chrome.FOOTER)
            .replace("{{COVER_CSS}}", cover_css)
            .replace("{{TILES}}", tiles)
            .replace("{{REEL}}", f'<div class="reel">{one}{hidden}{hidden}</div>')

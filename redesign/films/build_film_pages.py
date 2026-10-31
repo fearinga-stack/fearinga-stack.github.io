@@ -21,6 +21,7 @@ import build_films as bf
 HERE = bf.HERE
 SITE = bf.SITE
 PAGES = ["step-sequence", "plus", "nominal", "wearenotalone", "06percents", "scent-of-imagination"]
+COMMERCIAL = {"scent-of-imagination"}       # lives under Commercial, not in the films list
 
 
 def img_src(src):
@@ -72,6 +73,8 @@ def page_link(href):
     slug = href.rsplit(".", 1)[0]
     if slug == "films":
         return "index.html"
+    if slug in ("commercial", "about", "contact"):
+        return f"../pages/{slug}.html"
     return f"{slug}.html" if slug in PAGES else "../../" + href
 
 
@@ -117,7 +120,10 @@ def build(slug, i, extra_all, film_meta):
             + (f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else "")
             + "</header>")
     tmpl = (HERE / "page_template.html").read_text(encoding="utf-8")
+    back = ('<a class="back" href="../pages/commercial.html">← COMMERCIAL</a>' if slug in COMMERCIAL
+            else '<a class="back" href="index.html">← FILMS</a>')
     out = (tmpl.replace("{{TITLE}}", html.escape(title))
+               .replace("{{BACK}}", back)
                .replace("{{REEL}}", bf.reel(i, f, extra))
                .replace("{{HEAD}}", head)
                .replace("{{BODY}}", "\n".join(body)))

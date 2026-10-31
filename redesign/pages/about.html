@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — Amata Lynner</title>
+<link rel="icon" type="image/png" href="../../assets/img/brand/monogram-lavender.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="../films/strip.css">
+<style>
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.6);--hair:rgba(243,229,245,.2);
+  --mono:ui-monospace,"SFMono-Regular",Consolas,monospace;--col:44rem}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
+a{color:inherit}
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 16px;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+.topbar .mark img{height:38px;width:auto;display:block}
+.topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
+  font:500 .72rem "Cormorant SC",serif;letter-spacing:.24em}
+.topbar nav a{color:var(--dim);text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration:none}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+.site-foot{border-top:1px solid var(--hair);padding:2rem 16px 3rem;text-align:center;font:500 .72rem "Cormorant SC",serif;letter-spacing:.2em;color:var(--dim)}
+.site-foot nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:var(--light)}
+.site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
+
+main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp(4rem,10vh,6rem)}
+.page-head{margin:0 0 clamp(2.6rem,7vh,4rem);text-align:center}
+.page-head h1{margin:0;font:500 clamp(1.3rem,2.2vw,1.8rem) "Cormorant SC",serif;letter-spacing:.16em}
+.page-head .lead{margin:1rem auto 0;max-width:34rem;font-style:italic;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.5;color:rgba(243,229,245,.84);text-wrap:balance}
+.label{font:.72rem var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);font-weight:400;margin:0}
+.card{margin:2.6rem 0;border-top:1px solid var(--hair)}
+.card .row{display:grid;grid-template-columns:10rem minmax(0,1fr);gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.card .row p{margin:0;font-size:1.16rem;line-height:1.55}
+.small{font-size:1.02rem;color:rgba(243,229,245,.72);margin:.8rem 0 0}
+@media (max-width:640px){.card .row{grid-template-columns:1fr;gap:.3rem}}
+
+/* about */
+.about .page-head .lead{font:500 clamp(1rem,1.9vw,1.35rem)/1.45 "Cormorant SC",serif;font-style:normal;letter-spacing:.08em}
+.print{margin:0 auto 2.6rem;max-width:min(100%,40rem);padding:clamp(.6rem,1.6vw,1rem);background:#fff;
+  box-shadow:0 18px 40px rgba(0,0,0,.55);transform:rotate(-.6deg)}
+.print img{display:block;width:100%;height:auto}
+.letter p{font-size:clamp(1.2rem,2vw,1.38rem);line-height:1.62;margin:0 0 1.15rem;color:rgba(243,229,245,.9)}
+.letter p:first-child{font:500 clamp(1.5rem,2.8vw,2rem) "Cormorant SC",serif;letter-spacing:.06em;color:var(--light)}
+/* the last line of her letter is set on a black with nothing reflecting in it */
+.black{margin:2.4rem calc(50% - 50vw) 0;padding:clamp(3rem,9vh,5rem) 16px;background:#000;text-align:center}
+.black p{margin:0;font-style:italic;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:.02em}
+.hands{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);gap:clamp(1.4rem,4vw,3rem);margin:clamp(3rem,8vh,4.5rem) 0 2.4rem}
+.hands .seam{background:var(--hair)}
+.hand h2{margin:0 0 .8rem;font:500 clamp(1.2rem,2.2vw,1.55rem) "Cormorant SC",serif;letter-spacing:.12em}
+.hand p{margin:0;font-size:1.14rem;line-height:1.6;color:rgba(243,229,245,.86)}
+.about .note{margin:0 auto;max-width:34rem;text-align:center;font-style:italic;font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.5;color:rgba(243,229,245,.82)}
+.how{margin:clamp(3rem,8vh,4.5rem) 0 0;text-align:center}
+.how ol{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;justify-content:center;gap:clamp(1.6rem,6vw,4rem);flex-wrap:wrap}
+.how li{font:500 clamp(1.3rem,2.4vw,1.7rem) "Cormorant SC",serif;letter-spacing:.14em}
+.how .num{display:block;font:.7rem var(--mono);letter-spacing:.24em;color:var(--dim);margin-bottom:.4rem}
+@media (max-width:640px){.hands{grid-template-columns:1fr}.hands .seam{height:1px}}
+
+/* contact */
+.address{text-align:center;margin:0 0 2.4rem}
+.email{margin:.8rem 0 0;font:500 clamp(1.5rem,4.4vw,2.6rem) "Cormorant SC",serif;letter-spacing:.08em;user-select:all;overflow-wrap:anywhere}
+.email a{text-decoration:none;border-bottom:1px solid var(--hair)}
+.email a:hover{border-color:var(--light)}
+.cell ul{list-style:none;margin:0;padding:0}
+.cell ul+ul{margin-top:.2rem}
+.cell li{font-size:1.16rem;line-height:1.6}
+.links{display:flex;gap:.4rem 1.4rem;flex-wrap:wrap}
+.links a{text-decoration:none;font:500 1rem "Cormorant SC",serif;letter-spacing:.14em;border-bottom:1px solid var(--hair)}
+.links a:hover{border-color:var(--light)}
+
+/* commercial */
+.commercial main{max-width:none;padding-left:0;padding-right:0}
+.commercial .page-head,.commercial .reel-text{max-width:var(--col);margin-left:auto;margin-right:auto;padding:0 16px}
+.commercial .page-head{margin-bottom:clamp(2.4rem,6vh,3.5rem)}
+.caption{max-width:var(--col);margin:1.1rem auto 0;padding:0 16px}
+.caption h2{margin:0 0 .4rem;font:500 clamp(1.15rem,1.8vw,1.5rem) "Cormorant SC",serif;letter-spacing:.1em}
+.caption h2 a,.more a{text-decoration:none}
+.logline{margin:0 0 .4rem;font-size:1.12rem;line-height:1.5;color:rgba(243,229,245,.86)}
+.caption .meta{margin:0;font:.72rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.more{margin:.9rem 0 0;font:500 .78rem "Cormorant SC",serif;letter-spacing:.24em}
+.more a{border-bottom:1px solid var(--hair)}
+.reel-text{margin-top:clamp(3rem,8vh,4.5rem)}
+.reel-text h2{font:500 clamp(1.1rem,1.8vw,1.35rem) "Cormorant SC",serif;letter-spacing:.08em;margin:0 0 1rem}
+.reel-text p{font-size:1.14rem;line-height:1.6;margin:0 0 .9rem;color:rgba(243,229,245,.86)}
+.reel-text p:last-child{font-style:italic;color:var(--dim)}
+</style>
+</head>
+<body class="about">
+<header class="topbar">
+  <a class="mark" href="../home/index.html" aria-label="Amata Lynner, home"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"></a>
+  <nav aria-label="Main">
+    <a href="../films/index.html">Films</a>
+    <a href="../album/index.html">Photography</a>
+    <a href="../pages/commercial.html">Commercial</a>
+    <a href="../pages/about.html" aria-current="page">About</a>
+    <a href="../pages/contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+<header class="page-head">
+  <figure class="print"><img src="../../assets/img/site/about-hero.jpg" alt="Image by Amata Lynner" width="1600" height="893" decoding="async"></figure>
+  <h1>ABOUT</h1>
+  <p class="lead">I MAKE IMAGES TWO WAYS -<br>WITH A CAMERA, AND WITH A<br>MACHINE THAT DREAMS</p>
+</header>
+<section class="letter">
+  <p>I started with a camera.</p>
+  <p>I once tested a dozen papers looking for a black with no reflection in it. Not dark. Black. The kind you cannot look away from. The printing cost more than the photograph ever earned back (two of those prints are still with me, one framed, one just lying around).</p>
+  <p>That is roughly what a photography education leaves you with. I trained at Speos in Paris and spent years on documentary work, and the useful part was never the technical part. It was learning to wait. To read a room. To know that the real moment is usually the one just before, or just after, the one everybody is watching.</p>
+  <p>Then generative tools arrived, and I could build the worlds a camera cannot reach. The ones that only exist in a script, or a memory, or a future that has not happened yet.</p>
+  <p>Most people treat these tools as a slot machine. Pull the lever, hope something beautiful falls out. I treat them as a camera. Decide the shot first, then find the way to get it.</p>
+  <p>Story first, technology second. If the idea does not work as a sentence, no amount of rendering will save it.</p>
+</section>
+<section class="black"><p>And the black still has to be black.</p></section>
+<section class="hands">
+<div class="hand"><h2>THE CAMERA</h2><p>Documentary and fine art photography. Long-form projects about people and the places that shape them. This is where I learned composition, patience, and the value of an imperfect frame that happens to be true.</p></div>
+<div class="seam" aria-hidden="true"></div>
+<div class="hand"><h2>THE MACHINE</h2><p>AI-directed short films, commercial video, and series. Sci-fi that asks a question rather than just showing a spectacle. Brand work that looks like cinema, not like a template.</p></div>
+</section>
+<p class="note">The two are not separate careers. My films are framed like documentaries. My photographs are graded like film stills.</p>
+<section class="how">
+  <h2 class="label">HOW I WORK</h2>
+  <ol><li><span class="num">01</span>Story</li><li><span class="num">02</span>Frame</li><li><span class="num">03</span>Craft</li></ol>
+</section>
+<section class="card">
+  <div class="row"><h2 class="label">based in</h2><p>Ukraine</p></div>
+  <div class="row"><h2 class="label">languages</h2><p>UA · EN · FR · RU</p></div>
+  <div class="row"><h2 class="label">work</h2><p>Short films · Commercial · Series · Photography</p></div>
+  <div class="row"><h2 class="label">availability</h2><p>Open for commissions</p></div>
+</section>
+</main>
+<footer class="site-foot">
+  <nav aria-label="Elsewhere">
+    <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
+    <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
+    <a href="https://www.youtube.com/@alynner">YouTube</a>
+    <a href="https://www.behance.net/amatalynner">Behance</a>
+  </nav>
+  <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  <img src="../../assets/img/brand/monogram-lavender.png" alt="">
+</footer>
+<script src="../films/strip.js"></script>
+</body>
+</html>
