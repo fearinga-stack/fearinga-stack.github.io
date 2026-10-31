@@ -41,6 +41,10 @@
         "Illustration"
       ],
       [
+        "explainer",
+        "Explainer"
+      ],
+      [
         "vertical",
         "Vertical"
       ]
@@ -53,6 +57,16 @@
         "meta": "BEAUTY CONCEPT · 38 SEC",
         "tags": [
           "beauty"
+        ],
+        "shape": "wide"
+      },
+      {
+        "id": "where-is-everybody",
+        "title": "Where Is Everybody?",
+        "line": "The Fermi paradox, one possible answer at a time.",
+        "meta": "EXPLAINER · 84 SEC",
+        "tags": [
+          "explainer"
         ],
         "shape": "wide"
       },
