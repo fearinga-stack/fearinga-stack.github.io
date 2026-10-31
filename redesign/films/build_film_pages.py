@@ -120,10 +120,11 @@ def build(slug, i, extra_all, film_meta):
             + (f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else "")
             + "</header>")
     tmpl = (HERE / "page_template.html").read_text(encoding="utf-8")
-    back = ('<a class="back" href="../pages/commercial.html">← COMMERCIAL</a>' if slug in COMMERCIAL
-            else '<a class="back" href="index.html">← FILMS</a>')
+    section = "Commercial" if slug in COMMERCIAL else "Films"
     out = (tmpl.replace("{{TITLE}}", html.escape(title))
-               .replace("{{BACK}}", back)
+               .replace("{{CHROME_CSS}}", bf.chrome.CSS)
+               .replace("{{TOPBAR}}", bf.chrome.topbar(section))
+               .replace("{{FOOTER}}", bf.chrome.FOOTER)
                .replace("{{REEL}}", bf.reel(i, f, extra))
                .replace("{{HEAD}}", head)
                .replace("{{BODY}}", "\n".join(body)))

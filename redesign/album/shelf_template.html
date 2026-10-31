@@ -9,8 +9,11 @@
 <style>
 {{BASE_CSS}}
 {{COVER_CSS}}
-body{display:block;overflow:auto;padding:9vh 16px 12vh}
-main{max-width:72rem;margin:0 auto}
+:root{--hair:rgba(243,229,245,.2)}
+{{CHROME_CSS}}
+body{display:block;overflow:auto;padding:max(9vh,5.5rem) 16px 0}
+main{margin-bottom:12vh}
+main{max-width:72rem;margin-inline:auto}
 h1{font-weight:500;letter-spacing:.16em;font-size:clamp(1.3rem,2.2vw,1.8rem);margin:0 0 2.4rem;text-align:center}
 .shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(18px,2.4vw,32px)}
 .tile{display:block;text-decoration:none;color:inherit;aspect-ratio:600/430;box-shadow:0 6px 18px rgba(0,0,0,.45);transition:transform .35s ease,box-shadow .35s ease}
@@ -20,11 +23,13 @@ h1{font-weight:500;letter-spacing:.16em;font-size:clamp(1.3rem,2.2vw,1.8rem);mar
 </style>
 </head>
 <body>
+{{TOPBAR}}
 <main>
 <h1>Photography</h1>
 <div class="shelf">
 {{ITEMS}}
 </div>
 </main>
+{{FOOTER}}
 </body>
 </html>

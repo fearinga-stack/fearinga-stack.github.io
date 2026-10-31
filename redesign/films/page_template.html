@@ -8,12 +8,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <link rel="stylesheet" href="strip.css">
 <style>
-body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;padding:0 0 12vh;overflow-x:hidden}
-.back{display:inline-block;margin:3.5vh 16px 2.5vh;color:var(--dim);font:500 .78rem "Cormorant SC",serif;letter-spacing:.24em;text-decoration:none}
-.back:hover{color:var(--light)}
+body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;padding:max(5rem,9vh) 0 0;overflow-x:hidden}
+{{CHROME_CSS}}
 .strip{display:block;box-shadow:0 10px 26px rgba(0,0,0,.5)}
 :root{--mono:ui-monospace,"SFMono-Regular",Consolas,monospace;--hair:rgba(243,229,245,.18);--col:44rem}
-main{max-width:var(--col);margin:0 auto;padding:0 16px}
+main{max-width:var(--col);margin:0 auto 12vh;padding:0 16px}
 .obs{margin:clamp(2.5rem,7vh,4.5rem) 0 2.2rem}
 .obs h1{font:500 clamp(2rem,5vw,3.4rem)/1.1 "Cormorant SC",serif;letter-spacing:.08em;margin:0 0 1rem}
 .obs .tag{display:inline-block;margin:0 0 1rem;padding:.25rem .6rem;border:1px solid var(--hair);font:.7rem var(--mono);letter-spacing:.22em;color:var(--dim)}
@@ -48,12 +47,13 @@ main{max-width:var(--col);margin:0 auto;padding:0 16px}
 </style>
 </head>
 <body>
-{{BACK}}
+{{TOPBAR}}
 <div class="strip" aria-hidden="true">{{REEL}}</div>
 <main>
 {{HEAD}}
 {{BODY}}
 </main>
+{{FOOTER}}
 <script src="strip.js"></script>
 </body>
 </html>

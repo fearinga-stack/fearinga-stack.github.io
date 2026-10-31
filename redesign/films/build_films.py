@@ -7,9 +7,12 @@ import html
 import json
 import re
 import struct
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+import chrome  # noqa: E402
 SITE = HERE.parent.parent
 IMG = SITE / "assets" / "img" / "films"
 
@@ -97,7 +100,8 @@ def main():
     lead, fs = films()
     extra = json.loads((HERE / "films.json").read_text(encoding="utf-8"))
     body = "\n".join(strip(i + 1, f, extra.get(f["slug"], {})) for i, f in enumerate(fs))
-    out = (HERE / "template.html").read_text(encoding="utf-8").replace("{{LEAD}}", lead).replace("{{FILMS}}", body)
+    out = ((HERE / "template.html").read_text(encoding="utf-8").replace("{{LEAD}}", lead).replace("{{FILMS}}", body)
+           .replace("{{CHROME_CSS}}", chrome.CSS).replace("{{TOPBAR}}", chrome.topbar("Films")).replace("{{FOOTER}}", chrome.FOOTER))
     (HERE / "index.html").write_text(out, encoding="utf-8")
     for f in fs:
         print(f'{f["slug"]:22s} {len(f["frames"])} frames  {f["title"]}')

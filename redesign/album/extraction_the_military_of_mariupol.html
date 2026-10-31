@@ -78,13 +78,22 @@ body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant 
     <div class="page"><div class="leaf blank"></div></div>
     <div class="page" data-density="hard"><div class="cover backcover"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"></div></div>
 </div>
-<p class="hint">DRAG A CORNER · OR CLICK</p>
+<p class="hint">DRAG A CORNER · CLICK · ← →</p>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 <script>
 const book=new St.PageFlip(document.getElementById('book'),{
   width:600,height:430,size:'stretch',minWidth:280,maxWidth:900,minHeight:200,maxHeight:640,
   showCover:true,maxShadowOpacity:.55,mobileScrollSupport:false,usePortrait:true,autoSize:true});
 book.loadFromHTML(document.querySelectorAll('#book .page'));
+// keyboard: arrows and page keys turn the page, Home/End go to the covers
+document.addEventListener('keydown',e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey)return;
+  const k=e.key;
+  if(k==='ArrowRight'||k==='PageDown'||k===' '){book.flipNext();e.preventDefault();}
+  else if(k==='ArrowLeft'||k==='PageUp'){book.flipPrev();e.preventDefault();}
+  else if(k==='Home'){book.flip(0);e.preventDefault();}
+  else if(k==='End'){book.flip(book.getPageCount()-1);e.preventDefault();}
+});
 </script>
 </body>
 </html>

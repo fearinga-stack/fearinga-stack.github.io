@@ -14,9 +14,12 @@ Run from anywhere:  python build_albums.py
 import html
 import json
 import re
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+import chrome  # noqa: E402
 SITE = HERE.parent.parent
 PROJECTS = SITE / "projects"
 TEXT_BUDGET = 620          # characters that fit on one text page
@@ -200,7 +203,7 @@ def main():
     if groups[1]:
         items += '\n  <hr class="rule">\n' + "\n".join(tile(r) for r in groups[1])
     shelf = (HERE / "shelf_template.html").read_text(encoding="utf-8")
-    out = shelf.replace("{{BASE_CSS}}", base_css).replace("{{COVER_CSS}}", "\n".join(rules)).replace("{{ITEMS}}", items)
+    out = shelf.replace("{{BASE_CSS}}", base_css).replace("{{CHROME_CSS}}", chrome.CSS).replace("{{TOPBAR}}", chrome.topbar("Photography")).replace("{{FOOTER}}", chrome.FOOTER).replace("{{COVER_CSS}}", "\n".join(rules)).replace("{{ITEMS}}", items)
     (HERE / "index.html").write_text(out, encoding="utf-8")
 
 

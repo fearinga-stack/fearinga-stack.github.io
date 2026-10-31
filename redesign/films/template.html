@@ -9,7 +9,10 @@
 <link rel="stylesheet" href="strip.css">
 <style>
 :root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.55);--base:#0b0710;--frameh:clamp(96px,11.5vw,158px)}
-body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant SC",Georgia,serif;padding:9vh 0 12vh;overflow-x:hidden}
+:root{--hair:rgba(243,229,245,.2)}
+{{CHROME_CSS}}
+body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant SC",Georgia,serif;padding:max(9vh,5.5rem) 0 0;overflow-x:hidden}
+main{margin-bottom:12vh}
 header{max-width:72rem;margin:0 auto 3.5rem;padding:0 16px;text-align:center}
 header h1{font-weight:500;letter-spacing:.16em;font-size:clamp(1.3rem,2.2vw,1.8rem);margin:0}
 header p{margin:.6rem auto 0;max-width:36rem;color:var(--dim);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.05rem}
@@ -24,8 +27,12 @@ header p{margin:.6rem auto 0;max-width:36rem;color:var(--dim);font-family:"Cormo
 </style>
 </head>
 <body>
+{{TOPBAR}}
+<main>
 <header><h1>Films</h1><p>{{LEAD}}</p></header>
 {{FILMS}}
+</main>
+{{FOOTER}}
 <script src="strip.js"></script>
 </body>
 </html>
