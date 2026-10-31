@@ -4,7 +4,9 @@ Reads films.html (title, logline, meta line, link) and assets/img/films/<slug>-h
 Writes redesign/films/index.html.  Run:  python build_films.py
 """
 import html
+import json
 import re
+import struct
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -29,12 +31,38 @@ def films():
     return (lead.group(1).strip() if lead else ""), out
 
 
-def strip(i, f):
+def jpeg_size(path):
+    data = path.read_bytes()
+    i = 2
+    while i < len(data):
+        if data[i] != 0xFF:
+            i += 1
+            continue
+        marker = data[i + 1]
+        if marker in (0xC0, 0xC1, 0xC2):
+            h, w = struct.unpack(">HH", data[i + 5:i + 9])
+            return w, h
+        i += 2 + struct.unpack(">H", data[i + 2:i + 4])[0]
+    return 16, 9
+
+
+def title_card(f, extra):
+    w, h = jpeg_size(IMG / f["frames"][0])
+    laurels = "".join(f'<img src="laurels/{n}" alt="">' for n in extra.get("laurels", []))
+    lau = f'<div class="laurels">{laurels}</div>' if laurels else ""
+    return (f'<figure class="frame titlecard" style="aspect-ratio:{w}/{h}">'
+            f'<div class="tc"><span class="tc-title">{html.escape(f["title"])}</span>{lau}</div>'
+            f'<span class="fn">00</span></figure>')
+
+
+def strip(i, f, extra):
     edge = f'{f["title"].upper()} · {f["meta"].upper()}'
     frames = "".join(
         f'<figure class="frame"><img src="../../assets/img/films/{name}" alt="Still {k + 1} from {html.escape(f["title"])}" '
         f'loading="lazy"><span class="fn">{i:02d}{"ABCDEFGH"[k]}</span></figure>'
         for k, name in enumerate(f["frames"]))
+    frames = title_card(f, extra) + frames
+    awards = f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else ""
     return f'''  <article class="film">
     <a class="strip" href="../../{f["link"]}" aria-label="{html.escape(f["title"])}">
       <div class="perf"></div>
@@ -44,13 +72,14 @@ def strip(i, f):
       <div class="perf"></div>
     </a>
     <div class="caption"><h2><a href="../../{f["link"]}">{html.escape(f["title"])}</a></h2>
-      <p class="logline">{f["logline"]}</p><p class="meta">{f["meta"]}</p></div>
+      <p class="logline">{f["logline"]}</p><p class="meta">{f["meta"]}</p>{awards}</div>
   </article>'''
 
 
 def main():
     lead, fs = films()
-    body = "\n".join(strip(i + 1, f) for i, f in enumerate(fs))
+    extra = json.loads((HERE / "films.json").read_text(encoding="utf-8"))
+    body = "\n".join(strip(i + 1, f, extra.get(f["slug"], {})) for i, f in enumerate(fs))
     out = (HERE / "template.html").read_text(encoding="utf-8").replace("{{LEAD}}", lead).replace("{{FILMS}}", body)
     (HERE / "index.html").write_text(out, encoding="utf-8")
     for f in fs:
