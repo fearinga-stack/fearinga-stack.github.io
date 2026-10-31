@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
 <title>Films</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital@0;1&display=swap">
@@ -11,6 +12,7 @@
 :root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.55);--base:#0b0710;--frameh:clamp(96px,11.5vw,158px)}
 :root{--hair:rgba(243,229,245,.2)}
 
+:root{color-scheme:dark}   /* the site is dark already: phone browsers must not "darken" it (their forced dark mode ate the gold, 31.10) */
 .topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
   padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px))}
 /* gold from her roses (#DBA048, petal median): dust at the top that thins into the night, sparks over the page,

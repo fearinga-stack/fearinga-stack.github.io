@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
 <title>Contact — Amata Lynner</title>
 <link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +17,7 @@ html,body{margin:0}
 body{background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
 a{color:inherit}
 
+:root{color-scheme:dark}   /* the site is dark already: phone browsers must not "darken" it (their forced dark mode ate the gold, 31.10) */
 .topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
   padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px))}
 /* gold from her roses (#DBA048, petal median): dust at the top that thins into the night, sparks over the page,

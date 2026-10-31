@@ -10,6 +10,7 @@ NAV = [("Films", "../films/index.html"),
        ("Contact", "../pages/contact.html")]
 
 CSS = """
+:root{color-scheme:dark}   /* the site is dark already: phone browsers must not "darken" it (their forced dark mode ate the gold, 31.10) */
 .topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
   padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px))}
 /* gold from her roses (#DBA048, petal median): dust at the top that thins into the night, sparks over the page,
