@@ -4,10 +4,165 @@
     "title": "Blood Orange Soda",
     "meta": "2026 · BEVERAGE SPOT · 18SEC",
     "logline": "A drop of juice turns into a Rorschach test. What do you see?",
-    "frames": ["frames/blood-1.jpg", "frames/blood-2.jpg", "frames/blood-3.jpg", "frames/blood-4.jpg",
-               "frames/blood-5.jpg", "frames/blood-6.jpg", "frames/blood-7.jpg"],
+    "frames": [
+      "frames/blood-1.jpg",
+      "frames/blood-2.jpg",
+      "frames/blood-3.jpg",
+      "frames/blood-4.jpg",
+      "frames/blood-5.jpg",
+      "frames/blood-6.jpg",
+      "frames/blood-7.jpg"
+    ],
     "no_title_card": true,
     "video": "../../assets/video/blood-orange-soda.mp4",
     "poster": "../../assets/video/blood-orange-soda-poster.jpg"
+  },
+  "_spots": {
+    "_note": "The monitor under the two standalone films: one stage, a strip of previews, tabs filter by tag. Names and lines are drafts (mine), Lin to approve. Files in assets/video/ads: ID.mp4, ID-preview.mp4 (3 s, muted), ID-poster.jpg.",
+    "tabs": [
+      [
+        "all",
+        "All"
+      ],
+      [
+        "beauty",
+        "Beauty"
+      ],
+      [
+        "food",
+        "Food & drink"
+      ],
+      [
+        "type",
+        "Type"
+      ],
+      [
+        "illustration",
+        "Illustration"
+      ],
+      [
+        "vertical",
+        "Vertical"
+      ]
+    ],
+    "items": [
+      {
+        "id": "vellum",
+        "title": "Vellum",
+        "line": "Five products drawn onto the sheet, one line at a time.",
+        "meta": "BEAUTY CONCEPT · 38 SEC",
+        "tags": [
+          "beauty"
+        ],
+        "shape": "wide"
+      },
+      {
+        "id": "beauty",
+        "title": "Beauty & Product",
+        "line": "Objects that switch on, open up and land on the pack shot.",
+        "meta": "PRODUCT REEL · 32 SEC",
+        "tags": [
+          "beauty"
+        ],
+        "shape": "wide"
+      },
+      {
+        "id": "wordplay",
+        "title": "Wordplay",
+        "line": "Words that rearrange themselves into other words.",
+        "meta": "TYPE IN MOTION · 40 SEC",
+        "tags": [
+          "type"
+        ],
+        "shape": "wide"
+      },
+      {
+        "id": "food",
+        "title": "Food & Drink",
+        "line": "Three flavours, one pour, a cherry on top.",
+        "meta": "FOOD REEL · 35 SEC",
+        "tags": [
+          "food"
+        ],
+        "shape": "wide"
+      },
+      {
+        "id": "illustration",
+        "title": "Illustration",
+        "line": "Drawn worlds and characters for brands.",
+        "meta": "ILLUSTRATION REEL · 35 SEC",
+        "tags": [
+          "illustration"
+        ],
+        "shape": "wide"
+      },
+      {
+        "id": "boba",
+        "title": "Pearl",
+        "line": "Bubble tea, served by its mascot.",
+        "meta": "9:16 · 10 SEC",
+        "tags": [
+          "food",
+          "vertical",
+          "illustration"
+        ],
+        "shape": "tall"
+      },
+      {
+        "id": "steep",
+        "title": "Steep",
+        "line": "Oolong in a tin.",
+        "meta": "9:16 · 10 SEC",
+        "tags": [
+          "food",
+          "vertical"
+        ],
+        "shape": "tall"
+      },
+      {
+        "id": "side-a",
+        "title": "Side A",
+        "line": "A lip balm with a record's manners.",
+        "meta": "9:16 · 10 SEC",
+        "tags": [
+          "beauty",
+          "vertical"
+        ],
+        "shape": "tall"
+      },
+      {
+        "id": "pebble",
+        "title": "Pebble",
+        "line": "Soap, shaped by water.",
+        "meta": "9:16 · 10 SEC",
+        "tags": [
+          "beauty",
+          "vertical"
+        ],
+        "shape": "tall"
+      },
+      {
+        "id": "dot",
+        "title": "Dot",
+        "line": "One colour, one coat.",
+        "meta": "9:16 · 10 SEC",
+        "tags": [
+          "beauty",
+          "vertical"
+        ],
+        "shape": "tall"
+      },
+      {
+        "id": "soft-weather",
+        "title": "Soft Weather",
+        "line": "A cloud balm for skin.",
+        "meta": "9:16 · 10 SEC",
+        "tags": [
+          "beauty",
+          "vertical"
+        ],
+        "shape": "tall"
+      }
+    ]
   }
 }

@@ -89,6 +89,35 @@ main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp
 .caption .screen{margin:1.4rem 0 0;aspect-ratio:16/9;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
 .caption .screen video,.caption .screen iframe{display:block;width:100%;height:100%;border:0}
 .caption .screen+.more{margin-top:1.1rem}
+/* the monitor: everything after the two standalone films */
+.spots{margin:clamp(3.5rem,9vh,5.5rem) 0 0;border-top:1px solid var(--hair);padding-top:clamp(2rem,5vh,3rem)}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.4rem;max-width:64rem;margin:0 auto 1.4rem;padding:0 16px}
+.tabs button{background:none;border:0;border-bottom:1px solid transparent;color:var(--dim);cursor:pointer;padding:.2rem 0;
+  font:500 .82rem "Cormorant SC",serif;letter-spacing:.22em;text-transform:uppercase}
+.tabs button:hover{color:var(--light)}
+.tabs button[aria-pressed="true"]{color:var(--light);border-color:var(--light)}
+.stage{margin:0 auto;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
+/* tabs, caption and the strip take about 26rem: the stage gets the rest, so the whole monitor is one screen */
+.stage.wide{width:min(100% - 32px,64rem,(100vh - 26rem) * 16 / 9);aspect-ratio:16/9}
+.stage.tall{height:min(100vh - 26rem,44rem);min-height:20rem;aspect-ratio:9/16;max-width:calc(100% - 32px)}
+.stage video{display:block;width:100%;height:100%;border:0}
+.now{max-width:64rem;margin:1rem auto 1.4rem;padding:0 16px;text-align:center}
+.now h2{margin:0 0 .3rem;font:500 clamp(1.1rem,1.7vw,1.4rem) "Cormorant SC",serif;letter-spacing:.1em}
+.now .logline{margin:0 0 .3rem}
+.now .meta{margin:0;font:.72rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.deck{background:var(--base,#0b0710);overflow-x:auto;scrollbar-width:none;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.deck::-webkit-scrollbar{display:none}
+.deck .set{width:max-content;min-width:100%;align-items:center}
+.deck .frames{margin:0 auto}
+.deck .frame{border:0;padding:0;cursor:pointer;outline:1px solid transparent;outline-offset:2px;transition:outline-color .3s}
+.deck .frame.wide{aspect-ratio:16/9}
+.deck .frame.tall{aspect-ratio:9/16}
+.deck .frame[hidden]{display:none}
+.deck .frame video{display:block;width:100%;height:100%;object-fit:cover;filter:brightness(.7) saturate(.85);transition:filter .4s}
+.deck .frame:hover video,.deck .frame[aria-current] video{filter:none}
+.deck .frame[aria-current]{outline-color:var(--light)}
+.hint{margin:.8rem 0 0;text-align:center;font:.66rem var(--mono);letter-spacing:.24em;color:rgba(243,229,245,.4)}
+@media (hover:none){.hint{display:none}}
 .reel-text{margin-top:clamp(3rem,8vh,4.5rem)}
 .reel-text h2{font:500 clamp(1.1rem,1.8vw,1.35rem) "Cormorant SC",serif;letter-spacing:.08em;margin:0 0 1rem}
 .reel-text p{font-size:1.14rem;line-height:1.6;margin:0 0 .9rem;color:rgba(243,229,245,.86)}
@@ -158,6 +187,60 @@ main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp
   <div class="caption"><h2>Blood Orange Soda</h2><p class="logline">A drop of juice turns into a Rorschach test. What do you see?</p><p class="meta">2026 · BEVERAGE SPOT · 18SEC</p>
     <div class="screen" id="watch-blood-orange"><video controls playsinline preload="none" poster="../../assets/video/blood-orange-soda-poster.jpg" src="../../assets/video/blood-orange-soda.mp4"></video></div></div>
 </article>
+<section class="spots" aria-label="More commercial work">
+  <nav class="tabs" aria-label="Filter"><button type="button" data-tag="all" aria-pressed="true">All</button><button type="button" data-tag="beauty">Beauty</button><button type="button" data-tag="food">Food &amp; drink</button><button type="button" data-tag="type">Type</button><button type="button" data-tag="illustration">Illustration</button><button type="button" data-tag="vertical">Vertical</button></nav>
+  <div class="stage wide"><video controls playsinline preload="none" poster="../../assets/video/ads/vellum-poster.jpg" src="../../assets/video/ads/vellum.mp4"></video></div>
+  <div class="now"><h2>Vellum</h2><p class="logline">Five products drawn onto the sheet, one line at a time.</p><p class="meta">BEAUTY CONCEPT · 38 SEC</p></div>
+  <div class="deck"><div class="set"><div class="perf"></div><div class="frames"><button type="button" class="frame wide" data-id="vellum" data-tags="beauty" data-title="Vellum" data-line="Five products drawn onto the sheet, one line at a time." data-meta="BEAUTY CONCEPT · 38 SEC" aria-label="Vellum" aria-current="true"><video muted loop playsinline preload="none" poster="../../assets/video/ads/vellum-poster.jpg" src="../../assets/video/ads/vellum-preview.mp4"></video><span class="fn">01</span></button><button type="button" class="frame wide" data-id="beauty" data-tags="beauty" data-title="Beauty &amp; Product" data-line="Objects that switch on, open up and land on the pack shot." data-meta="PRODUCT REEL · 32 SEC" aria-label="Beauty &amp; Product"><video muted loop playsinline preload="none" poster="../../assets/video/ads/beauty-poster.jpg" src="../../assets/video/ads/beauty-preview.mp4"></video><span class="fn">02</span></button><button type="button" class="frame wide" data-id="wordplay" data-tags="type" data-title="Wordplay" data-line="Words that rearrange themselves into other words." data-meta="TYPE IN MOTION · 40 SEC" aria-label="Wordplay"><video muted loop playsinline preload="none" poster="../../assets/video/ads/wordplay-poster.jpg" src="../../assets/video/ads/wordplay-preview.mp4"></video><span class="fn">03</span></button><button type="button" class="frame wide" data-id="food" data-tags="food" data-title="Food &amp; Drink" data-line="Three flavours, one pour, a cherry on top." data-meta="FOOD REEL · 35 SEC" aria-label="Food &amp; Drink"><video muted loop playsinline preload="none" poster="../../assets/video/ads/food-poster.jpg" src="../../assets/video/ads/food-preview.mp4"></video><span class="fn">04</span></button><button type="button" class="frame wide" data-id="illustration" data-tags="illustration" data-title="Illustration" data-line="Drawn worlds and characters for brands." data-meta="ILLUSTRATION REEL · 35 SEC" aria-label="Illustration"><video muted loop playsinline preload="none" poster="../../assets/video/ads/illustration-poster.jpg" src="../../assets/video/ads/illustration-preview.mp4"></video><span class="fn">05</span></button><button type="button" class="frame tall" data-id="boba" data-tags="food vertical illustration" data-title="Pearl" data-line="Bubble tea, served by its mascot." data-meta="9:16 · 10 SEC" aria-label="Pearl"><video muted loop playsinline preload="none" poster="../../assets/video/ads/boba-poster.jpg" src="../../assets/video/ads/boba-preview.mp4"></video><span class="fn">06</span></button><button type="button" class="frame tall" data-id="steep" data-tags="food vertical" data-title="Steep" data-line="Oolong in a tin." data-meta="9:16 · 10 SEC" aria-label="Steep"><video muted loop playsinline preload="none" poster="../../assets/video/ads/steep-poster.jpg" src="../../assets/video/ads/steep-preview.mp4"></video><span class="fn">07</span></button><button type="button" class="frame tall" data-id="side-a" data-tags="beauty vertical" data-title="Side A" data-line="A lip balm with a record&#x27;s manners." data-meta="9:16 · 10 SEC" aria-label="Side A"><video muted loop playsinline preload="none" poster="../../assets/video/ads/side-a-poster.jpg" src="../../assets/video/ads/side-a-preview.mp4"></video><span class="fn">08</span></button><button type="button" class="frame tall" data-id="pebble" data-tags="beauty vertical" data-title="Pebble" data-line="Soap, shaped by water." data-meta="9:16 · 10 SEC" aria-label="Pebble"><video muted loop playsinline preload="none" poster="../../assets/video/ads/pebble-poster.jpg" src="../../assets/video/ads/pebble-preview.mp4"></video><span class="fn">09</span></button><button type="button" class="frame tall" data-id="dot" data-tags="beauty vertical" data-title="Dot" data-line="One colour, one coat." data-meta="9:16 · 10 SEC" aria-label="Dot"><video muted loop playsinline preload="none" poster="../../assets/video/ads/dot-poster.jpg" src="../../assets/video/ads/dot-preview.mp4"></video><span class="fn">10</span></button><button type="button" class="frame tall" data-id="soft-weather" data-tags="beauty vertical" data-title="Soft Weather" data-line="A cloud balm for skin." data-meta="9:16 · 10 SEC" aria-label="Soft Weather"><video muted loop playsinline preload="none" poster="../../assets/video/ads/soft-weather-poster.jpg" src="../../assets/video/ads/soft-weather-preview.mp4"></video><span class="fn">11</span></button></div><div class="perf"></div></div></div>
+  <p class="hint">← → to step through</p>
+</section>
+<script>
+(() => {
+  const box = document.querySelector('.spots'), stage = box.querySelector('.stage'), v = stage.querySelector('video');
+  const now = box.querySelector('.now'), thumbs = [...box.querySelectorAll('.deck .frame')];
+  const ADS = "../../assets/video/ads/";
+  const visible = () => thumbs.filter(t => !t.hidden);
+  function pick(t, play) {
+    thumbs.forEach(x => x.removeAttribute('aria-current')); t.setAttribute('aria-current', 'true');
+    stage.className = 'stage ' + (t.classList.contains('tall') ? 'tall' : 'wide');
+    v.poster = ADS + t.dataset.id + '-poster.jpg'; v.src = ADS + t.dataset.id + '.mp4';
+    now.querySelector('h2').textContent = t.dataset.title;
+    now.querySelector('.logline').textContent = t.dataset.line;
+    now.querySelector('.meta').textContent = t.dataset.meta;
+    t.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'smooth'});
+    if (play) v.play().catch(() => {});
+  }
+  thumbs.forEach(t => {
+    const pv = t.querySelector('video');
+    t.addEventListener('mouseenter', () => pv.play().catch(() => {}));
+    t.addEventListener('mouseleave', () => { pv.pause(); pv.currentTime = 0; });
+    t.addEventListener('click', () => pick(t, true));
+  });
+  box.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+    box.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    const tag = b.dataset.tag;
+    thumbs.forEach(t => t.hidden = tag !== 'all' && !t.dataset.tags.split(' ').includes(tag));
+    const cur = thumbs.find(t => t.hasAttribute('aria-current'));
+    if (cur.hidden) pick(visible()[0], false);
+  }));
+  // arrows step through what the tab shows, while the monitor is on screen
+  let seen = false;
+  new IntersectionObserver(e => seen = e[0].isIntersecting, {threshold: .25}).observe(box);
+  document.addEventListener('keydown', e => {
+    if (!seen || !['ArrowLeft', 'ArrowRight'].includes(e.key) || (e.target.closest && e.target.closest('input,textarea'))) return;
+    const list = visible(), i = list.findIndex(t => t.hasAttribute('aria-current'));
+    const n = list[(i + (e.key === 'ArrowRight' ? 1 : -1) + list.length) % list.length];
+    e.preventDefault(); pick(n, !v.paused);
+  });
+  // on touch screens there is no hover: previews in view play on their own
+  if (matchMedia('(hover: none)').matches) {
+    const io = new IntersectionObserver(es => es.forEach(x => {
+      const pv = x.target.querySelector('video'); x.isIntersecting ? pv.play().catch(() => {}) : pv.pause();
+    }), {threshold: .6});
+    thumbs.forEach(t => io.observe(t));
+  }
+})();
+</script>
 <section class="reel-text">
   <h2>AI Commercial &amp; Motion Reel | Product Ads and Animation</h2>
   <!-- The reel itself was a Squarespace-hosted video file (not YouTube/Vimeo) and could not be carried over.

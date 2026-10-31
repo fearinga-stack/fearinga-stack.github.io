@@ -160,6 +160,7 @@ def commercial():
   <div class="caption"><h2>{html.escape(p["title"])}</h2><p class="logline">{html.escape(p["logline"])}</p><p class="meta">{p["meta"]}</p>
     {watch}</div>
 </article>''')
+    spots = monitor(json.loads((HERE / "commercial.json").read_text(encoding="utf-8"))["_spots"])
     out = f'''<header class="page-head">
   <h1>{h1}</h1>
   <p class="lead">{lead}</p>
@@ -171,6 +172,7 @@ def commercial():
     <p class="more"><a href="{page}">{more}</a></p></div>
 </article>
 {chr(10).join(more_pieces)}
+{spots}
 <section class="reel-text">
   <h2>{reel_h}</h2>
   {comment}
@@ -179,7 +181,80 @@ def commercial():
     return m, out
 
 
-PAGES = {"about": ("About", "About", about), "contact": ("Contact", "Contact", contact),
+ADS = "../../assets/video/ads/"
+
+
+def monitor(spots):
+    """The rest of the commercial work on one screen: a stage, a strip of live previews, tabs that filter it.
+    The page does not grow with the catalogue; a new piece is one more item in commercial.json."""
+    first = spots["items"][0]
+    esc = html.escape
+    tabs = "".join(f'<button type="button" data-tag="{t}"{" aria-pressed=\"true\"" if k == 0 else ""}>{esc(n)}</button>'
+                   for k, (t, n) in enumerate(spots["tabs"]))
+    thumbs = "".join(
+        f'<button type="button" class="frame {it["shape"]}" data-id="{it["id"]}" data-tags="{" ".join(it["tags"])}" '
+        f'data-title="{esc(it["title"])}" data-line="{esc(it["line"])}" data-meta="{esc(it["meta"])}" '
+        f'aria-label="{esc(it["title"])}"{" aria-current=\"true\"" if k == 0 else ""}>'
+        f'<video muted loop playsinline preload="none" poster="{ADS}{it["id"]}-poster.jpg" src="{ADS}{it["id"]}-preview.mp4"></video>'
+        f'<span class="fn">{k + 1:02d}</span></button>'
+        for k, it in enumerate(spots["items"]))
+    return f'''<section class="spots" aria-label="More commercial work">
+  <nav class="tabs" aria-label="Filter">{tabs}</nav>
+  <div class="stage {first["shape"]}"><video controls playsinline preload="none" poster="{ADS}{first["id"]}-poster.jpg" src="{ADS}{first["id"]}.mp4"></video></div>
+  <div class="now"><h2>{esc(first["title"])}</h2><p class="logline">{esc(first["line"])}</p><p class="meta">{esc(first["meta"])}</p></div>
+  <div class="deck"><div class="set"><div class="perf"></div><div class="frames">{thumbs}</div><div class="perf"></div></div></div>
+  <p class="hint">← → to step through</p>
+</section>
+<script>
+(() => {{
+  const box = document.querySelector('.spots'), stage = box.querySelector('.stage'), v = stage.querySelector('video');
+  const now = box.querySelector('.now'), thumbs = [...box.querySelectorAll('.deck .frame')];
+  const ADS = "{ADS}";
+  const visible = () => thumbs.filter(t => !t.hidden);
+  function pick(t, play) {{
+    thumbs.forEach(x => x.removeAttribute('aria-current')); t.setAttribute('aria-current', 'true');
+    stage.className = 'stage ' + (t.classList.contains('tall') ? 'tall' : 'wide');
+    v.poster = ADS + t.dataset.id + '-poster.jpg'; v.src = ADS + t.dataset.id + '.mp4';
+    now.querySelector('h2').textContent = t.dataset.title;
+    now.querySelector('.logline').textContent = t.dataset.line;
+    now.querySelector('.meta').textContent = t.dataset.meta;
+    t.scrollIntoView({{block: 'nearest', inline: 'nearest', behavior: 'smooth'}});
+    if (play) v.play().catch(() => {{}});
+  }}
+  thumbs.forEach(t => {{
+    const pv = t.querySelector('video');
+    t.addEventListener('mouseenter', () => pv.play().catch(() => {{}}));
+    t.addEventListener('mouseleave', () => {{ pv.pause(); pv.currentTime = 0; }});
+    t.addEventListener('click', () => pick(t, true));
+  }});
+  box.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {{
+    box.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    const tag = b.dataset.tag;
+    thumbs.forEach(t => t.hidden = tag !== 'all' && !t.dataset.tags.split(' ').includes(tag));
+    const cur = thumbs.find(t => t.hasAttribute('aria-current'));
+    if (cur.hidden) pick(visible()[0], false);
+  }}));
+  // arrows step through what the tab shows, while the monitor is on screen
+  let seen = false;
+  new IntersectionObserver(e => seen = e[0].isIntersecting, {{threshold: .25}}).observe(box);
+  document.addEventListener('keydown', e => {{
+    if (!seen || !['ArrowLeft', 'ArrowRight'].includes(e.key) || (e.target.closest && e.target.closest('input,textarea'))) return;
+    const list = visible(), i = list.findIndex(t => t.hasAttribute('aria-current'));
+    const n = list[(i + (e.key === 'ArrowRight' ? 1 : -1) + list.length) % list.length];
+    e.preventDefault(); pick(n, !v.paused);
+  }});
+  // on touch screens there is no hover: previews in view play on their own
+  if (matchMedia('(hover: none)').matches) {{
+    const io = new IntersectionObserver(es => es.forEach(x => {{
+      const pv = x.target.querySelector('video'); x.isIntersecting ? pv.play().catch(() => {{}}) : pv.pause();
+    }}), {{threshold: .6}});
+    thumbs.forEach(t => io.observe(t));
+  }}
+}})();
+</script>'''
+
+
+PAGES = {"about":("About", "About", about), "contact": ("Contact", "Contact", contact),
          "commercial": ("Commercial", "Commercial", commercial)}
 
 
