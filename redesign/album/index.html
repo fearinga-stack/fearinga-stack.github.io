@@ -26,13 +26,48 @@ header p{margin:.3rem 0 0;color:var(--dim);font-family:"Cormorant Garamond",seri
 .cover img{width:18%;opacity:.9}
 .cover h2{font-weight:500;letter-spacing:.2em;font-size:clamp(1.3rem,3vw,2.4rem);margin:1.2em 0 .3em}
 .cover p{color:var(--dim);font-family:"Cormorant Garamond",serif;font-style:italic;margin:0;font-size:clamp(.8rem,1.4vw,1.1rem)}
+.cover.photo{background:linear-gradient(rgba(21,8,48,.35),rgba(21,8,48,.78)),url("../../assets/img/photo/mv-20220130-008.jpg") center/cover;border-color:rgba(243,229,245,.25)}
+.cover.photo h2{text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.cover.cloth{background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),
+  radial-gradient(120% 100% at 30% 20%,#2c1650,#170a30 70%,#0f0622);border:none;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.25),inset 0 0 40px rgba(0,0,0,.55)}
+.cover.cloth h2{color:#d9c7e6;text-shadow:0 -1px 0 rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.12)}
+.cover.cloth img{filter:drop-shadow(0 -1px 0 rgba(0,0,0,.6)) drop-shadow(0 1px 0 rgba(255,255,255,.15))}
+.cover.window{background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),
+  radial-gradient(120% 100% at 30% 20%,#2c1650,#170a30 70%,#0f0622);border:none;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.25),inset 0 0 40px rgba(0,0,0,.55)}
+.cover.window.front::before{content:"";display:block;width:42%;aspect-ratio:3/2;order:0;
+  background:url("../../assets/img/photo/mv-20220130-008.jpg") center/cover;
+  outline:5px solid #efe6dc;outline-offset:0;
+  box-shadow:0 0 0 6px rgba(0,0,0,.35),0 3px 12px rgba(0,0,0,.6)}
+.cover.window h2{order:1;color:#d9c7e6;margin:1.1em 0 .2em;text-shadow:0 -1px 0 rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.12)}
+.cover.window p{order:2}
+.cover.window.front img{order:3;width:9%;margin-top:1.2em;opacity:.75}
+.cover.linen{border:none;background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("../../assets/img/photo/mv-20220130-008.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+.cover.linen{justify-content:flex-start;align-items:flex-start;padding:17% 6% 0;position:relative}
+.cover.linen h2{order:1;margin:0;font-size:clamp(1rem,2.3vw,1.8rem);letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25)}
+.cover.linen p{display:none}
+.cover.linen img{position:absolute;right:6%;bottom:6%;width:11%;opacity:.85}
+.switch{position:fixed;top:12px;right:16px;font-size:.75rem;letter-spacing:.2em}
+.switch a{color:var(--dim);margin-left:.8em;text-decoration:none}.switch a.on{color:var(--light);border-bottom:1px solid var(--light)}
 .hint{margin-top:2vh;color:var(--dim);font-size:.75rem;letter-spacing:.25em}
 </style>
 </head>
 <body>
 <header><h1>Normandie</h1><p>A subtle change of an angle changes perspective.</p></header>
 <div id="book">
-    <div class="page" data-density="hard"><div class="cover"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"><h2>NORMANDIE</h2><p>photographs · 2022–2023</p></div></div>
+    <div class="page" data-density="hard"><div class="cover front"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"><h2>NORMANDIE</h2><p>photographs · 2022–2023</p></div></div>
     <div class="page"><div class="leaf"><figure><img src="../../assets/img/photo/mv-20220130-008.jpg" alt="Normandie, photograph 1" loading="lazy"></figure><p class="pencil">№ 01 · 30.01.2022</p></div></div>
     <div class="page"><div class="leaf"><figure><img src="../../assets/img/photo/mv-20220130-022.jpg" alt="Normandie, photograph 2" loading="lazy"></figure><p class="pencil">№ 02 · 30.01.2022</p></div></div>
     <div class="page"><div class="leaf"><figure><img src="../../assets/img/photo/mv-20220130-108.jpg" alt="Normandie, photograph 3" loading="lazy"></figure><p class="pencil">№ 03 · 30.01.2022</p></div></div>
@@ -59,9 +94,13 @@ header p{margin:.3rem 0 0;color:var(--dim);font-family:"Cormorant Garamond",seri
     <div class="page"><div class="leaf blank"></div></div>
     <div class="page" data-density="hard"><div class="cover"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"></div></div>
 </div>
+<p class="switch">COVER <a href="?cover=photo" id="c-photo">A · PHOTO</a><a href="?cover=cloth" id="c-cloth">B · CLOTH</a><a href="?cover=window" id="c-window">C · WINDOW</a><a href="?cover=linen" id="c-linen">D · PHOTO ON CLOTH</a></p>
 <p class="hint">DRAG A CORNER · OR CLICK</p>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 <script>
+const cv=new URLSearchParams(location.search).get('cover')||'photo';
+document.querySelectorAll('.cover').forEach(c=>c.classList.add(cv));
+document.getElementById('c-'+cv)?.classList.add('on');
 const book=new St.PageFlip(document.getElementById('book'),{
   width:600,height:430,size:'stretch',minWidth:280,maxWidth:900,minHeight:200,maxHeight:640,
   showCover:true,maxShadowOpacity:.55,mobileScrollSupport:false,usePortrait:true,autoSize:true});
