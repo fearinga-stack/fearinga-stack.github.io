@@ -152,15 +152,20 @@ def build(slug, cfg):
         i += 1
     if len(pages) % 2:
         pages.append(BLANK)
+    light = cfg.get("title_style") == "light"
     tmpl = (HERE / "template.html").read_text(encoding="utf-8")
     out = (tmpl.replace("{{TITLE}}", html.escape(title))
-               .replace("{{TITLE_UPPER}}", html.escape(cfg.get("cover_title", title).upper()))
+               .replace("{{TITLE_UPPER}}", html.escape(cfg.get("cover_title", title).upper()).replace("_", "_<wbr>"))
                .replace("{{TAGLINE}}", html.escape(cfg.get("tagline", "")))
                .replace("{{COVER}}", cover)
                .replace("{{COVER_POS}}", cfg.get("cover_position", "center 30%"))
                .replace("{{TITLE_PAD}}", cfg.get("title_padding", "6% 6% 0"))
                .replace("{{TITLE_ALIGN}}", cfg.get("title_align", "flex-start"))
-               .replace("{{TITLE_COLOR}}", cfg.get("title_color", "#200F3A"))
+               .replace("{{TITLE_COLOR}}", "#F3E5F5" if light else cfg.get("title_color", "#200F3A"))
+               .replace("{{TITLE_SHADOW}}", "0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85)" if light
+                        else "0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25)")
+               .replace("{{TITLE_VEIL}}", "linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%)," if light else "")
+               .replace("{{VEIL_BLEND}}", "normal," if light else "")
                .replace("{{PAGES}}", "\n".join(pages)))
     (HERE / f"{slug}.html").write_text(out, encoding="utf-8")
     return title, n, len(pages)

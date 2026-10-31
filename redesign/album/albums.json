@@ -18,6 +18,30 @@
       "cover": "mv-20220130-008.jpg",
       "title_padding": "17% 6% 0",
       "cover_title": "Normandie"
+    },
+    "kherson-2023": {
+      "title_style": "light"
+    },
+    "idp-center-reportage": {
+      "title_style": "light"
+    },
+    "extraction_the_military_of_mariupol": {
+      "title_style": "light"
+    },
+    "centre-pompidou": {
+      "title_style": "light"
+    },
+    "interpipe-steel": {
+      "title_style": "light"
+    },
+    "incomplete-project": {
+      "title_padding": "2.5% 6% 0"
+    },
+    "ukraine-one": {
+      "title_style": "light"
+    },
+    "urban-lines": {
+      "title_style": "light"
     }
   }
 }
