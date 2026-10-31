@@ -57,20 +57,10 @@
         "shape": "wide"
       },
       {
-        "id": "beauty",
-        "title": "Arc°",
-        "line": "A desk lamp with four moods: dawn, work, dusk, moon.",
-        "meta": "PRODUCT SPOT · 14 SEC",
-        "tags": [
-          "beauty"
-        ],
-        "shape": "wide"
-      },
-      {
         "id": "wordplay",
         "title": "Wordplay",
         "line": "Words that rearrange themselves into other words.",
-        "meta": "TYPE IN MOTION · 40 SEC",
+        "meta": "TYPE IN MOTION · 35 SEC",
         "tags": [
           "type"
         ],
