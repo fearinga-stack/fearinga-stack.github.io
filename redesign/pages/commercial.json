@@ -59,8 +59,8 @@
       {
         "id": "beauty",
         "title": "Beauty & Product",
-        "line": "Objects that switch on, open up and land on the pack shot.",
-        "meta": "PRODUCT REEL · 32 SEC",
+        "line": "A lamp with four moods, a balm that turns into a cloud.",
+        "meta": "PRODUCT REEL · 24 SEC",
         "tags": [
           "beauty"
         ],
@@ -79,8 +79,8 @@
       {
         "id": "food",
         "title": "Food & Drink",
-        "line": "Three flavours, one pour, a cherry on top.",
-        "meta": "FOOD REEL · 35 SEC",
+        "line": "A pour, a spoon, a cherry on top.",
+        "meta": "FOOD REEL · 16 SEC",
         "tags": [
           "food"
         ],
@@ -95,18 +95,6 @@
           "illustration"
         ],
         "shape": "wide"
-      },
-      {
-        "id": "boba",
-        "title": "Pearl",
-        "line": "Bubble tea, served by its mascot.",
-        "meta": "9:16 · 10 SEC",
-        "tags": [
-          "food",
-          "vertical",
-          "illustration"
-        ],
-        "shape": "tall"
       },
       {
         "id": "steep",
@@ -134,7 +122,7 @@
         "id": "pebble",
         "title": "Pebble",
         "line": "Soap, shaped by water.",
-        "meta": "9:16 · 10 SEC",
+        "meta": "9:16 · 9 SEC",
         "tags": [
           "beauty",
           "vertical"

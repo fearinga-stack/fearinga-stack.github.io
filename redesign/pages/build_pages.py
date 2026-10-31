@@ -177,11 +177,36 @@ def commercial():
   <h2>{reel_h}</h2>
   {comment}
 {chr(10).join(f"  <p>{p}</p>" for p in reel_ps)}
-</section>'''
+</section>
+{SOUND}'''
     return m, out
 
 
 ADS = "../../assets/video/ads/"
+
+# one sound switch for every player on the page: on each screen, in step with each other, remembered
+SOUND = '''<script>
+(() => {
+  const players = [...document.querySelectorAll('main video[controls]')];
+  let off = false;
+  try { off = localStorage.getItem('sound') === 'off'; } catch (e) {}
+  const buttons = players.map(v => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'sound';
+    b.addEventListener('click', () => set(!off));
+    v.parentElement.appendChild(b);
+    v.addEventListener('volumechange', () => { if (v.muted !== off) set(v.muted); });
+    return b;
+  });
+  function set(o) {
+    off = o;
+    try { localStorage.setItem('sound', off ? 'off' : 'on'); } catch (e) {}
+    players.forEach(v => v.muted = off);
+    buttons.forEach(b => { b.textContent = off ? 'SOUND OFF' : 'SOUND ON'; b.setAttribute('aria-pressed', String(off)); });
+  }
+  set(off);
+})();
+</script>'''
 
 
 def monitor(spots):
