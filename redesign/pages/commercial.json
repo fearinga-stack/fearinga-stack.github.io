@@ -6,6 +6,8 @@
     "logline": "A drop of juice turns into a Rorschach test. What do you see?",
     "frames": ["frames/blood-1.jpg", "frames/blood-2.jpg", "frames/blood-3.jpg", "frames/blood-4.jpg",
                "frames/blood-5.jpg", "frames/blood-6.jpg", "frames/blood-7.jpg"],
-    "no_title_card": true
+    "no_title_card": true,
+    "video": "../../assets/video/blood-orange-soda.mp4",
+    "poster": "../../assets/video/blood-orange-soda-poster.jpg"
   }
 }

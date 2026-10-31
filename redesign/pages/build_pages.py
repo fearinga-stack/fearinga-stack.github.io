@@ -143,9 +143,16 @@ def commercial():
             (HERE / "commercial.json").read_text(encoding="utf-8")).items() if not k.startswith("_")):
         g = dict(slug=slug, title=p["title"], meta=p["meta"], frames=[])
         reel = re.sub(r'src="(frames|laurels)/', r'src="../films/\1/', bf.reel(7 + n, g, p))
+        watch = ""
+        if p.get("video"):           # short enough to live on the site itself
+            watch = (f'<div class="screen" id="watch-{slug}"><video controls playsinline preload="none" '
+                     f'poster="{p["poster"]}" src="{p["video"]}"></video></div>')
+        strip_tag = (f'<a class="strip" href="#watch-{slug}"' if watch else '<div class="strip"')
+        strip_end = "</a>" if watch else "</div>"
         more_pieces.append(f'''<article class="film">
-  <div class="strip" aria-label="{html.escape(p["title"])}">{reel}</div>
-  <div class="caption"><h2>{html.escape(p["title"])}</h2><p class="logline">{html.escape(p["logline"])}</p><p class="meta">{p["meta"]}</p></div>
+  {strip_tag} aria-label="{html.escape(p["title"])}">{reel}{strip_end}
+  <div class="caption"><h2>{html.escape(p["title"])}</h2><p class="logline">{html.escape(p["logline"])}</p><p class="meta">{p["meta"]}</p>
+    {watch}</div>
 </article>''')
     out = f'''<header class="page-head">
   <h1>{h1}</h1>
