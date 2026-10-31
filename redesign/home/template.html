@@ -17,7 +17,9 @@ body{background:var(--night);color:var(--light);font-family:"Cormorant Garamond"
 a{color:inherit;text-decoration:none}
 
 {{CHROME_CSS}}
-.topbar::before,body::before,.winks{display:none}
+/* below the photograph the night has the same gold as every other page (Teri, 31.10); the diptych sits above it */
+.home::after{content:"";position:fixed;z-index:0;pointer-events:none;aspect-ratio:1080/630;left:-8vw;bottom:-6vh;
+  width:min(70vw,1050px);opacity:.38;background:url(../../assets/img/site/roses-contour-gold.png) center/contain no-repeat}
 .topbar{background:linear-gradient(to bottom,rgba(12,6,24,.62),rgba(12,6,24,0))}
 
 /* the diptych: her photograph and the same page still being made */
@@ -79,7 +81,7 @@ a{color:inherit;text-decoration:none}
 }
 </style>
 </head>
-<body>
+<body class="home">
 {{TOPBAR}}
 <main>
   <section class="diptych" id="diptych" style="--seam:50%">

@@ -46,7 +46,9 @@ main,section,article,.films-head,.site-foot{position:relative;z-index:1}
 .site-foot a:hover{color:var(--light)}
 .site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
 
-.topbar::before,body::before,.winks{display:none}
+/* below the photograph the night has the same gold as every other page (Teri, 31.10); the diptych sits above it */
+.home::after{content:"";position:fixed;z-index:0;pointer-events:none;aspect-ratio:1080/630;left:-8vw;bottom:-6vh;
+  width:min(70vw,1050px);opacity:.38;background:url(assets/img/site/roses-contour-gold.png) center/contain no-repeat}
 .topbar{background:linear-gradient(to bottom,rgba(12,6,24,.62),rgba(12,6,24,0))}
 
 /* the diptych: her photograph and the same page still being made */
@@ -144,7 +146,7 @@ main,section,article,.films-head,.site-foot{position:relative;z-index:1}
 }
 </style>
 </head>
-<body>
+<body class="home">
 <header class="topbar">
   <a class="mark" href="index.html" aria-label="Amata Lynner, home"><img src="assets/img/brand/monogram-lavender.png" alt="AL"></a>
   <nav aria-label="Main">
