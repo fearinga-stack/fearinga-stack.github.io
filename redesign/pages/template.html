@@ -35,10 +35,13 @@ main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp
 .contact::after{left:-8vw;bottom:-6vh;width:min(70vw,1050px);opacity:.38}
 /* about */
 .about .page-head .lead{font:500 clamp(1rem,1.9vw,1.35rem)/1.45 "Cormorant SC",serif;font-style:normal;letter-spacing:.08em}
-/* her photograph: no white paper (Teri, 31.10: the only white on the site looked accidental) — a gold hairline
-   from the same roses, set off the night a little */
-.print{margin:0 auto 2.6rem;max-width:min(100%,40rem);padding:clamp(.35rem,1vw,.6rem);background:transparent;
-  outline:1px solid rgba(219,160,72,.45);outline-offset:0;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+/* her photograph, studio white toned to the site's lavender and let go into the night at the edges; around it a red
+   wax-pencil mark like on a contact sheet — the frame chosen for print (31.10: Teri's note on the white, her choice of
+   the mark; "it doesn't match the site's colours, and that's the point") */
+.print{position:relative;margin:clamp(1.6rem,4vw,2.6rem) auto clamp(2.6rem,6vw,3.6rem);max-width:min(85%,40rem);   /* the mark reaches 8.75% past each side */
+  box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.print::after{content:"";position:absolute;left:-8.75%;right:-8.75%;top:-15.677%;bottom:-15.677%;pointer-events:none;
+  background:url(../../assets/img/site/grease-mark-red.png) center/100% 100% no-repeat}
 .print img{display:block;width:100%;height:auto}
 .letter p{font-size:clamp(1.2rem,2vw,1.38rem);line-height:1.62;margin:0 0 1.15rem;color:rgba(243,229,245,.9)}
 .letter p:first-child{font:500 clamp(1.5rem,2.8vw,2rem) "Cormorant SC",serif;letter-spacing:.06em;color:var(--light)}

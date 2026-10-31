@@ -65,7 +65,7 @@ def about():
         (f'<div class="seam" aria-hidden="true"></div>\n' if k else "")
         + f'<div class="hand"><h2>{t.strip()}</h2><p>{p.strip()}</p></div>' for k, (t, p) in enumerate(cols))
     out = f'''<header class="page-head">
-  <figure class="print"><img src="../../assets/img/site/about-hero.jpg" alt="{alt}" width="1600" height="893" decoding="async"></figure>
+  <figure class="print"><img src="../../assets/img/site/about-hero-toned.jpg" alt="{alt}" width="1600" height="893" decoding="async"></figure>
   <h1>{h1}</h1>
   <p class="lead">{lead}</p>
 </header>
