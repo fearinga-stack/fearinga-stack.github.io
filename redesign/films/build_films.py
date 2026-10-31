@@ -47,9 +47,13 @@ def jpeg_size(path):
 
 
 def title_card(f, extra):
-    w, h = jpeg_size(IMG / f["frames"][0])
     laurels = "".join(f'<img src="laurels/{n}" alt="">' for n in extra.get("laurels", []))
     lau = f'<div class="laurels">{laurels}</div>' if laurels else ""
+    if extra.get("title_image"):
+        # a real title frame from the film; laurels sit under the title
+        return (f'<figure class="frame titlecard real"><img src="{extra["title_image"]}" alt="Title of {html.escape(f["title"])}">'
+                f'{lau}<span class="fn">00</span></figure>')
+    w, h = jpeg_size(IMG / f["frames"][0])
     return (f'<figure class="frame titlecard" style="aspect-ratio:{w}/{h}">'
             f'<div class="tc"><span class="tc-title">{html.escape(f["title"])}</span>{lau}</div>'
             f'<span class="fn">00</span></figure>')
@@ -57,10 +61,11 @@ def title_card(f, extra):
 
 def strip(i, f, extra):
     edge = f'{f["title"].upper()} · {f["meta"].upper()}'
+    srcs = extra.get("frames") or [f"../../assets/img/films/{name}" for name in f["frames"]]
     frames = "".join(
-        f'<figure class="frame"><img src="../../assets/img/films/{name}" alt="Still {k + 1} from {html.escape(f["title"])}" '
+        f'<figure class="frame"><img src="{src}" alt="Still {k + 1} from {html.escape(f["title"])}" '
         f'loading="lazy"><span class="fn">{i:02d}{"ABCDEFGH"[k]}</span></figure>'
-        for k, name in enumerate(f["frames"]))
+        for k, src in enumerate(srcs))
     frames = title_card(f, extra) + frames
     awards = f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else ""
     return f'''  <article class="film">

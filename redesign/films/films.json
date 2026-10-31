@@ -1,6 +1,14 @@
 {
   "step-sequence": {
+    "title_image": "frames/step-sequence-title.jpg",
     "laurels": ["omni-ningbo.png", "nomorefrog-2026.png"],
     "awards": "Official Nominee — OMNI Ningbo · Official Selection — NOMOREFROG AI Film Awards 2026"
+  },
+  "plus": {
+    "title_image": "frames/plus-title.jpg"
+  },
+  "06percents": {
+    "title_image": "frames/06percents-title.jpg",
+    "frames": ["frames/06percents-trailer-1.jpg", "frames/06percents-trailer-2.jpg", "frames/06percents-trailer-3.jpg", "frames/06percents-trailer-4.jpg"]
   }
 }
