@@ -125,10 +125,9 @@ def commercial():
     title = re.search(r"<h2>(.*?)</h2>", card).group(1)
     logline = [p for p in ps(card) if "more" not in p and "VIEW" not in p][0]
     more = re.search(r'<p class="more"><a href="[^"]+">(.*?)</a></p>', card).group(1)
-    reel_sec = re.search(r'<section class="prose reel">(.*?)</section>', m, re.S).group(1)
-    reel_h = re.search(r"<h2>(.*?)</h2>", reel_sec).group(1)
-    comment = re.search(r"<!--.*?-->", reel_sec, re.S).group(0)
-    reel_ps = ps(reel_sec)
+    # the old page described its Squarespace showreel; the reel is gone, the monitor took its place (her call,
+    # 31.10), so that section is left out on purpose and out of the text check
+    m = re.sub(r'<section class="prose reel">.*?</section>', "", m, flags=re.S)
     film = re.search(r'<header class="film-hero">(.*?)</header>',
                      (SITE / "scent-of-imagination.html").read_text(encoding="utf-8"), re.S).group(1)
     meta = re.search(r'<p class="meta">(.*?)</p>', film).group(1).strip()
@@ -173,11 +172,6 @@ def commercial():
 </article>
 {chr(10).join(more_pieces)}
 {spots}
-<section class="reel-text">
-  <h2>{reel_h}</h2>
-  {comment}
-{chr(10).join(f"  <p>{p}</p>" for p in reel_ps)}
-</section>
 {SOUND}'''
     return m, out
 
