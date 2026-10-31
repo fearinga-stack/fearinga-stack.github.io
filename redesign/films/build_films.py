@@ -69,13 +69,17 @@ def strip(i, f, extra):
     if not extra.get("no_title_card"):        # some films open on their own title already
         frames = title_card(f, extra) + frames
     awards = f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else ""
+    one = f'''<div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>{html.escape(edge)}</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>{html.escape(edge)}</span></div>
+        <div class="frames">{frames}</div>
+        <div class="edge bottom"><span>▸ {i:02d}</span><span>▸ {i:02d}A</span><span>▸ {i:02d}B</span><span>▸ {i:02d}C</span><span>▸ {i:02d}D</span></div>
+        <div class="perf"></div>
+      </div>'''
+    # three identical lengths of film: the page keeps the view on the middle one, so the strip has no end
     return f'''  <article class="film">
     <a class="strip" href="../../{f["link"]}" aria-label="{html.escape(f["title"])}">
-      <div class="perf"></div>
-      <div class="edge top"><span>{html.escape(edge)}</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>{html.escape(edge)}</span></div>
-      <div class="frames">{frames}</div>
-      <div class="edge bottom"><span>▸ {i:02d}</span><span>▸ {i:02d}A</span><span>▸ {i:02d}B</span><span>▸ {i:02d}C</span><span>▸ {i:02d}D</span></div>
-      <div class="perf"></div>
+      <div class="reel">{one}{one.replace('<div class="set">', '<div class="set" aria-hidden="true">')}{one.replace('<div class="set">', '<div class="set" aria-hidden="true">')}</div>
     </a>
     <div class="caption"><h2><a href="../../{f["link"]}">{html.escape(f["title"])}</a></h2>
       <p class="logline">{f["logline"]}</p><p class="meta">{f["meta"]}</p>{awards}</div>

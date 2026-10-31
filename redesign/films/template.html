@@ -15,13 +15,15 @@ header p{margin:.6rem auto 0;max-width:36rem;color:var(--dim);font-family:"Cormo
 .film{margin:0 0 clamp(3rem,7vh,5rem)}
 .strip{display:block;text-decoration:none;color:inherit;background:var(--base);overflow-x:auto;overflow-y:hidden;
   scrollbar-width:none;cursor:grab;position:relative;box-shadow:0 10px 26px rgba(0,0,0,.5)}
-.perf{height:20px;width:max-content;min-width:100%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='20'%3E%3Crect x='8' y='5' width='10' height='11' rx='2' fill='%23200F3A'/%3E%3C/svg%3E") repeat-x 0 0}
+.reel{display:flex;width:max-content}
+.set{display:flex;flex-direction:column;flex:none}
+.perf{height:20px;width:0;min-width:100%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='20'%3E%3Crect x='8' y='5' width='10' height='11' rx='2' fill='%23200F3A'/%3E%3C/svg%3E") repeat-x 0 0}
 .strip::-webkit-scrollbar{display:none}
 .strip:active{cursor:grabbing}
-.edge{display:flex;gap:4rem;white-space:nowrap;padding:0 18px;height:16px;align-items:center;
-  font:9px/1 ui-monospace,"SFMono-Regular",Consolas,monospace;letter-spacing:.24em;color:rgba(243,229,245,.32);width:max-content}
+.edge{display:flex;gap:4rem;white-space:nowrap;padding:0 4px;height:16px;align-items:center;overflow:hidden;
+  font:9px/1 ui-monospace,"SFMono-Regular",Consolas,monospace;letter-spacing:.24em;color:rgba(243,229,245,.32);width:0;min-width:100%;box-sizing:border-box}
 .edge.top{padding-top:0}
-.frames{display:flex;gap:8px;padding:2px 18px;width:max-content}
+.frames{display:flex;gap:8px;padding:2px 4px;width:max-content}
 .frame{margin:0;height:var(--frameh);position:relative;flex:none;background:#000}
 .frame img{height:100%;width:auto;display:block;filter:brightness(.82) saturate(.9);transition:filter .5s ease}
 .strip:hover .frame img{filter:brightness(.6) saturate(.8)}
@@ -48,9 +50,23 @@ header p{margin:.6rem auto 0;max-width:36rem;color:var(--dim);font-family:"Cormo
 <header><h1>Films</h1><p>{{LEAD}}</p></header>
 {{FILMS}}
 <script>
-// drag the strip sideways, like pulling film through the gate; a click without drag opens the film
+// endless strip: three identical lengths; keep the view on the middle one.
+// drag pulls the film like through a gate; a click without a drag opens the film
 document.querySelectorAll('.strip').forEach(s=>{
+  const set=s.querySelector('.set');
+  let W=0;
+  const measure=()=>{W=set.getBoundingClientRect().width;};
+  const wrap=()=>{
+    if(!W) return;
+    if(s.scrollLeft<W*0.5){s.scrollLeft+=W;l0+=W}
+    else if(s.scrollLeft>W*1.5){s.scrollLeft-=W;l0-=W}
+  };
   let x0=0,l0=0,moved=false,down=false;
+  const start=()=>{measure();s.scrollLeft=W;};
+  if(document.readyState==='complete') start(); else addEventListener('load',start);
+  addEventListener('resize',()=>{const r=W?s.scrollLeft/W:1;measure();s.scrollLeft=r*W;});
+  s.addEventListener('scroll',wrap,{passive:true});
+  s.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&e.shiftKey){s.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
   s.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;x0=e.clientX;l0=s.scrollLeft});
   addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-x0;if(Math.abs(dx)>4)moved=true;s.scrollLeft=l0-dx});
   addEventListener('pointerup',()=>{down=false});
