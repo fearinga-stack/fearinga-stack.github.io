@@ -6,7 +6,7 @@ Old page (root/<slug>.html)  ->  redesign/films/<slug>.html
   section.watch      -> label, optional paragraph, the video
   section.prose      -> label(s), paragraphs, notes
   section.columns    -> card rows: label on the left, text on the right
-  section.stills     -> a still strip (nothing on the old page is dropped)
+  section.stills     -> dropped: the strip at the top shows the film
   nav.pager          -> links between films, rewritten to the new pages
 
 Run after build_films.py:  python build_film_pages.py
@@ -106,16 +106,7 @@ def build(slug, i, extra_all, film_meta):
                 rows.append(f'<div class="row"><h2 class="label">{label}</h2><div class="cell">{render_flow(rest)}</div></div>')
             body.append('<section class="card">' + "".join(rows) + "</section>")
         elif cls == "stills":
-            items = blocks(chunk)
-            label = next((x[1] for x in items if x[0] == "label"), "STILLS")
-            stills = [x[1] for x in items if x[0] == "img"]
-            on_top = {s.split("/")[-1] for s in (extra.get("frames") or f["frames"])}
-            if all(u.split("/")[-1] in on_top for u in stills):
-                continue                 # the strip at the top already shows these
-            frames = "".join(f'<figure class="frame"><img src="{u}" alt="Still from {html.escape(title)}" loading="lazy">'
-                             f'<span class="fn">{k + 1:02d}</span></figure>' for k, u in enumerate(stills))
-            body.append(f'<section class="stills-block"><h2 class="label wide">{label}</h2>'
-                        f'<div class="still-strip"><div class="perf"></div><div class="frames">{frames}</div><div class="perf"></div></div></section>')
+            continue                     # the strip at the top shows the film
         else:   # watch, prose
             body.append(f'<section class="flow {cls}">{render_flow(blocks(chunk))}</section>')
     laurels = "".join(f'<img src="laurels/{n}" alt="">' for n in extra.get("laurels", []))
