@@ -138,6 +138,12 @@ def commercial():
     strip = bf.reel(6, f, extra)         # sixth after the five films; same frames as its own page
     strip = re.sub(r'src="(frames|laurels)/', r'src="../films/\1/', strip)
     page = "../films/scent-of-imagination.html"
+    # every piece on this page works the same way: the strip leads down to a player right under it
+    yt = re.search(r'<iframe[^>]*src="([^"]+)"[^>]*title="([^"]*)"',
+                   (SITE / "scent-of-imagination.html").read_text(encoding="utf-8"))
+    scent_watch = (f'<div class="screen" id="watch-scent-of-imagination"><iframe src="{yt.group(1)}" title="{yt.group(2)}" '
+                   f'loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; '
+                   f'web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>')
     more_pieces = []
     for n, (slug, p) in enumerate((k, v) for k, v in json.loads(
             (HERE / "commercial.json").read_text(encoding="utf-8")).items() if not k.startswith("_")):
@@ -159,8 +165,9 @@ def commercial():
   <p class="lead">{lead}</p>
 </header>
 <article class="film">
-  <a class="strip" href="{page}" aria-label="{html.escape(title)}">{strip}</a>
-  <div class="caption"><h2><a href="{page}">{title}</a></h2><p class="logline">{logline}</p><p class="meta">{meta}</p>
+  <a class="strip" href="#watch-scent-of-imagination" aria-label="{html.escape(title)}">{strip}</a>
+  <div class="caption"><h2>{title}</h2><p class="logline">{logline}</p><p class="meta">{meta}</p>
+    {scent_watch}
     <p class="more"><a href="{page}">{more}</a></p></div>
 </article>
 {chr(10).join(more_pieces)}
