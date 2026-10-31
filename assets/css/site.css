@@ -402,5 +402,5 @@ figcaption {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
 
-.site-logo { height: 34px; width: auto; display: block; }
-@media (max-width: 600px) { .site-logo { height: 26px; } }
+.site-logo { height: 58px; width: auto; display: block; }
+@media (max-width: 600px) { .site-logo { height: 40px; } }
