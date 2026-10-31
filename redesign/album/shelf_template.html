@@ -3,22 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Photography albums</title>
+<title>Photography</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital@1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&display=swap">
 <style>
-:root{--night:#200F3A;--light:#F3E5F5;--dim:rgba(243,229,245,.55)}
-body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant SC",Georgia,serif;padding:10vh 16px}
-main{max-width:40rem;margin:0 auto}
-h1{font-weight:500;letter-spacing:.14em;font-size:1.6rem;margin:0 0 2rem}
-ul{list-style:none;padding:0;margin:0}
-li{border-top:1px solid rgba(243,229,245,.15);padding:.9rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-a{color:var(--light);text-decoration:none;font-size:1.2rem;letter-spacing:.06em}
-li.rule{border-top:none;padding:0;margin:1.6rem 0 .4rem;height:1px;background:rgba(243,229,245,.45)}
-span{color:var(--dim);font-family:"Cormorant Garamond",serif;font-style:italic}
+{{BASE_CSS}}
+{{COVER_CSS}}
+body{display:block;overflow:auto;padding:9vh 16px 12vh}
+main{max-width:72rem;margin:0 auto}
+h1{font-weight:500;letter-spacing:.16em;font-size:clamp(1.3rem,2.2vw,1.8rem);margin:0 0 2.4rem;text-align:center}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(18px,2.4vw,32px)}
+.tile{display:block;text-decoration:none;color:inherit;aspect-ratio:600/430;box-shadow:0 6px 18px rgba(0,0,0,.45);transition:transform .35s ease,box-shadow .35s ease}
+.tile:hover,.tile:focus-visible{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 14px 30px rgba(0,0,0,.55);outline:none}
+.tile .cover{height:100%}
+.rule{grid-column:1/-1;border:none;height:1px;background:rgba(243,229,245,.35);margin:clamp(10px,2vw,22px) 0}
 </style>
 </head>
-<body><main><h1>Photography</h1><ul>
+<body>
+<main>
+<h1>Photography</h1>
+<div class="shelf">
 {{ITEMS}}
-</ul></main></body>
+</div>
+</main>
+</body>
 </html>

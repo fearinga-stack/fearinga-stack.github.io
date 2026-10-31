@@ -180,12 +180,28 @@ def main():
             rows.append((slug, title, photos, pages))
             print(f"{slug:42s} {photos:2d} photos  {pages:2d} pages  {title}")
         groups.append(rows)
-    shelf = (HERE / "shelf_template.html").read_text(encoding="utf-8")
-    li = lambda r: f'  <li><a href="{r[0]}.html">{html.escape(r[1])}</a> <span>{r[2]} photographs</span></li>'
-    items = "\n".join(li(r) for r in groups[0])
+    # the shelf: every album's own cover, scoped CSS taken from the built album
+    base_css = re.search(r"<style>(.*?)</style>", (HERE / "template.html").read_text(encoding="utf-8"), re.S).group(1)
+    base_css = re.sub(r"\{\{[A-Z_]+\}\}", "", base_css)
+    rules = []
+
+    def tile(r):
+        slug, title, photos, _ = r
+        s = (HERE / f"{slug}.html").read_text(encoding="utf-8")
+        st = re.search(r"<style>(.*?)</style>", s, re.S).group(1)
+        k = "c-" + slug.replace("_", "-")
+        rules.append(re.search(r"\.cover\{.*?\}\n", st, re.S).group(0).replace(".cover{", f".{k} .cover{{"))
+        rules.append(re.search(r"\.cover h2\{.*?\}\n", st, re.S).group(0).replace(".cover h2{", f".{k} .cover h2{{"))
+        front = re.search(r'<div class="cover"><h2>.*?</div>', s).group(0)
+        return (f'  <a class="tile {k}" href="{slug}.html" aria-label="{html.escape(title)}, {photos} photographs">'
+                f'{front}</a>')
+
+    items = "\n".join(tile(r) for r in groups[0])
     if groups[1]:
-        items += '\n  <li class="rule" aria-hidden="true"></li>\n' + "\n".join(li(r) for r in groups[1])
-    (HERE / "index.html").write_text(shelf.replace("{{ITEMS}}", items), encoding="utf-8")
+        items += '\n  <hr class="rule">\n' + "\n".join(tile(r) for r in groups[1])
+    shelf = (HERE / "shelf_template.html").read_text(encoding="utf-8")
+    out = shelf.replace("{{BASE_CSS}}", base_css).replace("{{COVER_CSS}}", "\n".join(rules)).replace("{{ITEMS}}", items)
+    (HERE / "index.html").write_text(out, encoding="utf-8")
 
 
 if __name__ == "__main__":
