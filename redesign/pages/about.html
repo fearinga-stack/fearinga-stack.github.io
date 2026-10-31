@@ -17,8 +17,15 @@ body{background:var(--night);color:var(--light);font-family:"Cormorant Garamond"
 a{color:inherit}
 
 .topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px));
-  background:linear-gradient(to bottom,rgba(12,6,24,.62),rgba(12,6,24,0))}   /* the menu reads over a bright photograph too */
+  padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+/* gold from her roses (#DBA048, petal median): a grain under the header that thins into the night, and sparks
+   over the whole page (31.10, her call); the home keeps its photograph and a plain dark scrim instead */
+.topbar::before{content:"";position:absolute;left:0;right:0;top:0;height:220px;z-index:-1;pointer-events:none;
+  background:url(../../assets/img/site/header-grain.png) 0 0/1200px 220px repeat-x,
+  linear-gradient(to bottom,rgba(219,160,72,.12),rgba(219,160,72,.035) 50%,rgba(219,160,72,0))}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:url(../../assets/img/site/sparks-gold.png) 0 0/1000px 1000px repeat;opacity:.55}
+main,section,article,.films-head,.site-foot{position:relative;z-index:1}
 .topbar .mark img{height:46px;width:auto;display:block}
 .topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
   font:500 clamp(1.05rem,1.3vw,1.25rem) "Cormorant SC",serif;letter-spacing:.16em}
@@ -42,6 +49,11 @@ main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp
 .small{font-size:1.02rem;color:rgba(243,229,245,.72);margin:.8rem 0 0}
 @media (max-width:640px){.card .row{grid-template-columns:1fr;gap:.3rem}}
 
+/* the roses from the home picture, traced: photo half crisp, machine half grain */
+.about::after,.contact::after{content:"";position:fixed;z-index:0;pointer-events:none;aspect-ratio:1080/630;
+  background:url(../../assets/img/site/roses-contour-gold.png) center/contain no-repeat}
+.about::after{right:-6vw;bottom:-4vh;width:min(74vw,1150px);opacity:.42}
+.contact::after{left:-8vw;bottom:-6vh;width:min(70vw,1050px);opacity:.38}
 /* about */
 .about .page-head .lead{font:500 clamp(1rem,1.9vw,1.35rem)/1.45 "Cormorant SC",serif;font-style:normal;letter-spacing:.08em}
 .print{margin:0 auto 2.6rem;max-width:min(100%,40rem);padding:clamp(.6rem,1.6vw,1rem);background:#fff;

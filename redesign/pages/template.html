@@ -27,6 +27,11 @@ main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp
 .small{font-size:1.02rem;color:rgba(243,229,245,.72);margin:.8rem 0 0}
 @media (max-width:640px){.card .row{grid-template-columns:1fr;gap:.3rem}}
 
+/* the roses from the home picture, traced: photo half crisp, machine half grain */
+.about::after,.contact::after{content:"";position:fixed;z-index:0;pointer-events:none;aspect-ratio:1080/630;
+  background:url(../../assets/img/site/roses-contour-gold.png) center/contain no-repeat}
+.about::after{right:-6vw;bottom:-4vh;width:min(74vw,1150px);opacity:.42}
+.contact::after{left:-8vw;bottom:-6vh;width:min(70vw,1050px);opacity:.38}
 /* about */
 .about .page-head .lead{font:500 clamp(1rem,1.9vw,1.35rem)/1.45 "Cormorant SC",serif;font-style:normal;letter-spacing:.08em}
 .print{margin:0 auto 2.6rem;max-width:min(100%,40rem);padding:clamp(.6rem,1.6vw,1rem);background:#fff;

@@ -12,8 +12,15 @@
 :root{--hair:rgba(243,229,245,.2)}
 
 .topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px));
-  background:linear-gradient(to bottom,rgba(12,6,24,.62),rgba(12,6,24,0))}   /* the menu reads over a bright photograph too */
+  padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+/* gold from her roses (#DBA048, petal median): a grain under the header that thins into the night, and sparks
+   over the whole page (31.10, her call); the home keeps its photograph and a plain dark scrim instead */
+.topbar::before{content:"";position:absolute;left:0;right:0;top:0;height:220px;z-index:-1;pointer-events:none;
+  background:url(../../assets/img/site/header-grain.png) 0 0/1200px 220px repeat-x,
+  linear-gradient(to bottom,rgba(219,160,72,.12),rgba(219,160,72,.035) 50%,rgba(219,160,72,0))}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:url(../../assets/img/site/sparks-gold.png) 0 0/1000px 1000px repeat;opacity:.55}
+main,section,article,.films-head,.site-foot{position:relative;z-index:1}
 .topbar .mark img{height:46px;width:auto;display:block}
 .topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
   font:500 clamp(1.05rem,1.3vw,1.25rem) "Cormorant SC",serif;letter-spacing:.16em}
