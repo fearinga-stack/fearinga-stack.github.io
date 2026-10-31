@@ -21,7 +21,8 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 import chrome  # noqa: E402
 SITE = HERE.parent.parent
-PROJECTS = SITE / "projects"
+SRC = SITE / "content-src" / "interim"   # the interim site, frozen as text source when the redesign went live
+PROJECTS = SRC / "projects"
 TEXT_BUDGET = 620          # characters that fit on one text page
 
 
@@ -124,7 +125,7 @@ BLANK = '    <div class="page"><div class="leaf blank"></div></div>'
 
 
 def build(slug, cfg):
-    title, units = parse(SITE / cfg.get("source", f"projects/{slug}.html"))
+    title, units = parse(SRC / cfg.get("source", f"projects/{slug}.html"))
     first_img = next(u for u in units if u[0] == "img")
     cover = cfg.get("cover", first_img[1])
     pages = []                       # index 0 is the cover; odd = left, even = right

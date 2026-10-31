@@ -1,80 +1,172 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact — Amata Lynner</title>
-  <meta name="description" content="Tell me what you're making. Half-formed ideas are welcome — that's usually where the good ones start.">
-  <link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Amata Lynner</title>
+<link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="assets/site/films/strip.css">
+<style>
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.6);--hair:rgba(243,229,245,.2);
+  --mono:ui-monospace,"SFMono-Regular",Consolas,monospace;--col:44rem}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
+a{color:inherit}
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 16px;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+.topbar .mark img{height:38px;width:auto;display:block}
+.topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
+  font:500 .72rem "Cormorant SC",serif;letter-spacing:.24em}
+.topbar nav a{color:var(--dim);text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration:none}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+@media (max-width:600px){.topbar .mark img{height:30px}.topbar nav{gap:.6rem;font-size:.6rem;letter-spacing:.09em}}
+.site-foot{border-top:1px solid var(--hair);padding:2rem 16px 3rem;text-align:center;font:500 .72rem "Cormorant SC",serif;letter-spacing:.2em;color:var(--dim)}
+.site-foot nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:var(--light)}
+.site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
+
+main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp(4rem,10vh,6rem)}
+.page-head{margin:0 0 clamp(2.6rem,7vh,4rem);text-align:center}
+.page-head h1{margin:0;font:500 clamp(1.3rem,2.2vw,1.8rem) "Cormorant SC",serif;letter-spacing:.16em}
+.page-head .lead{margin:1rem auto 0;max-width:34rem;font-style:italic;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.5;color:rgba(243,229,245,.84);text-wrap:balance}
+.label{font:.72rem var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);font-weight:400;margin:0}
+.card{margin:2.6rem 0;border-top:1px solid var(--hair)}
+.card .row{display:grid;grid-template-columns:10rem minmax(0,1fr);gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.card .row p{margin:0;font-size:1.16rem;line-height:1.55}
+.small{font-size:1.02rem;color:rgba(243,229,245,.72);margin:.8rem 0 0}
+@media (max-width:640px){.card .row{grid-template-columns:1fr;gap:.3rem}}
+
+/* about */
+.about .page-head .lead{font:500 clamp(1rem,1.9vw,1.35rem)/1.45 "Cormorant SC",serif;font-style:normal;letter-spacing:.08em}
+.print{margin:0 auto 2.6rem;max-width:min(100%,40rem);padding:clamp(.6rem,1.6vw,1rem);background:#fff;
+  box-shadow:0 18px 40px rgba(0,0,0,.55);transform:rotate(-.6deg)}
+.print img{display:block;width:100%;height:auto}
+.letter p{font-size:clamp(1.2rem,2vw,1.38rem);line-height:1.62;margin:0 0 1.15rem;color:rgba(243,229,245,.9)}
+.letter p:first-child{font:500 clamp(1.5rem,2.8vw,2rem) "Cormorant SC",serif;letter-spacing:.06em;color:var(--light)}
+/* the last line of her letter is set on a black with nothing reflecting in it */
+.black{margin:2.4rem calc(50% - 50vw) 0;padding:clamp(3rem,9vh,5rem) 16px;background:#000;text-align:center}
+.black p{margin:0;font-style:italic;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:.02em}
+.hands{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);gap:clamp(1.4rem,4vw,3rem);margin:clamp(3rem,8vh,4.5rem) 0 2.4rem}
+.hands .seam{background:var(--hair)}
+.hand h2{margin:0 0 .8rem;font:500 clamp(1.2rem,2.2vw,1.55rem) "Cormorant SC",serif;letter-spacing:.12em}
+.hand p{margin:0;font-size:1.14rem;line-height:1.6;color:rgba(243,229,245,.86)}
+.about .note{margin:0 auto;max-width:34rem;text-align:center;font-style:italic;font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.5;color:rgba(243,229,245,.82)}
+.how{margin:clamp(3rem,8vh,4.5rem) 0 0;text-align:center}
+.how ol{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;justify-content:center;gap:clamp(1.6rem,6vw,4rem);flex-wrap:wrap}
+.how li{font:500 clamp(1.3rem,2.4vw,1.7rem) "Cormorant SC",serif;letter-spacing:.14em}
+.how .num{display:block;font:.7rem var(--mono);letter-spacing:.24em;color:var(--dim);margin-bottom:.4rem}
+@media (max-width:640px){.hands{grid-template-columns:1fr}.hands .seam{height:1px}}
+
+/* contact */
+.address{text-align:center;margin:0 0 2.4rem}
+.email{margin:.8rem 0 0;font:500 clamp(1.5rem,4.4vw,2.6rem) "Cormorant SC",serif;letter-spacing:.08em;user-select:all;overflow-wrap:anywhere}
+.email a{text-decoration:none;border-bottom:1px solid var(--hair)}
+.email a:hover{border-color:var(--light)}
+.cell ul{list-style:none;margin:0;padding:0}
+.cell ul+ul{margin-top:.2rem}
+.cell li{font-size:1.16rem;line-height:1.6}
+.links{display:flex;gap:.4rem 1.4rem;flex-wrap:wrap}
+.links a{text-decoration:none;font:500 1rem "Cormorant SC",serif;letter-spacing:.14em;border-bottom:1px solid var(--hair)}
+.links a:hover{border-color:var(--light)}
+
+/* commercial */
+.commercial main{max-width:none;padding-left:0;padding-right:0}
+.commercial .page-head,.commercial .reel-text{max-width:var(--col);margin-left:auto;margin-right:auto;padding:0 16px}
+.commercial .page-head{margin-bottom:clamp(2.4rem,6vh,3.5rem)}
+.commercial .film{margin:0 0 clamp(3rem,7vh,4.5rem)}
+.caption{max-width:var(--col);margin:1.1rem auto 0;padding:0 16px}
+.caption h2{margin:0 0 .4rem;font:500 clamp(1.15rem,1.8vw,1.5rem) "Cormorant SC",serif;letter-spacing:.1em}
+.caption h2 a,.more a{text-decoration:none}
+.logline{margin:0 0 .4rem;font-size:1.12rem;line-height:1.5;color:rgba(243,229,245,.86)}
+.caption .meta{margin:0;font:.72rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.more{margin:.9rem 0 0;font:500 .78rem "Cormorant SC",serif;letter-spacing:.24em}
+.more a{border-bottom:1px solid var(--hair)}
+.caption .screen{margin:1.4rem 0 0;aspect-ratio:16/9;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
+.caption .screen video,.caption .screen iframe{display:block;width:100%;height:100%;border:0}
+.caption .screen+.more{margin-top:1.1rem}
+/* the monitor: everything after the two standalone films */
+.spots{margin:clamp(3.5rem,9vh,5.5rem) 0 0;border-top:1px solid var(--hair);padding-top:clamp(2rem,5vh,3rem)}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.4rem;max-width:64rem;margin:0 auto 1.4rem;padding:0 16px}
+.tabs button{background:none;border:0;border-bottom:1px solid transparent;color:var(--dim);cursor:pointer;padding:.2rem 0;
+  font:500 .82rem "Cormorant SC",serif;letter-spacing:.22em;text-transform:uppercase}
+.tabs button:hover{color:var(--light)}
+.tabs button[aria-pressed="true"]{color:var(--light);border-color:var(--light)}
+.stage{margin:0 auto;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
+/* tabs, caption and the strip take about 26rem: the stage gets the rest, so the whole monitor is one screen */
+.stage.wide{width:min(100% - 32px,64rem,(100vh - 26rem) * 16 / 9);aspect-ratio:16/9}
+.stage.tall{height:min(100vh - 26rem,44rem);min-height:20rem;aspect-ratio:9/16;max-width:calc(100% - 32px)}
+.stage video{display:block;width:100%;height:100%;border:0}
+.now{max-width:64rem;margin:1rem auto 1.4rem;padding:0 16px;text-align:center}
+.now h2{margin:0 0 .3rem;font:500 clamp(1.1rem,1.7vw,1.4rem) "Cormorant SC",serif;letter-spacing:.1em}
+.now .logline{margin:0 0 .3rem}
+.now .meta{margin:0;font:.72rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.deck{background:var(--base,#0b0710);overflow-x:auto;scrollbar-width:none;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.deck::-webkit-scrollbar{display:none}
+.deck .set{width:max-content;min-width:100%;align-items:center}
+.deck .frames{margin:0 auto}
+.deck .frame{border:0;padding:0;cursor:pointer;outline:1px solid transparent;outline-offset:2px;transition:outline-color .3s}
+.deck .frame.wide{aspect-ratio:16/9}
+.deck .frame.tall{aspect-ratio:9/16}
+.deck .frame[hidden]{display:none}
+.deck .frame video{display:block;width:100%;height:100%;object-fit:cover;filter:brightness(.7) saturate(.85);transition:filter .4s}
+.deck .frame:hover video,.deck .frame[aria-current] video{filter:none}
+.deck .frame[aria-current]{outline-color:var(--light)}
+.hint{margin:.8rem 0 0;text-align:center;font:.66rem var(--mono);letter-spacing:.24em;color:rgba(243,229,245,.4)}
+@media (hover:none){.hint{display:none}}
+/* one sound switch on every self-hosted player, in step */
+.screen,.stage{position:relative}
+.sound{position:absolute;top:.6rem;right:.6rem;z-index:2;background:rgba(5,3,8,.6);color:var(--light);border:1px solid var(--hair);
+  padding:.35rem .6rem;cursor:pointer;font:.66rem var(--mono);letter-spacing:.2em}
+.sound:hover{border-color:var(--light)}
+.sound[aria-pressed="true"]{color:var(--dim)}
+.reel-text{margin-top:clamp(3rem,8vh,4.5rem)}
+.reel-text h2{font:500 clamp(1.1rem,1.8vw,1.35rem) "Cormorant SC",serif;letter-spacing:.08em;margin:0 0 1rem}
+.reel-text p{font-size:1.14rem;line-height:1.6;margin:0 0 .9rem;color:rgba(243,229,245,.86)}
+.reel-text p:last-child{font-style:italic;color:var(--dim)}
+</style>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="site-name" href="index.html"><img src="assets/img/brand/logo-h-lavender.png" alt="Amata Lynner" class="site-logo"></a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="films.html">Films</a></li>
-        <li><a href="commercial.html">Commercial</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main">
-    <header class="page-head">
-      <h1>CONTACT</h1>
-      <p class="lead">Tell me what you're making. Half-formed ideas are welcome — that's usually where the good ones start.</p>
-    </header>
-    <section class="band">
-      <h2 class="label">AVAILABLE FOR</h2>
-      <div class="columns columns-tight">
-        <ul class="plain">
-        <li>Short films and narrative work</li>
-        <li>Commercial and brand video</li>
-        <li>Vertical series and social content</li>
-        </ul>
-        <ul class="plain">
-        <li>Documentary and portrait photography</li>
-        <li>Creative direction and concept work</li>
-        <li>Storyboards and preproduction</li>
-        </ul>
-      </div>
-    </section>
-    <section class="columns">
-      <div>
-        <h2 class="label">or just email</h2>
-        <p class="email"><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
-        <p>I usually reply within two working days.</p>
-      </div>
-      <div>
-        <h2 class="label">elsewhere</h2>
-        <ul class="plain">
-          <li><a href="https://www.instagram.com/amata_lynner/">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a></li>
-          <li><a href="https://www.youtube.com/@alynner">YouTube</a></li>
-          <li><a href="https://x.com/amatalynner">X</a></li>
-        </ul>
-        <p>Based in Ukraine - working remotely worldwide</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <ul class="social">
-      <li><a href="https://www.instagram.com/amata_lynner/">Instagram</a></li>
-      <li><a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a></li>
-      <li><a href="https://www.youtube.com/@alynner">YouTube</a></li>
-      <li><a href="https://x.com/amatalynner">X</a></li>
-    </ul>
-    <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
-    <img class="signature" src="assets/img/brand/monogram-lavender.png" alt="AL — monogram of Amata Lynner" width="919" height="708" decoding="async">
-  </footer>
+<body class="contact">
+<header class="topbar">
+  <a class="mark" href="index.html" aria-label="Amata Lynner, home"><img src="assets/img/brand/monogram-lavender.png" alt="AL"></a>
+  <nav aria-label="Main">
+    <a href="films.html">Films</a>
+    <a href="projects.html">Photography</a>
+    <a href="commercial.html">Commercial</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+  </nav>
+</header>
+<main>
+<header class="page-head">
+  <h1>CONTACT</h1>
+  <p class="lead">Tell me what you're making. Half-formed ideas are welcome — that's usually where the good ones start.</p>
+</header>
+<section class="address">
+  <h2 class="label">or just email</h2>
+  <p class="email"><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p class="small">I usually reply within two working days.</p>
+</section>
+<section class="card">
+  <div class="row"><h2 class="label">AVAILABLE FOR</h2><div class="cell"><ul><li>Short films and narrative work</li><li>Commercial and brand video</li><li>Vertical series and social content</li></ul><ul><li>Documentary and portrait photography</li><li>Creative direction and concept work</li><li>Storyboards and preproduction</li></ul></div></div>
+  <div class="row"><h2 class="label">elsewhere</h2><div class="cell"><ul class="links"><li><a href="https://www.instagram.com/amata_lynner/">Instagram</a></li><li><a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a></li><li><a href="https://www.youtube.com/@alynner">YouTube</a></li><li><a href="https://x.com/amatalynner">X</a></li></ul><p class="small">Based in Ukraine - working remotely worldwide</p></div></div>
+</section>
+</main>
+<footer class="site-foot">
+  <nav aria-label="Elsewhere">
+    <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
+    <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
+    <a href="https://www.youtube.com/@alynner">YouTube</a>
+    <a href="https://x.com/amatalynner">X</a>
+  </nav>
+  <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  <img src="assets/img/brand/monogram-lavender.png" alt="">
+</footer>
+<script src="assets/site/films/strip.js"></script>
 </body>
 </html>

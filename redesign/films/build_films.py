@@ -15,10 +15,11 @@ sys.path.insert(0, str(HERE.parent))
 import chrome  # noqa: E402
 SITE = HERE.parent.parent
 IMG = SITE / "assets" / "img" / "films"
+SRC = SITE / "content-src" / "interim"   # the interim site, frozen as text source when the redesign went live
 
 
 def films():
-    s = (SITE / "films.html").read_text(encoding="utf-8")
+    s = (SRC / "films.html").read_text(encoding="utf-8")
     main = re.search(r"<main.*?</main>", s, re.S).group(0)
     lead = re.search(r'<p class="lead">(.*?)</p>', main, re.S)
     out = []

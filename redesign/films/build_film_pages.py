@@ -79,7 +79,7 @@ def page_link(href):
 
 
 def build(slug, i, extra_all, film_meta):
-    s = (SITE / f"{slug}.html").read_text(encoding="utf-8")
+    s = (bf.SRC / f"{slug}.html").read_text(encoding="utf-8")
     art = re.search(r'<article class="film">(.*?)</article>', s, re.S).group(1)
     hero = re.search(r'<header class="film-hero">(.*?)</header>', art, re.S).group(1)
     title = re.sub("<[^>]+>", "", re.search(r"<h1>(.*?)</h1>", hero, re.S).group(1)).strip()

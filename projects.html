@@ -1,97 +1,304 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects — Amata Lynner</title>
-  <meta name="description" content="Portrait and people photography by Amata Lynner. Documentary-led portraiture from Ukraine and beyond">
-  <link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&display=swap">
+<style>
+
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.55)}
+html,body{height:100%}
+body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant SC",Georgia,serif;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding-inline:16px;box-sizing:border-box;overflow:hidden}
+.back{position:fixed;top:14px;left:16px;color:var(--dim);font-size:.8rem;letter-spacing:.2em;text-decoration:none}
+#book{margin:0 auto}
+.page{background:var(--depth)}
+.leaf{box-sizing:border-box;width:100%;height:100%;padding:9% 9% 6%;display:flex;flex-direction:column;justify-content:center;
+  background:radial-gradient(120% 90% at 50% 40%,#1b0c38,#110626);container-type:size}
+.leaf figure{margin:0 auto;padding:3%;background:#f3ece4;box-shadow:0 2px 10px rgba(0,0,0,.45)}
+.leaf.landscape figure{width:100%;box-sizing:border-box}
+.leaf.portrait figure{height:82cqh;width:auto;box-sizing:border-box;padding:2.2cqh}
+.leaf img{display:block;width:100%;height:auto}
+.leaf.portrait img{height:100%;width:auto}
+.pencil{margin:1.1em 0 0;text-align:right;color:var(--dim);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(.7rem,2.2cqw,.95rem);letter-spacing:.05em}
+.leaf.portrait .pencil{margin-top:.6em}
+.leaf.text{justify-content:center;padding:10% 12%}
+.t-head{font-family:"Cormorant SC",serif;font-weight:500;letter-spacing:.12em;font-size:4.2cqw;margin:0 0 .9em;line-height:1.25}
+.t-p{font-family:"Cormorant Garamond",serif;font-size:3.35cqw;line-height:1.55;margin:0 0 .8em;color:rgba(243,229,245,.88)}
+.t-q{margin:0;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:5.2cqw;line-height:1.4;color:var(--light)}
+.t-q p{margin:0}
+.t-q::before{content:"";display:block;width:12%;height:1px;background:rgba(243,229,245,.35);margin-bottom:1.1em}
+.t-p em{color:var(--dim)}
+.cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:;padding:;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/") /cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+.cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:;
+  text-shadow:;overflow-wrap:anywhere}
+.cover{container-type:size}
+.cover img{position:absolute;right:6%;bottom:6%;width:11%;opacity:.85}
+.cover.backcover{background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),
+  radial-gradient(120% 100% at 30% 20%,#2c1650,#170a30 70%,#0f0622)}
+.hint{margin-top:2vh;color:var(--dim);font-size:.75rem;letter-spacing:.25em}
+
+.c-normandie .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:17% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220130-008.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-normandie .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25);overflow-wrap:anywhere}
+
+.c-kherson-2023 .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20230614-147.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-kherson-2023 .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+.c-idp-center-reportage .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20240725-116.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-idp-center-reportage .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+.c-ukraine-one .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220330-007.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-ukraine-one .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+.c-visual-lexicon-of-life-amongst-war .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220819-002.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-visual-lexicon-of-life-amongst-war .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25);overflow-wrap:anywhere}
+
+.c-extraction-the-military-of-mariupol .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220514-018.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-extraction-the-military-of-mariupol .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+.c-centre-pompidou .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20211211-012.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-centre-pompidou .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+.c-dnipro-in-details .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20221028-003.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-dnipro-in-details .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25);overflow-wrap:anywhere}
+
+.c-in-between .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220613-002.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-in-between .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25);overflow-wrap:anywhere}
+
+.c-incomplete-project .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:2.5% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-2022-week-009.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-incomplete-project .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25);overflow-wrap:anywhere}
+
+.c-interpipe-steel .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20240726-042.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-interpipe-steel .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+.c-urban-lines .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220205-013.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-urban-lines .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+.c-people .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20230716-162.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+
+.c-people .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+:root{--hair:rgba(243,229,245,.2)}
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 16px;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+.topbar .mark img{height:38px;width:auto;display:block}
+.topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
+  font:500 .72rem "Cormorant SC",serif;letter-spacing:.24em}
+.topbar nav a{color:var(--dim);text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration:none}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+@media (max-width:600px){.topbar .mark img{height:30px}.topbar nav{gap:.6rem;font-size:.6rem;letter-spacing:.09em}}
+.site-foot{border-top:1px solid var(--hair);padding:2rem 16px 3rem;text-align:center;font:500 .72rem "Cormorant SC",serif;letter-spacing:.2em;color:var(--dim)}
+.site-foot nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:var(--light)}
+.site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
+
+body{display:block;overflow:auto;padding:max(9vh,5.5rem) 16px 0}
+main{margin-bottom:12vh}
+main{max-width:72rem;margin-inline:auto}
+h1{font-weight:500;letter-spacing:.16em;font-size:clamp(1.3rem,2.2vw,1.8rem);margin:0 0 2.4rem;text-align:center}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(18px,2.4vw,32px)}
+.tile{display:block;text-decoration:none;color:inherit;aspect-ratio:600/430;box-shadow:0 6px 18px rgba(0,0,0,.45);transition:transform .35s ease,box-shadow .35s ease}
+.tile:hover,.tile:focus-visible{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 14px 30px rgba(0,0,0,.55);outline:none}
+.tile .cover{height:100%}
+.rule{grid-column:1/-1;border:none;height:1px;background:rgba(243,229,245,.35);margin:clamp(10px,2vw,22px) 0}
+</style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="site-name" href="index.html"><img src="../assets/img/brand/logo-h-lavender.png" alt="Amata Lynner" class="site-logo"></a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="films.html">Films</a></li>
-        <li><a href="commercial.html">Commercial</a></li>
-        <li><a href="projects.html" aria-current="page">Projects</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main">
-    <header class="page-head">
-      <h1>Projects</h1>
-    </header>
-    <div class="thumbs">
-      <a class="thumb" href="projects/idp-center-reportage.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20240725-023.jpg" alt="IDP center reportage" width="2000" height="1333" loading="lazy" decoding="async"></figure>
-        <h2>IDP center reportage</h2>
-      </a>
-      <a class="thumb" href="projects/interpipe-steel.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20240726-042.jpg" alt="Interpipe Steel" width="2000" height="1333" loading="lazy" decoding="async"></figure>
-        <h2>Interpipe Steel</h2>
-      </a>
-      <a class="thumb" href="projects/kherson-2023.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20230614-147.jpg" alt="Kherson, 2023" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>Kherson, 2023</h2>
-      </a>
-      <a class="thumb" href="projects/visual-lexicon-of-life-amongst-war.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220820-141.jpg" alt="visual lexicon of life amongst war" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>visual lexicon of life amongst war</h2>
-      </a>
-      <a class="thumb" href="projects/ukraine-one.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220330-007.jpg" alt="Invasion on our Hearts and Souls" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>Invasion on our Hearts and Souls</h2>
-      </a>
-      <a class="thumb" href="projects/normandie.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220130-117.jpg" alt="Roadtrip Normandie" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>Roadtrip Normandie</h2>
-      </a>
-      <a class="thumb" href="projects/extraction_the_military_of_mariupol.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220514-062.jpg" alt="#extraction_the_military_of_Mariupol" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>#extraction_the_military_of_Mariupol</h2>
-      </a>
-      <a class="thumb" href="projects/dnipro-in-details.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20221030-374.jpg" alt="Dnipro in details" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>Dnipro in details</h2>
-      </a>
-      <a class="thumb" href="projects/centre-pompidou.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20211211-012.jpg" alt="Centre Pompidou" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>Centre Pompidou</h2>
-      </a>
-      <a class="thumb" href="projects/urban-lines.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220205-166.jpg" alt="Urban Lines" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>Urban Lines</h2>
-      </a>
-      <a class="thumb" href="projects/in-between.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220613-012-2.jpg" alt="in between" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>in between</h2>
-      </a>
-      <a class="thumb" href="projects/incomplete-project.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220128-001.jpg" alt="#incomplete" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <h2>#incomplete</h2>
-      </a>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <ul class="social">
-      <li><a href="https://www.instagram.com/amata_lynner/">Instagram</a></li>
-      <li><a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a></li>
-      <li><a href="https://www.youtube.com/@alynner">YouTube</a></li>
-      <li><a href="https://x.com/amatalynner">X</a></li>
-    </ul>
-    <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
-    <img class="signature" src="assets/img/brand/monogram-lavender.png" alt="AL — monogram of Amata Lynner" width="919" height="708" decoding="async">
-  </footer>
+<header class="topbar">
+  <a class="mark" href="index.html" aria-label="Amata Lynner, home"><img src="assets/img/brand/monogram-lavender.png" alt="AL"></a>
+  <nav aria-label="Main">
+    <a href="films.html">Films</a>
+    <a href="projects.html" aria-current="page">Photography</a>
+    <a href="commercial.html">Commercial</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+<h1>Photography</h1>
+<div class="shelf">
+  <a class="tile c-normandie" href="projects/normandie.html" aria-label="Roadtrip Normandie, 23 photographs"><div class="cover"><h2>NORMANDIE</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-kherson-2023" href="projects/kherson-2023.html" aria-label="Kherson, 2023, 11 photographs"><div class="cover"><h2>KHERSON, 2023</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-idp-center-reportage" href="projects/idp-center-reportage.html" aria-label="IDP center reportage, 8 photographs"><div class="cover"><h2>IDP CENTER REPORTAGE</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-ukraine-one" href="projects/ukraine-one.html" aria-label="Invasion on our Hearts and Souls, 33 photographs"><div class="cover"><h2>INVASION ON OUR HEARTS AND SOULS</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-visual-lexicon-of-life-amongst-war" href="projects/visual-lexicon-of-life-amongst-war.html" aria-label="visual lexicon of life amongst war, 19 photographs"><div class="cover"><h2>VISUAL LEXICON OF LIFE AMONGST WAR</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-extraction-the-military-of-mariupol" href="projects/extraction_the_military_of_mariupol.html" aria-label="#extraction_the_military_of_Mariupol, 19 photographs"><div class="cover"><h2>#EXTRACTION_<wbr>THE_<wbr>MILITARY_<wbr>OF_<wbr>MARIUPOL</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-centre-pompidou" href="projects/centre-pompidou.html" aria-label="Centre Pompidou, 14 photographs"><div class="cover"><h2>CENTRE POMPIDOU</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-dnipro-in-details" href="projects/dnipro-in-details.html" aria-label="Dnipro in details, 11 photographs"><div class="cover"><h2>DNIPRO IN DETAILS</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-in-between" href="projects/in-between.html" aria-label="in between, 13 photographs"><div class="cover"><h2>IN BETWEEN</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-incomplete-project" href="projects/incomplete-project.html" aria-label="#incomplete, 7 photographs"><div class="cover"><h2>#INCOMPLETE</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-interpipe-steel" href="projects/interpipe-steel.html" aria-label="Interpipe Steel, 8 photographs"><div class="cover"><h2>INTERPIPE STEEL</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <a class="tile c-urban-lines" href="projects/urban-lines.html" aria-label="Urban Lines, 5 photographs"><div class="cover"><h2>URBAN LINES</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+  <hr class="rule">
+  <a class="tile c-people" href="people.html" aria-label="People, 19 photographs"><div class="cover"><h2>PEOPLE</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+</div>
+</main>
+<footer class="site-foot">
+  <nav aria-label="Elsewhere">
+    <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
+    <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
+    <a href="https://www.youtube.com/@alynner">YouTube</a>
+    <a href="https://x.com/amatalynner">X</a>
+  </nav>
+  <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  <img src="assets/img/brand/monogram-lavender.png" alt="">
+</footer>
 </body>
 </html>

@@ -16,6 +16,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 RD = HERE.parent
 SITE = RD.parent
+SRC = SITE / "content-src" / "interim"   # the interim site, frozen as text source when the redesign went live
 sys.path.insert(0, str(RD))
 sys.path.insert(0, str(RD / "films"))
 import chrome          # noqa: E402
@@ -23,7 +24,7 @@ import build_films as bf  # noqa: E402
 
 
 def main_of(name):
-    s = (SITE / name).read_text(encoding="utf-8")
+    s = (SRC / name).read_text(encoding="utf-8")
     return re.search(r'<main id="main">(.*?)</main>', s, re.S).group(1)
 
 
@@ -129,7 +130,7 @@ def commercial():
     # 31.10), so that section is left out on purpose and out of the text check
     m = re.sub(r'<section class="prose reel">.*?</section>', "", m, flags=re.S)
     film = re.search(r'<header class="film-hero">(.*?)</header>',
-                     (SITE / "scent-of-imagination.html").read_text(encoding="utf-8"), re.S).group(1)
+                     (SRC / "scent-of-imagination.html").read_text(encoding="utf-8"), re.S).group(1)
     meta = re.search(r'<p class="meta">(.*?)</p>', film).group(1).strip()
     f = dict(slug="scent-of-imagination", title=title, meta=meta,
              frames=["scent-of-imagination-hero.jpg"] + sorted(p.name for p in bf.IMG.glob("scent-of-imagination-still-*.jpg")))
@@ -139,7 +140,7 @@ def commercial():
     page = "../films/scent-of-imagination.html"
     # every piece on this page works the same way: the strip leads down to a player right under it
     yt = re.search(r'<iframe[^>]*src="([^"]+)"[^>]*title="([^"]*)"',
-                   (SITE / "scent-of-imagination.html").read_text(encoding="utf-8"))
+                   (SRC / "scent-of-imagination.html").read_text(encoding="utf-8"))
     scent_watch = (f'<div class="screen" id="watch-scent-of-imagination"><iframe src="{yt.group(1)}" title="{yt.group(2)}" '
                    f'loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; '
                    f'web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>')

@@ -1,104 +1,129 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>+ — Amata Lynner</title>
-  <meta name="description" content="Sixteen scenes from one ordinary day in a city where danger became part of everyday life.">
-  <link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>+ — Amata Lynner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="assets/site/films/strip.css">
+<style>
+body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;padding:max(5rem,9vh) 0 0;overflow-x:hidden}
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 16px;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+.topbar .mark img{height:38px;width:auto;display:block}
+.topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
+  font:500 .72rem "Cormorant SC",serif;letter-spacing:.24em}
+.topbar nav a{color:var(--dim);text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration:none}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+@media (max-width:600px){.topbar .mark img{height:30px}.topbar nav{gap:.6rem;font-size:.6rem;letter-spacing:.09em}}
+.site-foot{border-top:1px solid var(--hair);padding:2rem 16px 3rem;text-align:center;font:500 .72rem "Cormorant SC",serif;letter-spacing:.2em;color:var(--dim)}
+.site-foot nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:var(--light)}
+.site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
+
+.strip{display:block;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+:root{--mono:ui-monospace,"SFMono-Regular",Consolas,monospace;--hair:rgba(243,229,245,.18);--col:44rem}
+main{max-width:var(--col);margin:0 auto 12vh;padding:0 16px}
+.obs{margin:clamp(2.5rem,7vh,4.5rem) 0 2.2rem}
+.obs h1{font:500 clamp(2rem,5vw,3.4rem)/1.1 "Cormorant SC",serif;letter-spacing:.08em;margin:0 0 1rem}
+.obs .tag{display:inline-block;margin:0 0 1rem;padding:.25rem .6rem;border:1px solid var(--hair);font:.7rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.obs .meta{margin:0;padding:.7rem 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);font:.74rem var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.obs-laurels{display:flex;gap:1.6rem;margin:1.6rem 0 .4rem;flex-wrap:wrap}
+.obs-laurels img{height:clamp(54px,8vw,74px);width:auto;opacity:.9}
+.awards{margin:.6rem 0 0;font-style:italic;color:rgba(243,229,245,.72)}
+.lead{font-style:italic;font-size:clamp(1.35rem,2.6vw,1.75rem);line-height:1.45;margin:0 0 2.6rem}
+.label{font:.72rem var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin:2.4rem 0 .9rem;font-weight:400}
+.flow p,.cell p{font-size:1.16rem;line-height:1.62;margin:0 0 1rem;color:rgba(243,229,245,.88)}
+.flow strong,.cell strong{font-family:"Cormorant SC",serif;font-weight:500;letter-spacing:.06em;color:var(--light)}
+.note{margin:2rem 0;padding:.2rem 0 .2rem 1.2rem;border-left:1px solid rgba(243,229,245,.35)}
+.note p{font-style:italic;font-size:1.12rem;color:rgba(243,229,245,.78)}
+.screen{position:relative;aspect-ratio:16/9;margin:0 0 1.4rem;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.flow.watch .label:first-child{margin-top:0}
+.card{margin:2.6rem 0;border-top:1px solid var(--hair)}
+.card .row{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--hair)}
+.card .label{margin:.35rem 0 0}
+.cell p:last-child{margin-bottom:0}
+.stills-block{margin:3rem 0 0}
+.stills-block .label.wide{max-width:var(--col);margin:0 auto .9rem;padding:0 16px}
+.still-strip{background:var(--base);overflow-x:auto;scrollbar-width:none;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.still-strip::-webkit-scrollbar{display:none}
+.still-strip .perf{width:0;min-width:100%}
+.still-strip>.frames,.still-strip>.perf{width:max-content}
+.still-strip .frame img{filter:none}
+.pager{display:flex;justify-content:space-between;gap:1rem;margin:3.5rem 0 0;padding-top:1.2rem;border-top:1px solid var(--hair)}
+.pager a{color:var(--dim);text-decoration:none;font:500 .8rem "Cormorant SC",serif;letter-spacing:.22em}
+.pager a:hover{color:var(--light)}
+@media (max-width:640px){.card .row{grid-template-columns:1fr;gap:.2rem}}
+</style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="site-name" href="index.html"><img src="assets/img/brand/logo-h-lavender.png" alt="Amata Lynner" class="site-logo"></a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="films.html" aria-current="page">Films</a></li>
-        <li><a href="commercial.html">Commercial</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main">
-    <article class="film">
-      <header class="film-hero">
-        <figure class="frame hero-image"><img src="assets/img/films/plus-hero.jpg" alt="Still from +" width="1600" height="893" decoding="async"></figure>
-        <div class="film-title">
-          <h1>+</h1>
-          <p class="meta">2026 · ANIMATED SHORT· 1.51 MIN</p>
-        </div>
-      </header>
-      <section class="band">
-        <p class="lead">Sixteen scenes from one ordinary day in a city where danger became part of everyday life.</p>
-      </section>
-      <section class="watch">
-        <h2 class="label">watch</h2>
-        <div class="video">
-          <iframe src="https://www.youtube.com/embed/2qimsVWfsNk" title="+ (&quot;plus&quot;)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </section>
-      <section class="prose">
-        <p>People listen to the sky and tell by sound what's flying. They check the outage schedule before deciding when to leave the house. They mark themselves with a plus sign in the family chat, so everyone knows they're alive.</p>
-        <p>A woman scolds her husband outside a supermarket: at your age you should be able to tell a drone from a missile. A shop assistant stops mid-sale to call her brother home. Someone picks the scorched detergent box from a row of undamaged ones.</p>
-        <p>Nothing is explained. Nothing is dramatised. The film doesn't say this isn't normal — it shows a day in which it is.</p>
-        <p>All scenes are based on real observations.</p>
-        <p>Nothing here is invented.</p>
-      </section>
-      <section class="prose">
-        <p class="note">The plus sign is what people send in family chats during an air raid. It means: I'm here. I’m alive.</p>
-      </section>
-      <section class="columns">
-        <div>
-          <h2 class="label">role</h2>
-          <p>Concept</p>
-          <p>Script</p>
-          <p>Direction</p>
-          <p>Animation</p>
-          <p>Edit</p>
-          <p>Sound Design</p>
-        </div>
-        <div>
-          <h2 class="label">PROCESS</h2>
-          <p>Every scene in this film I saw myself.</p>
-          <p>The pensioners outside the supermarket, the shop assistant calling her brother, the scorched box on the shelf, the cat moved from the balcony to the carrier as the threat level rises — none of it is invented. This is what I have been looking at for four years.</p>
-          <p>The hardest part was leaving it alone. The obvious way to make a film about this is to explain how it feels. But the moment a voice appears to tell you that, the thing you came to see disappears.</p>
-          <p>So there is no narrator. Six lines of dialogue, all of them ordinary. Everything else is shown and left there.</p>
-          <p>The animation is watercolour and ink on paper — drawing removes the documentary quality; the same scenes filmed would read as a report. The sound is real: air raid recordings over drawn images.</p>
-        </div>
-      </section>
-      <section class="stills">
-        <h2 class="label">STILLS</h2>
-        <div class="stills-grid">
-          <figure class="frame"><img src="assets/img/films/plus-still-1.jpg" alt="Still from +, 1" width="1600" height="893" loading="lazy" decoding="async"></figure>
-          <figure class="frame"><img src="assets/img/films/plus-still-2.jpg" alt="Still from +, 2" width="1600" height="893" loading="lazy" decoding="async"></figure>
-          <figure class="frame"><img src="assets/img/films/plus-still-3.jpg" alt="Still from +, 3" width="1600" height="893" loading="lazy" decoding="async"></figure>
-          <figure class="frame"><img src="assets/img/films/plus-still-4.jpg" alt="Still from +, 4" width="1600" height="893" loading="lazy" decoding="async"></figure>
-        </div>
-      </section>
-      <nav class="pager" aria-label="Film navigation">
-        <a href="films.html">←FILMS</a>
-        <a href="wearenotalone.html">next film→</a>
-      </nav>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <ul class="social">
-      <li><a href="https://www.instagram.com/amata_lynner/">Instagram</a></li>
-      <li><a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a></li>
-      <li><a href="https://www.youtube.com/@alynner">YouTube</a></li>
-      <li><a href="https://x.com/amatalynner">X</a></li>
-    </ul>
-    <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
-    <img class="signature" src="assets/img/brand/monogram-lavender.png" alt="AL — monogram of Amata Lynner" width="919" height="708" decoding="async">
-  </footer>
+<header class="topbar">
+  <a class="mark" href="index.html" aria-label="Amata Lynner, home"><img src="assets/img/brand/monogram-lavender.png" alt="AL"></a>
+  <nav aria-label="Main">
+    <a href="films.html" aria-current="page">Films</a>
+    <a href="projects.html">Photography</a>
+    <a href="commercial.html">Commercial</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<div class="strip" aria-hidden="true"><div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure><figure class="frame"><img src="assets/img/films/plus-hero.jpg" alt="Still 1 from +" loading="lazy"><span class="fn">02A</span></figure><figure class="frame"><img src="assets/img/films/plus-still-1.jpg" alt="Still 2 from +" loading="lazy"><span class="fn">02B</span></figure><figure class="frame"><img src="assets/img/films/plus-still-2.jpg" alt="Still 3 from +" loading="lazy"><span class="fn">02C</span></figure><figure class="frame"><img src="assets/img/films/plus-still-3.jpg" alt="Still 4 from +" loading="lazy"><span class="fn">02D</span></figure><figure class="frame"><img src="assets/img/films/plus-still-4.jpg" alt="Still 5 from +" loading="lazy"><span class="fn">02E</span></figure></div>
+        <div class="edge bottom"><span>▸ 02</span><span>▸ 02A</span><span>▸ 02B</span><span>▸ 02C</span><span>▸ 02D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure><figure class="frame"><img src="assets/img/films/plus-hero.jpg" alt="Still 1 from +" loading="lazy"><span class="fn">02A</span></figure><figure class="frame"><img src="assets/img/films/plus-still-1.jpg" alt="Still 2 from +" loading="lazy"><span class="fn">02B</span></figure><figure class="frame"><img src="assets/img/films/plus-still-2.jpg" alt="Still 3 from +" loading="lazy"><span class="fn">02C</span></figure><figure class="frame"><img src="assets/img/films/plus-still-3.jpg" alt="Still 4 from +" loading="lazy"><span class="fn">02D</span></figure><figure class="frame"><img src="assets/img/films/plus-still-4.jpg" alt="Still 5 from +" loading="lazy"><span class="fn">02E</span></figure></div>
+        <div class="edge bottom"><span>▸ 02</span><span>▸ 02A</span><span>▸ 02B</span><span>▸ 02C</span><span>▸ 02D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure><figure class="frame"><img src="assets/img/films/plus-hero.jpg" alt="Still 1 from +" loading="lazy"><span class="fn">02A</span></figure><figure class="frame"><img src="assets/img/films/plus-still-1.jpg" alt="Still 2 from +" loading="lazy"><span class="fn">02B</span></figure><figure class="frame"><img src="assets/img/films/plus-still-2.jpg" alt="Still 3 from +" loading="lazy"><span class="fn">02C</span></figure><figure class="frame"><img src="assets/img/films/plus-still-3.jpg" alt="Still 4 from +" loading="lazy"><span class="fn">02D</span></figure><figure class="frame"><img src="assets/img/films/plus-still-4.jpg" alt="Still 5 from +" loading="lazy"><span class="fn">02E</span></figure></div>
+        <div class="edge bottom"><span>▸ 02</span><span>▸ 02A</span><span>▸ 02B</span><span>▸ 02C</span><span>▸ 02D</span></div>
+        <div class="perf"></div>
+      </div></div></div>
+<main>
+<header class="obs"><h1>+</h1><p class="meta">2026 · ANIMATED SHORT· 1.51 MIN</p></header>
+<section class="lead-block"><p class="lead">Sixteen scenes from one ordinary day in a city where danger became part of everyday life.</p></section>
+<section class="flow watch"><h2 class="label">watch</h2>
+<div class="screen"><iframe src="https://www.youtube.com/embed/2qimsVWfsNk" title="+ (&quot;plus&quot;)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></section>
+<section class="flow prose"><p>People listen to the sky and tell by sound what's flying. They check the outage schedule before deciding when to leave the house. They mark themselves with a plus sign in the family chat, so everyone knows they're alive.</p>
+<p>A woman scolds her husband outside a supermarket: at your age you should be able to tell a drone from a missile. A shop assistant stops mid-sale to call her brother home. Someone picks the scorched detergent box from a row of undamaged ones.</p>
+<p>Nothing is explained. Nothing is dramatised. The film doesn't say this isn't normal — it shows a day in which it is.</p>
+<p>All scenes are based on real observations.</p>
+<p>Nothing here is invented.</p></section>
+<section class="flow prose"><aside class="note"><p>The plus sign is what people send in family chats during an air raid. It means: I'm here. I’m alive.</p></aside></section>
+<section class="card"><div class="row"><h2 class="label">role</h2><div class="cell"><p>Concept</p>
+<p>Script</p>
+<p>Direction</p>
+<p>Animation</p>
+<p>Edit</p>
+<p>Sound Design</p></div></div><div class="row"><h2 class="label">PROCESS</h2><div class="cell"><p>Every scene in this film I saw myself.</p>
+<p>The pensioners outside the supermarket, the shop assistant calling her brother, the scorched box on the shelf, the cat moved from the balcony to the carrier as the threat level rises — none of it is invented. This is what I have been looking at for four years.</p>
+<p>The hardest part was leaving it alone. The obvious way to make a film about this is to explain how it feels. But the moment a voice appears to tell you that, the thing you came to see disappears.</p>
+<p>So there is no narrator. Six lines of dialogue, all of them ordinary. Everything else is shown and left there.</p>
+<p>The animation is watercolour and ink on paper — drawing removes the documentary quality; the same scenes filmed would read as a report. The sound is real: air raid recordings over drawn images.</p></div></div></section>
+<nav class="pager"><a href="films.html">←FILMS</a><a href="wearenotalone.html">next film→</a></nav>
+</main>
+<footer class="site-foot">
+  <nav aria-label="Elsewhere">
+    <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
+    <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
+    <a href="https://www.youtube.com/@alynner">YouTube</a>
+    <a href="https://x.com/amatalynner">X</a>
+  </nav>
+  <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  <img src="assets/img/brand/monogram-lavender.png" alt="">
+</footer>
+<script src="assets/site/films/strip.js"></script>
 </body>
 </html>

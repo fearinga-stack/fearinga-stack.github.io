@@ -11,13 +11,14 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 RD = HERE.parent
 SITE = RD.parent
+SRC = SITE / "content-src" / "interim"   # the interim site, frozen as text source when the redesign went live
 sys.path.insert(0, str(RD))
 import chrome  # noqa: E402
 ALBUMS_ON_HOME = ["normandie", "ukraine-one", "kherson-2023"]
 
 
 def about_text(start):
-    s = (SITE / "about.html").read_text(encoding="utf-8")
+    s = (SRC / "about.html").read_text(encoding="utf-8")
     for m in re.finditer(r"<p[^>]*>(.*?)</p>", s, re.S):
         t = re.sub(r"\s+", " ", m.group(1)).strip()
         if re.sub("<[^>]+>", "", t).startswith(start):

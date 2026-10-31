@@ -1,67 +1,286 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Commercial — Amata Lynner</title>
-  <meta name="description" content="Commercial AI video and brand films directed by Amata Lynner. Cinematic advertising made with generative tools">
-  <link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Commercial — Amata Lynner</title>
+<link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="assets/site/films/strip.css">
+<style>
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.6);--hair:rgba(243,229,245,.2);
+  --mono:ui-monospace,"SFMono-Regular",Consolas,monospace;--col:44rem}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
+a{color:inherit}
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 16px;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+.topbar .mark img{height:38px;width:auto;display:block}
+.topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
+  font:500 .72rem "Cormorant SC",serif;letter-spacing:.24em}
+.topbar nav a{color:var(--dim);text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration:none}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+@media (max-width:600px){.topbar .mark img{height:30px}.topbar nav{gap:.6rem;font-size:.6rem;letter-spacing:.09em}}
+.site-foot{border-top:1px solid var(--hair);padding:2rem 16px 3rem;text-align:center;font:500 .72rem "Cormorant SC",serif;letter-spacing:.2em;color:var(--dim)}
+.site-foot nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:var(--light)}
+.site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
+
+main{max-width:var(--col);margin:0 auto;padding:clamp(6rem,14vh,8rem) 16px clamp(4rem,10vh,6rem)}
+.page-head{margin:0 0 clamp(2.6rem,7vh,4rem);text-align:center}
+.page-head h1{margin:0;font:500 clamp(1.3rem,2.2vw,1.8rem) "Cormorant SC",serif;letter-spacing:.16em}
+.page-head .lead{margin:1rem auto 0;max-width:34rem;font-style:italic;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.5;color:rgba(243,229,245,.84);text-wrap:balance}
+.label{font:.72rem var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);font-weight:400;margin:0}
+.card{margin:2.6rem 0;border-top:1px solid var(--hair)}
+.card .row{display:grid;grid-template-columns:10rem minmax(0,1fr);gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.card .row p{margin:0;font-size:1.16rem;line-height:1.55}
+.small{font-size:1.02rem;color:rgba(243,229,245,.72);margin:.8rem 0 0}
+@media (max-width:640px){.card .row{grid-template-columns:1fr;gap:.3rem}}
+
+/* about */
+.about .page-head .lead{font:500 clamp(1rem,1.9vw,1.35rem)/1.45 "Cormorant SC",serif;font-style:normal;letter-spacing:.08em}
+.print{margin:0 auto 2.6rem;max-width:min(100%,40rem);padding:clamp(.6rem,1.6vw,1rem);background:#fff;
+  box-shadow:0 18px 40px rgba(0,0,0,.55);transform:rotate(-.6deg)}
+.print img{display:block;width:100%;height:auto}
+.letter p{font-size:clamp(1.2rem,2vw,1.38rem);line-height:1.62;margin:0 0 1.15rem;color:rgba(243,229,245,.9)}
+.letter p:first-child{font:500 clamp(1.5rem,2.8vw,2rem) "Cormorant SC",serif;letter-spacing:.06em;color:var(--light)}
+/* the last line of her letter is set on a black with nothing reflecting in it */
+.black{margin:2.4rem calc(50% - 50vw) 0;padding:clamp(3rem,9vh,5rem) 16px;background:#000;text-align:center}
+.black p{margin:0;font-style:italic;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:.02em}
+.hands{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);gap:clamp(1.4rem,4vw,3rem);margin:clamp(3rem,8vh,4.5rem) 0 2.4rem}
+.hands .seam{background:var(--hair)}
+.hand h2{margin:0 0 .8rem;font:500 clamp(1.2rem,2.2vw,1.55rem) "Cormorant SC",serif;letter-spacing:.12em}
+.hand p{margin:0;font-size:1.14rem;line-height:1.6;color:rgba(243,229,245,.86)}
+.about .note{margin:0 auto;max-width:34rem;text-align:center;font-style:italic;font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.5;color:rgba(243,229,245,.82)}
+.how{margin:clamp(3rem,8vh,4.5rem) 0 0;text-align:center}
+.how ol{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;justify-content:center;gap:clamp(1.6rem,6vw,4rem);flex-wrap:wrap}
+.how li{font:500 clamp(1.3rem,2.4vw,1.7rem) "Cormorant SC",serif;letter-spacing:.14em}
+.how .num{display:block;font:.7rem var(--mono);letter-spacing:.24em;color:var(--dim);margin-bottom:.4rem}
+@media (max-width:640px){.hands{grid-template-columns:1fr}.hands .seam{height:1px}}
+
+/* contact */
+.address{text-align:center;margin:0 0 2.4rem}
+.email{margin:.8rem 0 0;font:500 clamp(1.5rem,4.4vw,2.6rem) "Cormorant SC",serif;letter-spacing:.08em;user-select:all;overflow-wrap:anywhere}
+.email a{text-decoration:none;border-bottom:1px solid var(--hair)}
+.email a:hover{border-color:var(--light)}
+.cell ul{list-style:none;margin:0;padding:0}
+.cell ul+ul{margin-top:.2rem}
+.cell li{font-size:1.16rem;line-height:1.6}
+.links{display:flex;gap:.4rem 1.4rem;flex-wrap:wrap}
+.links a{text-decoration:none;font:500 1rem "Cormorant SC",serif;letter-spacing:.14em;border-bottom:1px solid var(--hair)}
+.links a:hover{border-color:var(--light)}
+
+/* commercial */
+.commercial main{max-width:none;padding-left:0;padding-right:0}
+.commercial .page-head,.commercial .reel-text{max-width:var(--col);margin-left:auto;margin-right:auto;padding:0 16px}
+.commercial .page-head{margin-bottom:clamp(2.4rem,6vh,3.5rem)}
+.commercial .film{margin:0 0 clamp(3rem,7vh,4.5rem)}
+.caption{max-width:var(--col);margin:1.1rem auto 0;padding:0 16px}
+.caption h2{margin:0 0 .4rem;font:500 clamp(1.15rem,1.8vw,1.5rem) "Cormorant SC",serif;letter-spacing:.1em}
+.caption h2 a,.more a{text-decoration:none}
+.logline{margin:0 0 .4rem;font-size:1.12rem;line-height:1.5;color:rgba(243,229,245,.86)}
+.caption .meta{margin:0;font:.72rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.more{margin:.9rem 0 0;font:500 .78rem "Cormorant SC",serif;letter-spacing:.24em}
+.more a{border-bottom:1px solid var(--hair)}
+.caption .screen{margin:1.4rem 0 0;aspect-ratio:16/9;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
+.caption .screen video,.caption .screen iframe{display:block;width:100%;height:100%;border:0}
+.caption .screen+.more{margin-top:1.1rem}
+/* the monitor: everything after the two standalone films */
+.spots{margin:clamp(3.5rem,9vh,5.5rem) 0 0;border-top:1px solid var(--hair);padding-top:clamp(2rem,5vh,3rem)}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.4rem;max-width:64rem;margin:0 auto 1.4rem;padding:0 16px}
+.tabs button{background:none;border:0;border-bottom:1px solid transparent;color:var(--dim);cursor:pointer;padding:.2rem 0;
+  font:500 .82rem "Cormorant SC",serif;letter-spacing:.22em;text-transform:uppercase}
+.tabs button:hover{color:var(--light)}
+.tabs button[aria-pressed="true"]{color:var(--light);border-color:var(--light)}
+.stage{margin:0 auto;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
+/* tabs, caption and the strip take about 26rem: the stage gets the rest, so the whole monitor is one screen */
+.stage.wide{width:min(100% - 32px,64rem,(100vh - 26rem) * 16 / 9);aspect-ratio:16/9}
+.stage.tall{height:min(100vh - 26rem,44rem);min-height:20rem;aspect-ratio:9/16;max-width:calc(100% - 32px)}
+.stage video{display:block;width:100%;height:100%;border:0}
+.now{max-width:64rem;margin:1rem auto 1.4rem;padding:0 16px;text-align:center}
+.now h2{margin:0 0 .3rem;font:500 clamp(1.1rem,1.7vw,1.4rem) "Cormorant SC",serif;letter-spacing:.1em}
+.now .logline{margin:0 0 .3rem}
+.now .meta{margin:0;font:.72rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.deck{background:var(--base,#0b0710);overflow-x:auto;scrollbar-width:none;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.deck::-webkit-scrollbar{display:none}
+.deck .set{width:max-content;min-width:100%;align-items:center}
+.deck .frames{margin:0 auto}
+.deck .frame{border:0;padding:0;cursor:pointer;outline:1px solid transparent;outline-offset:2px;transition:outline-color .3s}
+.deck .frame.wide{aspect-ratio:16/9}
+.deck .frame.tall{aspect-ratio:9/16}
+.deck .frame[hidden]{display:none}
+.deck .frame video{display:block;width:100%;height:100%;object-fit:cover;filter:brightness(.7) saturate(.85);transition:filter .4s}
+.deck .frame:hover video,.deck .frame[aria-current] video{filter:none}
+.deck .frame[aria-current]{outline-color:var(--light)}
+.hint{margin:.8rem 0 0;text-align:center;font:.66rem var(--mono);letter-spacing:.24em;color:rgba(243,229,245,.4)}
+@media (hover:none){.hint{display:none}}
+/* one sound switch on every self-hosted player, in step */
+.screen,.stage{position:relative}
+.sound{position:absolute;top:.6rem;right:.6rem;z-index:2;background:rgba(5,3,8,.6);color:var(--light);border:1px solid var(--hair);
+  padding:.35rem .6rem;cursor:pointer;font:.66rem var(--mono);letter-spacing:.2em}
+.sound:hover{border-color:var(--light)}
+.sound[aria-pressed="true"]{color:var(--dim)}
+.reel-text{margin-top:clamp(3rem,8vh,4.5rem)}
+.reel-text h2{font:500 clamp(1.1rem,1.8vw,1.35rem) "Cormorant SC",serif;letter-spacing:.08em;margin:0 0 1rem}
+.reel-text p{font-size:1.14rem;line-height:1.6;margin:0 0 .9rem;color:rgba(243,229,245,.86)}
+.reel-text p:last-child{font-style:italic;color:var(--dim)}
+</style>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="site-name" href="index.html"><img src="assets/img/brand/logo-h-lavender.png" alt="Amata Lynner" class="site-logo"></a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="films.html">Films</a></li>
-        <li><a href="commercial.html" aria-current="page">Commercial</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main">
-    <header class="page-head">
-      <h1>COMMERCIAL</h1>
-      <p class="lead">Brand work directed like film. A script, a shot list, and a reason for every frame — at the speed generative tools make possible.</p>
-    </header>
-    <div class="cards cards-single">
-      <article class="card">
-        <a href="scent-of-imagination.html">
-          <figure class="frame"><img src="assets/img/films/scent-of-imagination-hero.jpg" alt="Still from Scent of imagination" width="1376" height="768" decoding="async"></figure>
-          <h2>Scent of imagination</h2>
-        </a>
-        <p>She reads about a world with two moons. A few days later, it arrives in a box.</p>
-        <p class="more"><a href="scent-of-imagination.html">VIEW PROJECT →</a></p>
-      </article>
-    </div>
-    <section class="prose reel">
-      <h2>AI Commercial &amp; Motion Reel | Product Ads and Animation</h2>
-      <!-- The reel itself was a Squarespace-hosted video file (not YouTube/Vimeo) and could not be carried over.
-           Re-host it (YouTube/Vimeo) and place the embed here. -->
-      <p>A selection of AI-generated product commercials, brand animations, and motion design concepts, featuring food and beverage visuals, beauty products, animated characters, and kinetic typography.</p>
-      <p>I developed the concepts and visual direction, generated the video content, and edited the reel, focusing on composition, pacing, transitions, and visual consistency.</p>
-      <p>These self-initiated projects demonstrate creative approaches to video ads, product launches, and social media content.</p>
-      <p>All brands and campaigns shown are concepts, not commissioned client work.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <ul class="social">
-      <li><a href="https://www.instagram.com/amata_lynner/">Instagram</a></li>
-      <li><a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a></li>
-      <li><a href="https://www.youtube.com/@alynner">YouTube</a></li>
-      <li><a href="https://x.com/amatalynner">X</a></li>
-    </ul>
-    <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
-    <img class="signature" src="assets/img/brand/monogram-lavender.png" alt="AL — monogram of Amata Lynner" width="919" height="708" decoding="async">
-  </footer>
+<body class="commercial">
+<header class="topbar">
+  <a class="mark" href="index.html" aria-label="Amata Lynner, home"><img src="assets/img/brand/monogram-lavender.png" alt="AL"></a>
+  <nav aria-label="Main">
+    <a href="films.html">Films</a>
+    <a href="projects.html">Photography</a>
+    <a href="commercial.html" aria-current="page">Commercial</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+<header class="page-head">
+  <h1>COMMERCIAL</h1>
+  <p class="lead">Brand work directed like film. A script, a shot list, and a reason for every frame — at the speed generative tools make possible.</p>
+</header>
+<article class="film">
+  <a class="strip" href="#watch-scent-of-imagination" aria-label="Scent of imagination"><div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>SCENT OF IMAGINATION · 2026 · FRAGRANCE SPOT · 18SEC</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>SCENT OF IMAGINATION · 2026 · FRAGRANCE SPOT · 18SEC</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="assets/site/films/frames/scent-title.jpg" alt="Title of Scent of imagination"><span class="fn">00</span></figure><figure class="frame"><img src="assets/img/films/scent-of-imagination-hero.jpg" alt="Still 1 from Scent of imagination" loading="lazy"><span class="fn">06A</span></figure><figure class="frame"><img src="assets/site/films/frames/scent-book.jpg" alt="Still 2 from Scent of imagination" loading="lazy"><span class="fn">06B</span></figure><figure class="frame"><img src="assets/img/films/scent-of-imagination-still-2.jpg" alt="Still 3 from Scent of imagination" loading="lazy"><span class="fn">06C</span></figure><figure class="frame"><img src="assets/site/films/frames/scent-spritz.jpg" alt="Still 4 from Scent of imagination" loading="lazy"><span class="fn">06D</span></figure></div>
+        <div class="edge bottom"><span>▸ 06</span><span>▸ 06A</span><span>▸ 06B</span><span>▸ 06C</span><span>▸ 06D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>SCENT OF IMAGINATION · 2026 · FRAGRANCE SPOT · 18SEC</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>SCENT OF IMAGINATION · 2026 · FRAGRANCE SPOT · 18SEC</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="assets/site/films/frames/scent-title.jpg" alt="Title of Scent of imagination"><span class="fn">00</span></figure><figure class="frame"><img src="assets/img/films/scent-of-imagination-hero.jpg" alt="Still 1 from Scent of imagination" loading="lazy"><span class="fn">06A</span></figure><figure class="frame"><img src="assets/site/films/frames/scent-book.jpg" alt="Still 2 from Scent of imagination" loading="lazy"><span class="fn">06B</span></figure><figure class="frame"><img src="assets/img/films/scent-of-imagination-still-2.jpg" alt="Still 3 from Scent of imagination" loading="lazy"><span class="fn">06C</span></figure><figure class="frame"><img src="assets/site/films/frames/scent-spritz.jpg" alt="Still 4 from Scent of imagination" loading="lazy"><span class="fn">06D</span></figure></div>
+        <div class="edge bottom"><span>▸ 06</span><span>▸ 06A</span><span>▸ 06B</span><span>▸ 06C</span><span>▸ 06D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>SCENT OF IMAGINATION · 2026 · FRAGRANCE SPOT · 18SEC</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>SCENT OF IMAGINATION · 2026 · FRAGRANCE SPOT · 18SEC</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="assets/site/films/frames/scent-title.jpg" alt="Title of Scent of imagination"><span class="fn">00</span></figure><figure class="frame"><img src="assets/img/films/scent-of-imagination-hero.jpg" alt="Still 1 from Scent of imagination" loading="lazy"><span class="fn">06A</span></figure><figure class="frame"><img src="assets/site/films/frames/scent-book.jpg" alt="Still 2 from Scent of imagination" loading="lazy"><span class="fn">06B</span></figure><figure class="frame"><img src="assets/img/films/scent-of-imagination-still-2.jpg" alt="Still 3 from Scent of imagination" loading="lazy"><span class="fn">06C</span></figure><figure class="frame"><img src="assets/site/films/frames/scent-spritz.jpg" alt="Still 4 from Scent of imagination" loading="lazy"><span class="fn">06D</span></figure></div>
+        <div class="edge bottom"><span>▸ 06</span><span>▸ 06A</span><span>▸ 06B</span><span>▸ 06C</span><span>▸ 06D</span></div>
+        <div class="perf"></div>
+      </div></div></a>
+  <div class="caption"><h2>Scent of imagination</h2><p class="logline">She reads about a world with two moons. A few days later, it arrives in a box.</p><p class="meta">2026 · FRAGRANCE SPOT · 18SEC</p>
+    <div class="screen" id="watch-scent-of-imagination"><iframe src="https://www.youtube.com/embed/60Fy0AZmg1Q" title="Scent of Imagination" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+    <p class="more"><a href="scent-of-imagination.html">VIEW PROJECT →</a></p></div>
+</article>
+<article class="film">
+  <a class="strip" href="#watch-blood-orange" aria-label="Blood Orange Soda"><div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>BLOOD ORANGE SODA · 2026 · BEVERAGE SPOT · 18SEC</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>BLOOD ORANGE SODA · 2026 · BEVERAGE SPOT · 18SEC</span></div>
+        <div class="frames"><figure class="frame"><img src="assets/site/films/frames/blood-1.jpg" alt="Still 1 from Blood Orange Soda" loading="lazy"><span class="fn">07A</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-2.jpg" alt="Still 2 from Blood Orange Soda" loading="lazy"><span class="fn">07B</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-3.jpg" alt="Still 3 from Blood Orange Soda" loading="lazy"><span class="fn">07C</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-4.jpg" alt="Still 4 from Blood Orange Soda" loading="lazy"><span class="fn">07D</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-5.jpg" alt="Still 5 from Blood Orange Soda" loading="lazy"><span class="fn">07E</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-6.jpg" alt="Still 6 from Blood Orange Soda" loading="lazy"><span class="fn">07F</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-7.jpg" alt="Still 7 from Blood Orange Soda" loading="lazy"><span class="fn">07G</span></figure></div>
+        <div class="edge bottom"><span>▸ 07</span><span>▸ 07A</span><span>▸ 07B</span><span>▸ 07C</span><span>▸ 07D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>BLOOD ORANGE SODA · 2026 · BEVERAGE SPOT · 18SEC</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>BLOOD ORANGE SODA · 2026 · BEVERAGE SPOT · 18SEC</span></div>
+        <div class="frames"><figure class="frame"><img src="assets/site/films/frames/blood-1.jpg" alt="Still 1 from Blood Orange Soda" loading="lazy"><span class="fn">07A</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-2.jpg" alt="Still 2 from Blood Orange Soda" loading="lazy"><span class="fn">07B</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-3.jpg" alt="Still 3 from Blood Orange Soda" loading="lazy"><span class="fn">07C</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-4.jpg" alt="Still 4 from Blood Orange Soda" loading="lazy"><span class="fn">07D</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-5.jpg" alt="Still 5 from Blood Orange Soda" loading="lazy"><span class="fn">07E</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-6.jpg" alt="Still 6 from Blood Orange Soda" loading="lazy"><span class="fn">07F</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-7.jpg" alt="Still 7 from Blood Orange Soda" loading="lazy"><span class="fn">07G</span></figure></div>
+        <div class="edge bottom"><span>▸ 07</span><span>▸ 07A</span><span>▸ 07B</span><span>▸ 07C</span><span>▸ 07D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>BLOOD ORANGE SODA · 2026 · BEVERAGE SPOT · 18SEC</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>BLOOD ORANGE SODA · 2026 · BEVERAGE SPOT · 18SEC</span></div>
+        <div class="frames"><figure class="frame"><img src="assets/site/films/frames/blood-1.jpg" alt="Still 1 from Blood Orange Soda" loading="lazy"><span class="fn">07A</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-2.jpg" alt="Still 2 from Blood Orange Soda" loading="lazy"><span class="fn">07B</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-3.jpg" alt="Still 3 from Blood Orange Soda" loading="lazy"><span class="fn">07C</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-4.jpg" alt="Still 4 from Blood Orange Soda" loading="lazy"><span class="fn">07D</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-5.jpg" alt="Still 5 from Blood Orange Soda" loading="lazy"><span class="fn">07E</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-6.jpg" alt="Still 6 from Blood Orange Soda" loading="lazy"><span class="fn">07F</span></figure><figure class="frame"><img src="assets/site/films/frames/blood-7.jpg" alt="Still 7 from Blood Orange Soda" loading="lazy"><span class="fn">07G</span></figure></div>
+        <div class="edge bottom"><span>▸ 07</span><span>▸ 07A</span><span>▸ 07B</span><span>▸ 07C</span><span>▸ 07D</span></div>
+        <div class="perf"></div>
+      </div></div></a>
+  <div class="caption"><h2>Blood Orange Soda</h2><p class="logline">A drop of juice turns into a Rorschach test. What do you see?</p><p class="meta">2026 · BEVERAGE SPOT · 18SEC</p>
+    <div class="screen" id="watch-blood-orange"><video controls playsinline preload="none" poster="assets/video/blood-orange-soda-poster.jpg" src="assets/video/blood-orange-soda.mp4"></video></div></div>
+</article>
+<section class="spots" aria-label="More commercial work">
+  <nav class="tabs" aria-label="Filter"><button type="button" data-tag="all" aria-pressed="true">All</button><button type="button" data-tag="beauty">Beauty</button><button type="button" data-tag="food">Food &amp; drink</button><button type="button" data-tag="type">Type</button><button type="button" data-tag="illustration">Illustration</button><button type="button" data-tag="explainer">Explainer</button><button type="button" data-tag="vertical">Vertical</button></nav>
+  <div class="stage wide"><video controls playsinline preload="none" poster="assets/video/ads/vellum-poster.jpg" src="assets/video/ads/vellum.mp4"></video></div>
+  <div class="now"><h2>Vellum</h2><p class="logline">Five products drawn onto the sheet, one line at a time.</p><p class="meta">BEAUTY CONCEPT · 38 SEC</p></div>
+  <div class="deck"><div class="set"><div class="perf"></div><div class="frames"><button type="button" class="frame wide" data-id="vellum" data-tags="beauty" data-title="Vellum" data-line="Five products drawn onto the sheet, one line at a time." data-meta="BEAUTY CONCEPT · 38 SEC" aria-label="Vellum" aria-current="true"><video muted loop playsinline preload="none" poster="assets/video/ads/vellum-poster.jpg" src="assets/video/ads/vellum-preview.mp4"></video><span class="fn">01</span></button><button type="button" class="frame wide" data-id="where-is-everybody" data-tags="explainer" data-title="Where Is Everybody?" data-line="The Fermi paradox, one possible answer at a time." data-meta="EXPLAINER · 84 SEC" aria-label="Where Is Everybody?"><video muted loop playsinline preload="none" poster="assets/video/ads/where-is-everybody-poster.jpg" src="assets/video/ads/where-is-everybody-preview.mp4"></video><span class="fn">02</span></button><button type="button" class="frame wide" data-id="wordplay" data-tags="type" data-title="Wordplay" data-line="Words that rearrange themselves into other words." data-meta="TYPE IN MOTION · 35 SEC" aria-label="Wordplay"><video muted loop playsinline preload="none" poster="assets/video/ads/wordplay-poster.jpg" src="assets/video/ads/wordplay-preview.mp4"></video><span class="fn">03</span></button><button type="button" class="frame wide" data-id="food" data-tags="food" data-title="Food &amp; Drink" data-line="A pour, a spoon, a cherry on top." data-meta="FOOD REEL · 16 SEC" aria-label="Food &amp; Drink"><video muted loop playsinline preload="none" poster="assets/video/ads/food-poster.jpg" src="assets/video/ads/food-preview.mp4"></video><span class="fn">04</span></button><button type="button" class="frame wide" data-id="illustration" data-tags="illustration" data-title="Illustration" data-line="Drawn worlds and characters for brands." data-meta="ILLUSTRATION REEL · 35 SEC" aria-label="Illustration"><video muted loop playsinline preload="none" poster="assets/video/ads/illustration-poster.jpg" src="assets/video/ads/illustration-preview.mp4"></video><span class="fn">05</span></button><button type="button" class="frame tall" data-id="steep" data-tags="food vertical" data-title="Steep" data-line="Oolong in a tin." data-meta="9:16 · 10 SEC" aria-label="Steep"><video muted loop playsinline preload="none" poster="assets/video/ads/steep-poster.jpg" src="assets/video/ads/steep-preview.mp4"></video><span class="fn">06</span></button><button type="button" class="frame tall" data-id="side-a" data-tags="beauty vertical" data-title="Side A" data-line="A lip balm with a record&#x27;s manners." data-meta="9:16 · 10 SEC" aria-label="Side A"><video muted loop playsinline preload="none" poster="assets/video/ads/side-a-poster.jpg" src="assets/video/ads/side-a-preview.mp4"></video><span class="fn">07</span></button><button type="button" class="frame tall" data-id="pebble" data-tags="beauty vertical" data-title="Pebble" data-line="Soap, shaped by water." data-meta="9:16 · 9 SEC" aria-label="Pebble"><video muted loop playsinline preload="none" poster="assets/video/ads/pebble-poster.jpg" src="assets/video/ads/pebble-preview.mp4"></video><span class="fn">08</span></button><button type="button" class="frame tall" data-id="dot" data-tags="beauty vertical" data-title="Dot" data-line="One colour, one coat." data-meta="9:16 · 10 SEC" aria-label="Dot"><video muted loop playsinline preload="none" poster="assets/video/ads/dot-poster.jpg" src="assets/video/ads/dot-preview.mp4"></video><span class="fn">09</span></button><button type="button" class="frame tall" data-id="soft-weather" data-tags="beauty vertical" data-title="Soft Weather" data-line="A cloud balm for skin." data-meta="9:16 · 10 SEC" aria-label="Soft Weather"><video muted loop playsinline preload="none" poster="assets/video/ads/soft-weather-poster.jpg" src="assets/video/ads/soft-weather-preview.mp4"></video><span class="fn">10</span></button></div><div class="perf"></div></div></div>
+  <p class="hint">← → to step through</p>
+</section>
+<script>
+(() => {
+  const box = document.querySelector('.spots'), stage = box.querySelector('.stage'), v = stage.querySelector('video');
+  const now = box.querySelector('.now'), thumbs = [...box.querySelectorAll('.deck .frame')];
+  const ADS = "assets/video/ads/";
+  const visible = () => thumbs.filter(t => !t.hidden);
+  function pick(t, play) {
+    thumbs.forEach(x => x.removeAttribute('aria-current')); t.setAttribute('aria-current', 'true');
+    stage.className = 'stage ' + (t.classList.contains('tall') ? 'tall' : 'wide');
+    v.poster = ADS + t.dataset.id + '-poster.jpg'; v.src = ADS + t.dataset.id + '.mp4';
+    now.querySelector('h2').textContent = t.dataset.title;
+    now.querySelector('.logline').textContent = t.dataset.line;
+    now.querySelector('.meta').textContent = t.dataset.meta;
+    t.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'smooth'});
+    if (play) v.play().catch(() => {});
+  }
+  thumbs.forEach(t => {
+    const pv = t.querySelector('video');
+    t.addEventListener('mouseenter', () => pv.play().catch(() => {}));
+    t.addEventListener('mouseleave', () => { pv.pause(); pv.currentTime = 0; });
+    t.addEventListener('click', () => pick(t, true));
+  });
+  box.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+    box.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    const tag = b.dataset.tag;
+    thumbs.forEach(t => t.hidden = tag !== 'all' && !t.dataset.tags.split(' ').includes(tag));
+    const cur = thumbs.find(t => t.hasAttribute('aria-current'));
+    if (cur.hidden) pick(visible()[0], false);
+  }));
+  // arrows step through what the tab shows, while the monitor is on screen
+  let seen = false;
+  new IntersectionObserver(e => seen = e[0].isIntersecting, {threshold: .25}).observe(box);
+  document.addEventListener('keydown', e => {
+    if (!seen || !['ArrowLeft', 'ArrowRight'].includes(e.key) || (e.target.closest && e.target.closest('input,textarea'))) return;
+    const list = visible(), i = list.findIndex(t => t.hasAttribute('aria-current'));
+    const n = list[(i + (e.key === 'ArrowRight' ? 1 : -1) + list.length) % list.length];
+    e.preventDefault(); pick(n, !v.paused);
+  });
+  // on touch screens there is no hover: previews in view play on their own
+  if (matchMedia('(hover: none)').matches) {
+    const io = new IntersectionObserver(es => es.forEach(x => {
+      const pv = x.target.querySelector('video'); x.isIntersecting ? pv.play().catch(() => {}) : pv.pause();
+    }), {threshold: .6});
+    thumbs.forEach(t => io.observe(t));
+  }
+})();
+</script>
+<script>
+(() => {
+  const players = [...document.querySelectorAll('main video[controls]')];
+  let off = false;
+  try { off = localStorage.getItem('sound') === 'off'; } catch (e) {}
+  const buttons = players.map(v => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'sound';
+    b.addEventListener('click', () => set(!off));
+    v.parentElement.appendChild(b);
+    v.addEventListener('volumechange', () => { if (v.muted !== off) set(v.muted); });
+    return b;
+  });
+  function set(o) {
+    off = o;
+    try { localStorage.setItem('sound', off ? 'off' : 'on'); } catch (e) {}
+    players.forEach(v => v.muted = off);
+    buttons.forEach(b => { b.textContent = off ? 'SOUND OFF' : 'SOUND ON'; b.setAttribute('aria-pressed', String(off)); });
+  }
+  set(off);
+})();
+</script>
+</main>
+<footer class="site-foot">
+  <nav aria-label="Elsewhere">
+    <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
+    <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
+    <a href="https://www.youtube.com/@alynner">YouTube</a>
+    <a href="https://x.com/amatalynner">X</a>
+  </nav>
+  <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  <img src="assets/img/brand/monogram-lavender.png" alt="">
+</footer>
+<script src="assets/site/films/strip.js"></script>
 </body>
 </html>

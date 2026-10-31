@@ -1,96 +1,191 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Amata Lynner</title>
-  <meta name="description" content="Ukrainian visual storyteller. AI films, commercial video, and documentary photography.">
-  <link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/site.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amata Lynner</title>
+<link rel="icon" type="image/png" href="assets/img/brand/monogram-lavender.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap">
+<link rel="stylesheet" href="assets/site/films/strip.css">
+<style>
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.6);--hair:rgba(243,229,245,.22)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 16px;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+.topbar .mark img{height:38px;width:auto;display:block}
+.topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
+  font:500 .72rem "Cormorant SC",serif;letter-spacing:.24em}
+.topbar nav a{color:var(--dim);text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration:none}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+@media (max-width:600px){.topbar .mark img{height:30px}.topbar nav{gap:.6rem;font-size:.6rem;letter-spacing:.09em}}
+.site-foot{border-top:1px solid var(--hair);padding:2rem 16px 3rem;text-align:center;font:500 .72rem "Cormorant SC",serif;letter-spacing:.2em;color:var(--dim)}
+.site-foot nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:var(--light)}
+.site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
+
+
+/* the diptych: her photograph and the same page still being made */
+.diptych{position:relative;height:100svh;min-height:520px;overflow:hidden;user-select:none;-webkit-user-select:none}
+.layer{position:absolute;inset:0}
+.layer img{width:100%;height:100%;object-fit:cover;display:block}
+.layer.machine{clip-path:inset(0 0 0 var(--seam,50%))}
+.veil{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(rgba(21,8,48,.62) 0%,rgba(32,15,58,0) 16%,rgba(32,15,58,0) 55%,rgba(32,15,58,.66))}
+.seam-line{position:absolute;top:0;bottom:0;left:var(--seam,50%);width:1px;background:var(--light);opacity:.85;z-index:3;pointer-events:none}
+.seam-handle{position:absolute;top:50%;left:var(--seam,50%);transform:translate(-50%,-50%);z-index:3;pointer-events:none;
+  border:1px solid var(--light);background:var(--depth);font:500 .62rem "Cormorant SC",serif;letter-spacing:.26em;padding:.45rem .6rem;white-space:nowrap}
+.diptych input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4;margin:0;
+  -webkit-appearance:none;appearance:none}
+.diptych h1{position:absolute;z-index:3;left:0;right:0;bottom:4.6rem;margin:0;text-align:center;pointer-events:none;
+  font:500 clamp(1.05rem,2.3vw,1.75rem)/1.25 "Cormorant SC",serif;letter-spacing:.06em;padding:0 16px;
+  text-shadow:0 1px 18px rgba(21,8,48,.85)}
+.diptych h1 span{display:block}
+.side{position:absolute;bottom:1.3rem;z-index:5;font:500 .74rem "Cormorant SC",serif;letter-spacing:.28em}
+.side small{display:block;margin-top:.3rem;font:italic .85rem "Cormorant Garamond",serif;letter-spacing:.04em;color:var(--dim)}
+.side.camera{left:16px}
+.side.machine{right:16px;text-align:right}
+.side a{border-bottom:1px solid var(--hair);padding-bottom:.12rem}
+
+/* the two sides of the seam */
+.hands{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);gap:clamp(1.4rem,4vw,3.4rem);
+  max-width:76rem;margin:0 auto;padding:clamp(3rem,10vh,6rem) 16px clamp(2rem,6vh,3.5rem)}
+.hands .seam{background:var(--hair)}
+.hand h2{margin:0 0 1rem;font:500 clamp(1.3rem,2.4vw,1.8rem) "Cormorant SC",serif;letter-spacing:.12em}
+.hand p{margin:0 0 1.6rem;font-size:1.16rem;line-height:1.6;color:rgba(243,229,245,.86);max-width:34rem}
+.go{display:inline-block;margin-top:1.2rem;font:500 .78rem "Cormorant SC",serif;letter-spacing:.24em;border-bottom:1px solid var(--hair);padding-bottom:.15rem}
+.go:hover{border-color:var(--light)}
+
+/* camera: album covers */
+.covers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tile{display:block;aspect-ratio:600/430;box-shadow:0 6px 16px rgba(0,0,0,.45);transition:transform .3s ease}
+.tile:hover{transform:translateY(-3px) rotate(-.4deg)}
+.cover{display:flex;flex-direction:column;height:100%;position:relative;container-type:size}
+.cover h2{margin:0;font-weight:500;font-family:"Cormorant SC",serif}
+.cover img{position:absolute;right:6%;bottom:6%;width:11%;opacity:.85}
+.c-normandie .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:17% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220130-008.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+.c-normandie .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25);overflow-wrap:anywhere}
+.c-ukraine-one .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20220330-007.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+.c-ukraine-one .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+.c-kherson-2023 .cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(17,6,38,.62) 0%,rgba(17,6,38,0) 42%),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("assets/img/photo/mv-20230614-147.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+.c-kherson-2023 .cover h2{margin:0;max-width:82%;font-weight:500;font-size:4.8cqw;line-height:1.3;letter-spacing:.22em;color:#F3E5F5;
+  text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 22px rgba(17,6,38,.85);overflow-wrap:anywhere}
+
+
+/* machine: one strip of every film's opening frame */
+.hand .strip{--frameh:clamp(70px,8vw,104px);display:block;box-shadow:0 8px 20px rgba(0,0,0,.5)}
+.opener{display:block;flex:none}
+.opener .frame img{filter:brightness(.85)}
+.opener:hover .frame img{filter:none}
+
+.note{max-width:44rem;margin:0 auto;padding:0 16px clamp(3rem,9vh,5rem);text-align:center;
+  font-style:italic;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.5;color:rgba(243,229,245,.82)}
+
+
+@media (max-width:760px){
+  .hands{grid-template-columns:minmax(0,1fr)}
+  .hands .seam{height:1px}
+  .covers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .diptych h1{bottom:5.6rem}
+}
+</style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="site-name" href="index.html"><img src="assets/img/brand/logo-h-lavender.png" alt="Amata Lynner" class="site-logo"></a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="films.html">Films</a></li>
-        <li><a href="commercial.html">Commercial</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="topbar">
+  <a class="mark" href="index.html" aria-label="Amata Lynner, home"><img src="assets/img/brand/monogram-lavender.png" alt="AL"></a>
+  <nav aria-label="Main">
+    <a href="films.html">Films</a>
+    <a href="projects.html">Photography</a>
+    <a href="commercial.html">Commercial</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+  <section class="diptych" id="diptych" style="--seam:50%">
+    <div class="layer camera"><img src="assets/site/d-two-ways/roses/photo.jpg" alt="Dried roses on a page of an old Versailles directory — photograph"></div>
+    <div class="layer machine"><img src="assets/site/d-two-ways/roses/forming.jpg" alt="The same page, still being generated"></div>
+    <div class="veil"></div>
+    <div class="seam-line"></div>
+    <div class="seam-handle">◂ DRAG ▸</div>
+    <h1><span>I make images two ways —</span><span>with a camera, and with a machine that dreams.</span></h1>
+    <input type="range" id="seam" min="0" max="100" value="50" step="0.1" aria-label="Move the seam between the camera and the machine">
+    <div class="side camera"><a href="projects.html">The Camera</a><small>documentary · fine art · people</small></div>
+    <div class="side machine"><a href="films.html">The Machine</a><small>short films · commercial · series</small></div>
+  </section>
 
-  <main id="main">
-    <header class="hero">
-      <h1>Amata Lynner</h1>
-      <p class="lead">Ukrainian visual storyteller. AI films, commercial video, and documentary photography.</p>
-    </header>
-    <div class="tiles">
-      <a class="tile" href="projects.html">
-        <figure class="frame"><img src="assets/img/photo/mv-20220716-432.jpg" alt="Photograph by Amata Lynner" width="1600" height="1067" decoding="async"></figure>
-        <h2>Photography</h2>
-        <p class="meta">Documentary · fine art · people</p>
-      </a>
-      <a class="tile" href="films.html">
-        <figure class="frame"><img src="assets/img/films/ai-filmmaking.jpg" alt="Still from an AI film by Amata Lynner" width="1344" height="768" decoding="async"></figure>
-        <h2>AI Filmmaking</h2>
-        <p class="meta">Short films · commercial · series</p>
-      </a>
+  <section class="hands">
+    <div class="hand">
+      <h2>The Camera</h2>
+      <p>Documentary and fine art photography. Long-form projects about people and the places that shape them. This is where I learned composition, patience, and the value of an imperfect frame that happens to be true.</p>
+      <div class="covers">
+<a class="tile c-normandie" href="projects/normandie.html" aria-label="Roadtrip Normandie, 23 photographs"><div class="cover"><h2>NORMANDIE</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+<a class="tile c-ukraine-one" href="projects/ukraine-one.html" aria-label="Invasion on our Hearts and Souls, 33 photographs"><div class="cover"><h2>INVASION ON OUR HEARTS AND SOULS</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+<a class="tile c-kherson-2023" href="projects/kherson-2023.html" aria-label="Kherson, 2023, 11 photographs"><div class="cover"><h2>KHERSON, 2023</h2><img src="assets/img/brand/monogram-lavender.png" alt="AL"></div></a>
+      </div>
+      <a class="go" href="projects.html">PHOTOGRAPHY →</a>
     </div>
-    <section class="selected">
-      <h2 class="label">SELECTED AI FILMS</h2>
-      <div class="cards cards-three">
-        <article class="card">
-          <a href="step-sequence.html">
-            <figure class="frame"><img src="assets/img/films/step-sequence-cover.jpg" alt="Still from Step Sequence" width="1920" height="1080" loading="lazy" decoding="async"></figure>
-            <h3>Step Sequence</h3>
-          </a>
-          <p class="meta">2026 · Drama · 5.5 MIN</p>
-        </article>
-        <article class="card">
-          <a href="wearenotalone.html">
-            <figure class="frame"><img src="assets/img/films/wearenotalone-cover.jpg" alt="Still from we are not alone" width="1163" height="658" loading="lazy" decoding="async"></figure>
-            <h3>we are not alone</h3>
-          </a>
-          <p class="meta">2026 · SCI-FI · 1 MIN</p>
-        </article>
-        <article class="card">
-          <a href="06percents.html">
-            <figure class="frame"><img src="assets/img/films/06percents-cover.jpg" alt="Still from 0.6%" width="1600" height="900" loading="lazy" decoding="async"></figure>
-            <h3>0.6%</h3>
-          </a>
-          <p class="meta">2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</p>
-        </article>
-      </div>
-      <p class="more"><a href="films.html">Films →</a></p>
-    </section>
-    <section class="selected">
-      <h2 class="label">SELECTED PHOTOGRAPHY</h2>
-      <div class="row-three">
-        <figure class="frame"><img src="assets/img/photo/mv-20240726-056.jpg" alt="Photograph by Amata Lynner" width="2000" height="1333" loading="lazy" decoding="async"></figure>
-        <figure class="frame"><img src="assets/img/photo/mv-20220330-007.jpg" alt="Photograph by Amata Lynner" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        <figure class="frame"><img src="assets/img/photo/mv-20220130-117.jpg" alt="Photograph by Amata Lynner" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-      </div>
-      <p class="more"><a href="projects.html">Projects →</a></p>
-    </section>
-  </main>
+    <div class="seam" aria-hidden="true"></div>
+    <div class="hand">
+      <h2>The Machine</h2>
+      <p>AI-directed short films, commercial video, and series. Sci-fi that asks a question rather than just showing a spectacle. Brand work that looks like cinema, not like a template.</p>
+      <div class="strip"><div class="reel"><div class="set"><div class="perf"></div><div class="frames"><a class="opener" href="step-sequence.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/step-sequence-laurels.jpg" alt="Title of Step Sequence"><span class="fn">00</span></figure></a><a class="opener" href="plus.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure></a><a class="opener" href="nominal.html"><figure class="frame"><img src="assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure></a><a class="opener" href="wearenotalone.html"><figure class="frame"><img src="assets/img/films/wearenotalone-hero.jpg" alt="Still 1 from we are not alone" loading="lazy"><span class="fn">04A</span></figure></a><a class="opener" href="06percents.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/06percents-title.jpg" alt="Title of 0.6%"><span class="fn">00</span></figure></a></div><div class="perf"></div></div><div class="set" aria-hidden="true"><div class="perf"></div><div class="frames"><a class="opener" href="step-sequence.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/step-sequence-laurels.jpg" alt="Title of Step Sequence"><span class="fn">00</span></figure></a><a class="opener" href="plus.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure></a><a class="opener" href="nominal.html"><figure class="frame"><img src="assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure></a><a class="opener" href="wearenotalone.html"><figure class="frame"><img src="assets/img/films/wearenotalone-hero.jpg" alt="Still 1 from we are not alone" loading="lazy"><span class="fn">04A</span></figure></a><a class="opener" href="06percents.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/06percents-title.jpg" alt="Title of 0.6%"><span class="fn">00</span></figure></a></div><div class="perf"></div></div><div class="set" aria-hidden="true"><div class="perf"></div><div class="frames"><a class="opener" href="step-sequence.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/step-sequence-laurels.jpg" alt="Title of Step Sequence"><span class="fn">00</span></figure></a><a class="opener" href="plus.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure></a><a class="opener" href="nominal.html"><figure class="frame"><img src="assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure></a><a class="opener" href="wearenotalone.html"><figure class="frame"><img src="assets/img/films/wearenotalone-hero.jpg" alt="Still 1 from we are not alone" loading="lazy"><span class="fn">04A</span></figure></a><a class="opener" href="06percents.html"><figure class="frame titlecard real"><img src="assets/site/films/frames/06percents-title.jpg" alt="Title of 0.6%"><span class="fn">00</span></figure></a></div><div class="perf"></div></div></div></div>
+      <a class="go" href="films.html">FILMS →</a>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <ul class="social">
-      <li><a href="https://www.instagram.com/amata_lynner/">Instagram</a></li>
-      <li><a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a></li>
-      <li><a href="https://www.youtube.com/@alynner">YouTube</a></li>
-      <li><a href="https://x.com/amatalynner">X</a></li>
-    </ul>
-    <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
-    <img class="signature" src="assets/img/brand/monogram-lavender.png" alt="AL — monogram of Amata Lynner" width="919" height="708" decoding="async">
-  </footer>
+  <p class="note">The two are not separate careers. My films are framed like documentaries. My photographs are graded like film stills.</p>
+</main>
+<footer class="site-foot">
+  <nav aria-label="Elsewhere">
+    <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
+    <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
+    <a href="https://www.youtube.com/@alynner">YouTube</a>
+    <a href="https://x.com/amatalynner">X</a>
+  </nav>
+  <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  <img src="assets/img/brand/monogram-lavender.png" alt="">
+</footer>
+<script src="assets/site/films/strip.js"></script>
+<script>
+(function(){var d=document.getElementById('diptych'),r=document.getElementById('seam');
+r.addEventListener('input',function(){d.style.setProperty('--seam',r.value+'%')});})();
+</script>
 </body>
 </html>
