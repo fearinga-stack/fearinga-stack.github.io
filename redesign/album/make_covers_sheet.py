@@ -5,7 +5,7 @@ HERE = Path(__file__).resolve().parent
 cfg = json.loads((HERE / "albums.json").read_text(encoding="utf-8"))
 css = re.search(r"<style>(.*?)</style>", (HERE / "template.html").read_text(encoding="utf-8"), re.S).group(1)
 rules, cells = [], []
-for slug in cfg["order"]:
+for slug in cfg["order"] + cfg.get("order_below", []):
     s = (HERE / f"{slug}.html").read_text(encoding="utf-8")
     st = re.search(r"<style>(.*?)</style>", s, re.S).group(1)
     k = "c-" + slug.replace("_", "-")

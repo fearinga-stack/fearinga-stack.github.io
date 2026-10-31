@@ -21,7 +21,6 @@ SITE = HERE.parent.parent
 PROJECTS = SITE / "projects"
 TEXT_BUDGET = 620          # characters that fit on one text page
 
-IMG_RE = re.compile(r'<img[^>]+src="\.\./assets/img/photo/([^"]+)"[^>]*?(?:width="(\d+)")?[^>]*?(?:height="(\d+)")?[^>]*>')
 
 
 def photo_dims(name, w, h):
@@ -45,7 +44,7 @@ def parse(path):
         for m in tok_re.finditer(chunk):
             t = m.group(0)
             if t.startswith("<figure"):
-                src = re.search(r'src="\.\./assets/img/photo/([^"]+)"', t)
+                src = re.search(r'src="(?:\.\./)?assets/img/photo/([^"]+)"', t)
                 if not src or src.group(1) in seen:
                     continue
                 seen.add(src.group(1))
@@ -122,7 +121,7 @@ BLANK = '    <div class="page"><div class="leaf blank"></div></div>'
 
 
 def build(slug, cfg):
-    title, units = parse(PROJECTS / f"{slug}.html")
+    title, units = parse(SITE / cfg.get("source", f"projects/{slug}.html"))
     first_img = next(u for u in units if u[0] == "img")
     cover = cfg.get("cover", first_img[1])
     pages = []                       # index 0 is the cover; odd = left, even = right
@@ -173,13 +172,19 @@ def build(slug, cfg):
 
 def main():
     cfg = json.loads((HERE / "albums.json").read_text(encoding="utf-8"))
-    rows = []
-    for slug in cfg["order"]:
-        title, photos, pages = build(slug, cfg.get("albums", {}).get(slug, {}))
-        rows.append((slug, title, photos, pages))
-        print(f"{slug:42s} {photos:2d} photos  {pages:2d} pages  {title}")
+    groups = []
+    for key in ("order", "order_below"):
+        rows = []
+        for slug in cfg.get(key, []):
+            title, photos, pages = build(slug, cfg.get("albums", {}).get(slug, {}))
+            rows.append((slug, title, photos, pages))
+            print(f"{slug:42s} {photos:2d} photos  {pages:2d} pages  {title}")
+        groups.append(rows)
     shelf = (HERE / "shelf_template.html").read_text(encoding="utf-8")
-    items = "\n".join(f'  <li><a href="{s}.html">{html.escape(t)}</a> <span>{p} photographs</span></li>' for s, t, p, _ in rows)
+    li = lambda r: f'  <li><a href="{r[0]}.html">{html.escape(r[1])}</a> <span>{r[2]} photographs</span></li>'
+    items = "\n".join(li(r) for r in groups[0])
+    if groups[1]:
+        items += '\n  <li class="rule" aria-hidden="true"></li>\n' + "\n".join(li(r) for r in groups[1])
     (HERE / "index.html").write_text(shelf.replace("{{ITEMS}}", items), encoding="utf-8")
 
 

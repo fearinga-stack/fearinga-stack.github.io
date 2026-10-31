@@ -42,6 +42,13 @@
     },
     "urban-lines": {
       "title_style": "light"
+    },
+    "people": {
+      "source": "people.html",
+      "title_style": "light"
     }
-  }
+  },
+  "order_below": [
+    "people"
+  ]
 }
