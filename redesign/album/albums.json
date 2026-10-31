@@ -1,0 +1,23 @@
+{
+  "order": [
+    "normandie",
+    "kherson-2023",
+    "idp-center-reportage",
+    "ukraine-one",
+    "visual-lexicon-of-life-amongst-war",
+    "extraction_the_military_of_mariupol",
+    "centre-pompidou",
+    "dnipro-in-details",
+    "in-between",
+    "incomplete-project",
+    "interpipe-steel",
+    "urban-lines"
+  ],
+  "albums": {
+    "normandie": {
+      "cover": "mv-20220130-008.jpg",
+      "title_padding": "17% 6% 0",
+      "cover_title": "Normandie"
+    }
+  }
+}

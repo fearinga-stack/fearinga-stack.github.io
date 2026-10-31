@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dnipro in details — album</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap">
+<style>
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.55)}
+html,body{height:100%}
+body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant SC",Georgia,serif;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding-inline:16px;box-sizing:border-box;overflow:hidden}
+.back{position:fixed;top:14px;left:16px;color:var(--dim);font-size:.8rem;letter-spacing:.2em;text-decoration:none}
+#book{margin:0 auto}
+.page{background:var(--depth)}
+.leaf{box-sizing:border-box;width:100%;height:100%;padding:9% 9% 6%;display:flex;flex-direction:column;justify-content:center;
+  background:radial-gradient(120% 90% at 50% 40%,#1b0c38,#110626);container-type:size}
+.leaf figure{margin:0 auto;padding:3%;background:#f3ece4;box-shadow:0 2px 10px rgba(0,0,0,.45)}
+.leaf.landscape figure{width:100%;box-sizing:border-box}
+.leaf.portrait figure{height:82cqh;width:auto;box-sizing:border-box;padding:2.2cqh}
+.leaf img{display:block;width:100%;height:auto}
+.leaf.portrait img{height:100%;width:auto}
+.pencil{margin:1.1em 0 0;text-align:right;color:var(--dim);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(.7rem,2.2cqw,.95rem);letter-spacing:.05em}
+.leaf.portrait .pencil{margin-top:.6em}
+.leaf.text{justify-content:center;padding:10% 12%}
+.t-head{font-family:"Cormorant SC",serif;font-weight:500;letter-spacing:.12em;font-size:4.2cqw;margin:0 0 .9em;line-height:1.25}
+.t-p{font-family:"Cormorant Garamond",serif;font-size:3.35cqw;line-height:1.55;margin:0 0 .8em;color:rgba(243,229,245,.88)}
+.t-q{margin:0;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:5.2cqw;line-height:1.4;color:var(--light)}
+.t-q p{margin:0}
+.t-q::before{content:"";display:block;width:12%;height:1px;background:rgba(243,229,245,.35);margin-bottom:1.1em}
+.t-p em{color:var(--dim)}
+.cover{display:flex;flex-direction:column;height:100%;box-sizing:border-box;position:relative;
+  justify-content:flex-start;align-items:flex-start;padding:6% 6% 0;
+  background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.18) 1px 2px,transparent 2px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,rgba(255,255,255,.12) 1px 2px,transparent 2px 3px),
+  linear-gradient(rgba(243,229,245,.10) 0%,rgba(32,15,58,.08) 50%,rgba(17,6,38,.55) 100%),
+  url("../../assets/img/photo/mv-20221028-003.jpg") center 30%/cover;
+  background-blend-mode:soft-light,soft-light,normal,normal;
+  box-shadow:inset 0 0 0 6px rgba(0,0,0,.22),inset 0 0 50px rgba(0,0,0,.55)}
+.cover h2{margin:0;font-weight:500;font-size:clamp(1rem,2.3vw,1.8rem);letter-spacing:.22em;color:#200F3A;
+  text-shadow:0 1px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.25)}
+.cover img{position:absolute;right:6%;bottom:6%;width:11%;opacity:.85}
+.cover.backcover{background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),
+  radial-gradient(120% 100% at 30% 20%,#2c1650,#170a30 70%,#0f0622)}
+.hint{margin-top:2vh;color:var(--dim);font-size:.75rem;letter-spacing:.25em}
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← ALBUMS</a>
+<div id="book">
+    <div class="page" data-density="hard"><div class="cover"><h2>DNIPRO IN DETAILS</h2><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221028-003.jpg" alt="Photograph 1" loading="lazy"></figure><p class="pencil">№ 01 · 28.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221028-004.jpg" alt="Photograph 2" loading="lazy"></figure><p class="pencil">№ 02 · 28.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221028-050.jpg" alt="Photograph 3" loading="lazy"></figure><p class="pencil">№ 03 · 28.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221028-053.jpg" alt="Photograph 4" loading="lazy"></figure><p class="pencil">№ 04 · 28.10.2022</p></div></div>
+    <div class="page"><div class="leaf portrait"><figure><img src="../../assets/img/photo/mv-20221028-057.jpg" alt="Photograph 5" loading="lazy"></figure><p class="pencil">№ 05 · 28.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221028-062.jpg" alt="Photograph 6" loading="lazy"></figure><p class="pencil">№ 06 · 28.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221028-088.jpg" alt="Photograph 7" loading="lazy"></figure><p class="pencil">№ 07 · 28.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221030-308.jpg" alt="Photograph 8" loading="lazy"></figure><p class="pencil">№ 08 · 30.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221030-310.jpg" alt="Photograph 9" loading="lazy"></figure><p class="pencil">№ 09 · 30.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221030-374.jpg" alt="Photograph 10" loading="lazy"></figure><p class="pencil">№ 10 · 30.10.2022</p></div></div>
+    <div class="page"><div class="leaf landscape"><figure><img src="../../assets/img/photo/mv-20221030-382.jpg" alt="Photograph 11" loading="lazy"></figure><p class="pencil">№ 11 · 30.10.2022</p></div></div>
+    <div class="page"><div class="leaf blank"></div></div>
+    <div class="page" data-density="hard"><div class="cover backcover"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"></div></div>
+</div>
+<p class="hint">DRAG A CORNER · OR CLICK</p>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+const book=new St.PageFlip(document.getElementById('book'),{
+  width:600,height:430,size:'stretch',minWidth:280,maxWidth:900,minHeight:200,maxHeight:640,
+  showCover:true,maxShadowOpacity:.55,mobileScrollSupport:false,usePortrait:true,autoSize:true});
+book.loadFromHTML(document.querySelectorAll('#book .page'));
+</script>
+</body>
+</html>
