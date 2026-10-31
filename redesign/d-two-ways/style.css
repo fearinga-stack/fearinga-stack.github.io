@@ -1,0 +1,104 @@
+/* D — TWO WAYS. Every page is a diptych: the camera on one side of the seam, the machine on the other. */
+:root{
+  --night:#200F3A;
+  --light:#F3E5F5;
+  --depth:#150830;
+  --hairline:rgba(243,229,245,.26);
+  --dim:rgba(243,229,245,.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--night);
+  color:var(--light);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--light);text-decoration:none}
+img{display:block}
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:5;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 1.3rem}
+.topbar.static{position:static;border-bottom:1px solid var(--hairline)}
+.topbar .mark img{height:36px;width:auto}
+.topbar nav{display:flex;gap:1.4rem;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
+.topbar nav a{color:var(--dim)}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+
+/* the diptych */
+.diptych{position:relative;height:100svh;overflow:hidden;user-select:none}
+.layer{position:absolute;inset:0}
+.layer img{width:100%;height:100%;object-fit:cover}
+.layer.machine{clip-path:inset(0 0 0 var(--seam,50%))}
+.seam-line{position:absolute;top:0;bottom:0;left:var(--seam,50%);width:1px;
+  background:var(--light);opacity:.85;z-index:3;pointer-events:none}
+.seam-handle{position:absolute;top:50%;left:var(--seam,50%);transform:translate(-50%,-50%);
+  z-index:3;pointer-events:none;border:1px solid var(--light);background:var(--depth);
+  color:var(--light);font-size:.65rem;letter-spacing:.22em;padding:.5rem .6rem;
+  text-transform:uppercase;white-space:nowrap}
+.diptych input[type=range]{position:absolute;inset:0;width:100%;height:100%;
+  opacity:0;cursor:ew-resize;z-index:4;-webkit-appearance:none;appearance:none}
+.diptych .veil{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(rgba(32,15,58,.42),rgba(32,15,58,.12) 35%,rgba(32,15,58,.55))}
+.diptych h1{position:absolute;z-index:3;left:0;right:0;top:19svh;text-align:center;
+  pointer-events:none;font-family:"Cormorant SC",serif;font-weight:500;
+  font-size:clamp(1.7rem,4.6vw,3.6rem);line-height:1.15;letter-spacing:.05em;
+  padding:0 1.2rem;text-shadow:0 1px 20px rgba(21,8,48,.8)}
+.diptych h1 span{display:block}
+.side-label{position:absolute;bottom:1.4rem;z-index:3;pointer-events:auto;
+  font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
+.side-label.camera{left:1.3rem}
+.side-label.machine-l{right:1.3rem;text-align:right}
+.side-label small{display:block;margin-top:.35rem;letter-spacing:.14em;
+  text-transform:none;color:var(--dim);font-size:.72rem}
+.side-label a{border-bottom:1px solid var(--hairline);padding-bottom:.15rem}
+
+/* two hands section */
+.hands{display:grid;grid-template-columns:1fr 1px 1fr;max-width:68rem;margin:0 auto;
+  padding:clamp(2.5rem,8vh,5rem) 1.3rem;gap:clamp(1.4rem,4vw,3rem)}
+.hands .seam{background:var(--hairline)}
+.hand h2{font-family:"Cormorant SC",serif;font-weight:500;font-size:1.6rem;letter-spacing:.06em}
+.hand p{margin-top:.9rem;font-size:1rem;line-height:1.65;opacity:.9}
+.hand .go{display:inline-block;margin-top:1.1rem;font-size:.7rem;letter-spacing:.3em;
+  text-transform:uppercase;border-bottom:1px solid var(--hairline);padding-bottom:.2rem}
+.hands-note{max-width:44rem;margin:0 auto;padding:0 1.3rem clamp(2.5rem,7vh,4rem);
+  text-align:center;font-family:"Cormorant SC",serif;
+  font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.4;color:var(--dim)}
+
+/* ledger pages (films / project): entries ride one side of a persistent seam */
+.ledger-head{max-width:68rem;margin:0 auto;padding:clamp(2rem,6vh,3.5rem) 1.3rem 0}
+.ledger-head .side{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
+.ledger-head h1{font-family:"Cormorant SC",serif;font-weight:500;
+  font-size:clamp(2.2rem,5.5vw,3.6rem);margin-top:.4rem}
+.ledger-head p.lead{margin-top:.9rem;max-width:36rem;line-height:1.65;opacity:.9}
+.ledger{max-width:68rem;margin:0 auto;padding:1.5rem 1.3rem 3rem;position:relative}
+.entry{display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(1rem,3vw,2.2rem);
+  padding:clamp(1.4rem,4vh,2.4rem) 0;align-items:center}
+.entry .seam{background:var(--hairline);align-self:stretch}
+.entry .pic img{width:100%;height:auto;border:1px solid var(--hairline)}
+.entry .txt h2{font-family:"Cormorant SC",serif;font-weight:500;font-size:clamp(1.5rem,3vw,2.1rem)}
+.entry .txt .meta{margin-top:.4rem;font-size:.68rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--dim)}
+.entry .txt p{margin-top:.7rem;line-height:1.6;opacity:.9}
+.entry .txt .go{display:inline-block;margin-top:.9rem;font-size:.68rem;letter-spacing:.3em;
+  text-transform:uppercase;border-bottom:1px solid var(--hairline);padding-bottom:.2rem}
+/* which side of the seam the image sits on */
+.entry.on-left .pic{order:0}.entry.on-left .seam{order:1}.entry.on-left .txt{order:2}
+.entry.on-right .txt{order:0;text-align:right}.entry.on-right .seam{order:1}.entry.on-right .pic{order:2}
+
+.foot{border-top:1px solid var(--hairline);padding:1.6rem 1.3rem 2.2rem;text-align:center;
+  font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
+.foot a{color:var(--dim)}
+.foot a:hover{color:var(--light)}
+.foot .sig{height:46px;width:auto;margin:1rem auto 0;opacity:.9;display:block}
+
+@media (max-width:700px){
+  .hands{grid-template-columns:1fr;gap:1.8rem}
+  .hands .seam{height:1px;width:100%}
+  .entry{grid-template-columns:1fr;gap:.9rem}
+  .entry .seam{display:none}
+  .entry.on-right .txt{text-align:left;order:1}
+  .entry.on-right .pic{order:0}
+  .diptych h1{top:16svh}
+  .side-label small{display:none}
+}

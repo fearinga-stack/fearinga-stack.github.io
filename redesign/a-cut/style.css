@@ -1,0 +1,68 @@
+/* A — THE CUT. The site is an edit: full-frame shots, hard cuts, a counter. */
+:root{
+  --night:#200F3A;
+  --light:#F3E5F5;
+  --depth:#150830;
+  --hairline:rgba(243,229,245,.28); /* tint of --light */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y mandatory}
+body{
+  background:var(--night);
+  color:var(--light);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--light);text-decoration:none}
+img{display:block}
+
+/* fixed chrome */
+.chrome{position:fixed;inset:0;pointer-events:none;z-index:10;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:1.1rem 1.25rem;mix-blend-mode:normal}
+.chrome a{pointer-events:auto}
+.chrome-top,.chrome-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.mark img{height:34px;width:auto;opacity:.95}
+.counter{font-variant-numeric:tabular-nums;font-size:.8rem;letter-spacing:.22em;opacity:.85}
+.chrome-nav{display:flex;gap:1.4rem;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase}
+.chrome-nav a{opacity:.75}
+.chrome-nav a:hover,.chrome-nav a[aria-current]{opacity:1;border-bottom:1px solid var(--hairline)}
+.hint{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;opacity:.6}
+
+/* panels */
+.cut{height:100svh;scroll-snap-align:start;scroll-snap-stop:always;
+  position:relative;overflow:hidden;display:flex;align-items:flex-end}
+.cut>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cut .scrim{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(21,8,48,.88) 0%,rgba(21,8,48,.25) 34%,rgba(21,8,48,0) 60%)}
+.slate{position:relative;z-index:2;padding:0 1.25rem 4.2rem;max-width:60rem}
+.slate h2,.slate h1{font-family:"Cormorant SC",serif;font-weight:500;
+  font-size:clamp(1.9rem,4.5vw,3.4rem);line-height:1.05;letter-spacing:.04em}
+.slate .meta{margin-top:.5rem;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;opacity:.8}
+.slate .line{margin-top:.6rem;font-size:clamp(.95rem,1.4vw,1.1rem);line-height:1.5;max-width:34rem;opacity:.92}
+.slate .go{display:inline-block;margin-top:.9rem;font-size:.72rem;letter-spacing:.3em;
+  text-transform:uppercase;border-bottom:1px solid var(--hairline);padding-bottom:.2rem}
+a.cut-link{display:block;color:inherit}
+
+/* text-only panels (open / close) */
+.cut.title-card{align-items:center;justify-content:center;background:var(--night)}
+.title-card .slate{padding:1.25rem;text-align:center;max-width:46rem}
+.title-card h1{font-size:clamp(2.6rem,7vw,5.2rem)}
+.title-card .line{margin-left:auto;margin-right:auto}
+.title-card .sig{height:72px;width:auto;margin:1.6rem auto 0;opacity:.9}
+.title-card .credits{margin-top:1.3rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+  font-size:.72rem;letter-spacing:.26em;text-transform:uppercase}
+.title-card .credits a{opacity:.75;border-bottom:1px solid transparent}
+.title-card .credits a:hover{opacity:1;border-bottom-color:var(--hairline)}
+
+/* interstitial prose cut (project page) */
+.cut.prose-card{align-items:center;background:var(--depth)}
+.prose-card .slate{padding:1.25rem;max-width:40rem}
+.prose-card h2{font-size:clamp(1.6rem,3.6vw,2.6rem)}
+.prose-card p{margin-top:1rem;font-size:clamp(1rem,1.5vw,1.15rem);line-height:1.65;opacity:.95}
+
+@media (max-width:640px){
+  .chrome{padding:.9rem 1rem}
+  .chrome-nav{gap:.9rem;letter-spacing:.2em}
+  .slate{padding:0 1rem 4.6rem}
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Films — Amata Lynner — One Wall</title>
+  <meta name="description" content="Short films directed by Amata Lynner using generative tools. Sci-fi and drama, story-first direction.">
+  <link rel="icon" type="image/png" href="../../assets/img/brand/monogram-lavender.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="lintel">
+    <nav class="rooms left" aria-label="Site"><a href="index.html">Amata Lynner</a></nav>
+    <a class="mark" href="index.html"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL — Amata Lynner"></a>
+    <nav class="rooms right" aria-label="Rooms">
+      <a href="films.html" aria-current="page">Films</a>
+      <a href="project.html">Kherson</a>
+    </nav>
+  </header>
+
+  <div class="wall-text">
+    <h1>Films</h1>
+    <p class="medium">The film room</p>
+    <p class="statement">Short films directed with generative tools. Story first — the technology is just the camera. Choose a title; its frame hangs on the wall.</p>
+  </div>
+
+  <main class="index-room">
+    <ul class="title-list" id="list">
+      <li aria-current="true"><button type="button" data-i="0">Step Sequence<span class="m">2026 · Drama · 5.5 min</span></button></li>
+      <li><button type="button" data-i="1">+<span class="m">2026 · Animated short · 1.51 min</span></button></li>
+      <li><button type="button" data-i="2">nominal<span class="m">2026 · Sci-fi · 4 min</span></button></li>
+      <li><button type="button" data-i="3">we are not alone<span class="m">2026 · Sci-fi · 1 min</span></button></li>
+      <li><button type="button" data-i="4">0.6%<span class="m">2026 · Festival short · 12 min · In production</span></button></li>
+    </ul>
+
+    <div class="index-hang hang">
+      <figure class="work"><img id="hang-img" src="../../assets/img/films/step-sequence-hero.jpg" alt="Still from Step Sequence"></figure>
+      <div class="wall-label">
+        <p class="caption" id="hang-caption">Years after putting her own dream away, a woman returns to the rink where it started — and has to decide whether joy is still worth the risk.</p>
+        <a class="visit" id="hang-visit" href="../../step-sequence.html">Enter the film →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="room-foot">
+    <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  </footer>
+
+  <script>
+  (function () {
+    var films = [
+      { img: '../../assets/img/films/step-sequence-hero.jpg', alt: 'Still from Step Sequence', href: '../../step-sequence.html',
+        caption: 'Years after putting her own dream away, a woman returns to the rink where it started — and has to decide whether joy is still worth the risk.' },
+      { img: '../../assets/img/films/plus-hero.jpg', alt: 'Still from +', href: '../../plus.html',
+        caption: 'Sixteen scenes from one ordinary day in a city where danger became part of everyday life.' },
+      { img: '../../assets/img/films/nominal-hero.jpg', alt: 'Still from nominal', href: '../../nominal.html',
+        caption: 'A team lands at the last station on the list, looking for what happened to time. The station is empty. Only the keeper’s log is left.' },
+      { img: '../../assets/img/films/wearenotalone-hero.jpg', alt: 'Still from we are not alone', href: '../../wearenotalone.html',
+        caption: 'A first-contact signal arrives. What answers isn’t what anyone expected.' },
+      { img: '../../assets/img/films/06percents-hero.jpg', alt: 'Still from 0.6%', href: '../../06percents.html',
+        caption: 'Three people discover in one day that free will isn’t where they thought it was.' }
+    ];
+    var list = document.getElementById('list');
+    var img = document.getElementById('hang-img'),
+        caption = document.getElementById('hang-caption'),
+        visit = document.getElementById('hang-visit');
+    list.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      var f = films[+b.dataset.i];
+      img.src = f.img; img.alt = f.alt;
+      caption.textContent = f.caption;
+      visit.href = f.href;
+      Array.prototype.forEach.call(list.children, function (li) { li.removeAttribute('aria-current'); });
+      b.parentNode.setAttribute('aria-current', 'true');
+    });
+  })();
+  </script>
+</body>
+</html>

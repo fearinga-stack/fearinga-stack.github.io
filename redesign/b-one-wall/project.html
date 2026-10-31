@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kherson, 2023 — Amata Lynner — One Wall</title>
+  <meta name="description" content="Kherson, 2023 — documentary photography by Amata Lynner.">
+  <link rel="icon" type="image/png" href="../../assets/img/brand/monogram-lavender.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="lintel">
+    <nav class="rooms left" aria-label="Site"><a href="index.html">Amata Lynner</a></nav>
+    <a class="mark" href="index.html"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL — Amata Lynner"></a>
+    <nav class="rooms right" aria-label="Rooms">
+      <a href="films.html">Films</a>
+      <a href="project.html" aria-current="page">Kherson</a>
+    </nav>
+  </header>
+
+  <div class="wall-text">
+    <h1>Kherson, 2023</h1>
+    <p class="medium">Documentary photography · eleven prints</p>
+    <p class="statement">The breach of Kakhovka dam resulted in flooding cities and villages on both banks of Dnipro and caused humanitarian catastrophe. Some villages were left without water: access to some of the cities and villages is still blocked because of the floods. Inhabitants are left without food, pot water and even technical water supply is limited.</p>
+  </div>
+
+  <main class="wall">
+    <div class="hang">
+      <figure class="work"><img id="hang-img" src="../../assets/img/photo/mv-20230614-147.jpg" alt="Photograph from Kherson, 2023"></figure>
+      <div class="wall-label">
+        <p class="medium" id="hang-medium">I — Kherson, June 2023</p>
+      </div>
+      <div class="walk">
+        <button type="button" id="prev" aria-label="Previous print">← Walk</button>
+        <span class="where" id="where">Print 1 of 11</span>
+        <button type="button" id="next" aria-label="Next print">Walk →</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="room-foot">
+    <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  </footer>
+
+  <script>
+  (function () {
+    var base = '../../assets/img/photo/';
+    var prints = ['mv-20230614-147.jpg','mv-20230614-119.jpg','mv-20230614-121.jpg','mv-20230614-144.jpg',
+                  'mv-20230614-171.jpg','mv-20230614-204.jpg','mv-20230614-210.jpg','mv-20230614-216.jpg',
+                  'mv-20230614-268.jpg','mv-20230614-271.jpg','mv-20230614-182.jpg'];
+    var roman = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI'];
+    var i = 0;
+    var img = document.getElementById('hang-img'),
+        medium = document.getElementById('hang-medium'),
+        where = document.getElementById('where');
+    function show(n) {
+      i = (n + prints.length) % prints.length;
+      img.src = base + prints[i];
+      medium.textContent = roman[i] + ' — Kherson, June 2023';
+      where.textContent = 'Print ' + (i + 1) + ' of ' + prints.length;
+    }
+    document.getElementById('prev').addEventListener('click', function () { show(i - 1); });
+    document.getElementById('next').addEventListener('click', function () { show(i + 1); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(i + 1);
+      if (e.key === 'ArrowLeft') show(i - 1);
+    });
+  })();
+  </script>
+</body>
+</html>

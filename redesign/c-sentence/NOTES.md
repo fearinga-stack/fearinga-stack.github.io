@@ -1,0 +1,7 @@
+# C — Sentence First
+
+**The idea in three sentences.** Her own working rule — "if the idea does not work as a sentence, no amount of rendering will save it" — becomes the interface: the site leads with sentences set huge in Cormorant SC, and every work is represented by its logline, not its thumbnail. Pointing at a sentence lets the image rise dimly behind the words as *proof*, and only following the link gives you the full picture — the hierarchy (words above, image beneath) is itself the argument. On the Kherson page the proportions invert honestly for documentary work: the text stays large and leading, the photographs follow each sentence at a deliberately subordinate width.
+
+**What a visitor remembers after leaving.** A sentence — probably "the station is empty, only the keeper's log is left" — and the claim behind the whole site: this is a filmmaker who writes first. Nobody else's portfolio dares to show words before pictures.
+
+**What it costs to build fully.** Lowest of the four: it is almost pure typography and the proof layer is ~25 lines of JS; images need no special exports. The cost is editorial discipline — every project must have a logline strong enough to carry its slot (the current loglines already are), and the touch behaviour (first tap = proof, second tap = enter) needs real-device testing. Risk to accept consciously: a commercial client who only skims gets fewer immediate visuals than in any other direction — the Commercial page would need its own, more image-forward treatment.

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redesign proposals — Amata Lynner</title>
+  <meta name="description" content="Four redesign directions for amatalynner.com, side by side.">
+  <link rel="icon" type="image/png" href="../assets/img/brand/monogram-lavender.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
+  <style>
+    :root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--hairline:rgba(243,229,245,.22);--dim:rgba(243,229,245,.6)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--night);color:var(--light);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:var(--light);text-decoration:none}
+    header{text-align:center;padding:3rem 1rem 1rem}
+    header img{height:56px;width:auto;margin:0 auto 1rem;display:block}
+    h1{font-family:"Cormorant SC",serif;font-weight:500;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:.05em}
+    .sub{margin-top:.7rem;color:var(--dim);font-size:.95rem;max-width:40rem;margin-left:auto;margin-right:auto;padding:0 1rem;line-height:1.6}
+    .board{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:84rem;margin:0 auto;padding:2.5rem 1.25rem 3rem}
+    .variant{border:1px solid var(--hairline);background:var(--depth);display:flex;flex-direction:column}
+    .variant .shot{display:block;border-bottom:1px solid var(--hairline)}
+    .variant .shot img{width:100%;height:auto;display:block}
+    .variant .body{padding:1.2rem 1.2rem 1.4rem;display:flex;flex-direction:column;flex:1;gap:.6rem}
+    .k{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
+    h2{font-family:"Cormorant SC",serif;font-weight:500;font-size:1.5rem;letter-spacing:.04em}
+    .variant p{font-size:.92rem;line-height:1.6;opacity:.9}
+    .variant .remember{font-style:italic;color:var(--dim)}
+    .links{margin-top:auto;padding-top:.8rem;display:flex;flex-wrap:wrap;gap:.9rem;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase}
+    .links a{border-bottom:1px solid var(--hairline);padding-bottom:.15rem}
+    footer{text-align:center;padding:0 1rem 2.5rem;color:var(--dim);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../assets/img/brand/monogram-lavender.png" alt="AL — Amata Lynner">
+    <h1>Four redesign directions</h1>
+    <p class="sub">Proposals, not finals. Each is a clickable prototype — home, films, and the Kherson 2023 reportage — built from the real content and the existing palette. The variants differ in the idea, not the layout: what is the one thing a visitor carries out the door?</p>
+  </header>
+
+  <main class="board">
+    <article class="variant">
+      <a class="shot" href="a-cut/index.html"><img src="shots/a-home-desktop.png" alt="Variant A home page, desktop" loading="lazy"></a>
+      <div class="body">
+        <p class="k">A · time &amp; sequence</p>
+        <h2>The Cut</h2>
+        <p>The site behaves like an edit: full-bleed frames, hard scroll-snap cuts, a frame counter in the corner. You move through the work in the order she cut it.</p>
+        <p class="remember">Remembered: "her site doesn't scroll — it cuts."</p>
+        <div class="links"><a href="a-cut/index.html">Home</a><a href="a-cut/films.html">Films</a><a href="a-cut/project.html">Kherson</a><a href="a-cut/NOTES.md">Notes</a></div>
+      </div>
+    </article>
+
+    <article class="variant">
+      <a class="shot" href="b-one-wall/index.html"><img src="shots/b-home-desktop.png" alt="Variant B home page, desktop" loading="lazy"></a>
+      <div class="body">
+        <p class="k">B · the image as object</p>
+        <h2>One Wall</h2>
+        <p>A dark viewing room: one work hangs at a time, matted in a hairline frame with a proper wall label, and you walk past the works. The grid is banned everywhere.</p>
+        <p class="remember">Remembered: standing in front of one photograph, properly, in the dark.</p>
+        <div class="links"><a href="b-one-wall/index.html">Home</a><a href="b-one-wall/films.html">Films</a><a href="b-one-wall/project.html">Kherson</a><a href="b-one-wall/NOTES.md">Notes</a></div>
+      </div>
+    </article>
+
+    <article class="variant">
+      <a class="shot" href="c-sentence/index.html"><img src="shots/c-home-desktop.png" alt="Variant C home page, desktop" loading="lazy"></a>
+      <div class="body">
+        <p class="k">C · radically typographic</p>
+        <h2>Sentence First</h2>
+        <p>Her rule — "if the idea does not work as a sentence, no amount of rendering will save it" — becomes the interface. Works are loglines set huge; the image rises behind the words only as proof.</p>
+        <p class="remember">Remembered: a sentence, and the filmmaker who writes first.</p>
+        <div class="links"><a href="c-sentence/index.html">Home</a><a href="c-sentence/films.html">Films</a><a href="c-sentence/project.html">Kherson</a><a href="c-sentence/NOTES.md">Notes</a></div>
+      </div>
+    </article>
+
+    <article class="variant">
+      <a class="shot" href="d-two-ways/index.html"><img src="shots/d-home-desktop.png" alt="Variant D home page, desktop" loading="lazy"></a>
+      <div class="body">
+        <p class="k">D · identity as architecture</p>
+        <h2>Two Ways</h2>
+        <p>"I make images two ways — with a camera, and with a machine that dreams." The home is one diptych with a draggable seam between a photograph and an AI frame; the seam runs through every page.</p>
+        <p class="remember">Remembered: dragging the line and watching the photograph become the dream.</p>
+        <div class="links"><a href="d-two-ways/index.html">Home</a><a href="d-two-ways/films.html">Films</a><a href="d-two-ways/project.html">Kherson</a><a href="d-two-ways/NOTES.md">Notes</a></div>
+      </div>
+    </article>
+  </main>
+
+  <footer>Desktop + mobile screenshots of each home page live in redesign/shots/.</footer>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amata Lynner — Two Ways</title>
+  <meta name="description" content="Ukrainian visual storyteller. AI films, commercial video, and documentary photography.">
+  <link rel="icon" type="image/png" href="../../assets/img/brand/monogram-lavender.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="mark" href="index.html"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL — Amata Lynner"></a>
+    <nav aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="films.html">Films</a>
+      <a href="project.html">Kherson</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="diptych" id="diptych" style="--seam:50%">
+      <div class="layer camera">
+        <img src="../../assets/img/photo/mv-20240726-056.jpg" alt="Documentary photograph by Amata Lynner">
+      </div>
+      <div class="layer machine">
+        <img src="../../assets/img/films/step-sequence-hero.jpg" alt="Frame from the AI film Step Sequence">
+      </div>
+      <div class="veil"></div>
+      <div class="seam-line"></div>
+      <div class="seam-handle">◂ drag ▸</div>
+      <h1><span>I make images two ways —</span><span>with a camera, and with a machine that dreams.</span></h1>
+      <div class="side-label camera"><a href="project.html">The Camera</a><small>documentary · fine art · people</small></div>
+      <div class="side-label machine-l"><a href="films.html">The Machine</a><small>short films · commercial · series</small></div>
+      <input type="range" id="seam" min="0" max="100" value="50" step="0.1"
+             aria-label="Move the seam between the camera and the machine">
+    </section>
+
+    <section class="hands">
+      <div class="hand">
+        <h2>The Camera</h2>
+        <p>Documentary and fine art photography. Long-form projects about people and the places that shape them. This is where I learned composition, patience, and the value of an imperfect frame that happens to be true.</p>
+        <a class="go" href="project.html">Kherson, 2023 →</a>
+      </div>
+      <div class="seam" aria-hidden="true"></div>
+      <div class="hand">
+        <h2>The Machine</h2>
+        <p>AI-directed short films, commercial video, and series. Sci-fi that asks a question rather than just showing a spectacle. Brand work that looks like cinema, not like a template.</p>
+        <a class="go" href="films.html">Films →</a>
+      </div>
+    </section>
+
+    <p class="hands-note">The two are not separate careers. My films are framed like documentaries. My photographs are graded like film stills.</p>
+  </main>
+
+  <footer class="foot">
+    <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a> · <a href="https://www.instagram.com/amata_lynner/">Instagram</a> · <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a> · <a href="https://www.youtube.com/@alynner">YouTube</a> · <a href="https://www.behance.net/amatalynner">Behance</a></p>
+    <p style="margin-top:.6rem">© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+    <img class="sig" src="../../assets/img/brand/monogram-lavender.png" alt="AL — monogram of Amata Lynner">
+  </footer>
+
+  <script>
+  // The seam: one slider moves the border between the two ways of making images.
+  (function () {
+    var d = document.getElementById('diptych');
+    var r = document.getElementById('seam');
+    r.addEventListener('input', function () { d.style.setProperty('--seam', r.value + '%'); });
+  })();
+  </script>
+</body>
+</html>

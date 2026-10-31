@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amata Lynner — One Wall</title>
+  <meta name="description" content="Ukrainian visual storyteller. AI films, commercial video, and documentary photography.">
+  <link rel="icon" type="image/png" href="../../assets/img/brand/monogram-lavender.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="lintel">
+    <nav class="rooms left" aria-label="Site"><a href="index.html" aria-current="page">Amata Lynner</a></nav>
+    <a class="mark" href="index.html"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL — Amata Lynner"></a>
+    <nav class="rooms right" aria-label="Rooms">
+      <a href="films.html">Films</a>
+      <a href="project.html">Kherson</a>
+    </nav>
+  </header>
+
+  <main class="wall">
+    <div class="hang" id="hang">
+      <figure class="work"><img id="hang-img" src="../../assets/img/photo/mv-20240726-056.jpg" alt="Photograph by Amata Lynner"></figure>
+      <div class="wall-label">
+        <p class="title"><a id="hang-title" href="../../projects.html">Photography</a></p>
+        <p class="medium" id="hang-medium">Documentary · fine art · people</p>
+        <p class="caption" id="hang-caption">Ukrainian visual storyteller. AI films, commercial video, and documentary photography.</p>
+      </div>
+      <div class="walk">
+        <button type="button" id="prev" aria-label="Previous work">← Walk</button>
+        <span class="where" id="where">Wall 1 of 7</span>
+        <button type="button" id="next" aria-label="Next work">Walk →</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="room-foot">
+    <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a> · <a href="https://www.instagram.com/amata_lynner/">Instagram</a> · <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a> · <a href="https://www.youtube.com/@alynner">YouTube</a> · <a href="https://www.behance.net/amatalynner">Behance</a></p>
+    <p style="margin-top:.5rem">© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  </footer>
+
+  <script>
+  // The room holds seven walls; the visitor walks past one work at a time.
+  (function () {
+    var works = [
+      { img: '../../assets/img/photo/mv-20240726-056.jpg', alt: 'Photograph by Amata Lynner',
+        title: 'Photography', href: '../../projects.html',
+        medium: 'Documentary · fine art · people',
+        caption: 'Ukrainian visual storyteller. AI films, commercial video, and documentary photography.' },
+      { img: '../../assets/img/films/step-sequence-hero.jpg', alt: 'Still from Step Sequence',
+        title: 'Step Sequence', href: '../../step-sequence.html',
+        medium: '2026 · Drama · 5.5 min · AI film',
+        caption: 'Years after putting her own dream away, a woman returns to the rink where it started.' },
+      { img: '../../assets/img/photo/mv-20230614-147.jpg', alt: 'Photograph from Kherson, 2023',
+        title: 'Kherson, 2023', href: 'project.html',
+        medium: 'Documentary photography',
+        caption: 'The breach of Kakhovka dam resulted in flooding cities and villages on both banks of Dnipro.' },
+      { img: '../../assets/img/films/nominal-hero.jpg', alt: 'Still from nominal',
+        title: 'nominal', href: '../../nominal.html',
+        medium: '2026 · Sci-fi · 4 min · AI film',
+        caption: 'The station is empty. Only the keeper’s log is left.' },
+      { img: '../../assets/img/photo/mv-20220130-117.jpg', alt: 'Photograph from Roadtrip Normandie',
+        title: 'Roadtrip Normandie', href: '../../projects/normandie.html',
+        medium: 'Photography',
+        caption: 'A subtle change of an angle changes perspective. In photography, too.' },
+      { img: '../../assets/img/films/06percents-hero.jpg', alt: 'Still from 0.6%',
+        title: '0.6%', href: '../../06percents.html',
+        medium: '2026 · Festival short · 12 min · In production',
+        caption: 'Three people discover in one day that free will isn’t where they thought it was.' },
+      { img: '../../assets/img/films/wearenotalone-hero.jpg', alt: 'Still from we are not alone',
+        title: 'we are not alone', href: '../../wearenotalone.html',
+        medium: '2026 · Sci-fi · 1 min · AI film',
+        caption: 'A first-contact signal arrives. What answers isn’t what anyone expected.' }
+    ];
+    var i = 0;
+    var img = document.getElementById('hang-img'),
+        title = document.getElementById('hang-title'),
+        medium = document.getElementById('hang-medium'),
+        caption = document.getElementById('hang-caption'),
+        where = document.getElementById('where');
+    function show(n) {
+      i = (n + works.length) % works.length;
+      var w = works[i];
+      img.src = w.img; img.alt = w.alt;
+      title.textContent = w.title; title.href = w.href;
+      medium.textContent = w.medium;
+      caption.textContent = w.caption;
+      where.textContent = 'Wall ' + (i + 1) + ' of ' + works.length;
+    }
+    document.getElementById('prev').addEventListener('click', function () { show(i - 1); });
+    document.getElementById('next').addEventListener('click', function () { show(i + 1); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(i + 1);
+      if (e.key === 'ArrowLeft') show(i - 1);
+    });
+  })();
+  </script>
+</body>
+</html>

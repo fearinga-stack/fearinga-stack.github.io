@@ -1,0 +1,7 @@
+# D — Two Ways
+
+**The idea in three sentences.** The whole site is built on her sentence "I make images two ways — with a camera, and with a machine that dreams": the homepage is one full-screen diptych where a draggable seam slides between a documentary photograph and an AI frame, the same hand on both sides. The seam then persists as a structural hairline through every inner page — films live on the Machine side of it, reportage on the Camera side, entries alternating across the line. It makes her unusual double identity (Speos-trained documentary photographer *and* AI director) the architecture instead of a paragraph in About.
+
+**What a visitor remembers after leaving.** The drag — pulling the line across the screen and watching a real photograph become a dreamed frame without the grade changing. "She's the one who does both" is exactly the position she owns and nobody can copy.
+
+**What it costs to build fully.** Medium: the seam slider is one range input plus a CSS clip-path (~10 lines of JS, works with keyboard and touch for free); the ledger layout is plain CSS grid. The honest costs are two: the hero diptych needs an art-directed *pair* of images with compatible horizon and tone (swapping the pair seasonally is the maintenance ritual), and the camera/machine split must be kept honest across the whole site map — Commercial and People pages need a decided side, or a deliberate "on the seam" treatment. On phones the drag still works horizontally, but the hero pair should be chosen to survive a centre crop at 390px.
