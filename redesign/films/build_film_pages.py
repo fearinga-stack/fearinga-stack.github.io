@@ -109,6 +109,9 @@ def build(slug, i, extra_all, film_meta):
             items = blocks(chunk)
             label = next((x[1] for x in items if x[0] == "label"), "STILLS")
             stills = [x[1] for x in items if x[0] == "img"]
+            on_top = {s.split("/")[-1] for s in (extra.get("frames") or f["frames"])}
+            if all(u.split("/")[-1] in on_top for u in stills):
+                continue                 # the strip at the top already shows these
             frames = "".join(f'<figure class="frame"><img src="{u}" alt="Still from {html.escape(title)}" loading="lazy">'
                              f'<span class="fn">{k + 1:02d}</span></figure>' for k, u in enumerate(stills))
             body.append(f'<section class="stills-block"><h2 class="label wide">{label}</h2>'
