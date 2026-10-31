@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital@0;1&display=swap">
+<link rel="stylesheet" href="../../assets/site/films/strip.css">
+<style>
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.55);--base:#0b0710;--frameh:clamp(96px,11.5vw,158px)}
+:root{--hair:rgba(243,229,245,.2)}
+
+.topbar{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 16px 1.6rem;padding-top:max(1rem,env(safe-area-inset-top,0px))}
+/* gold from her roses (#DBA048, petal median): a grain under the header that thins into the night, and sparks
+   over the whole page (31.10, her call); the home keeps its photograph and a plain dark scrim instead */
+.topbar::before{content:"";position:absolute;left:0;right:0;top:0;height:220px;z-index:-1;pointer-events:none;
+  background:url(assets/img/site/header-grain.png) 0 0/1200px 220px repeat-x,
+  linear-gradient(to bottom,rgba(219,160,72,.12),rgba(219,160,72,.035) 50%,rgba(219,160,72,0))}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:url(assets/img/site/sparks-gold.png) 0 0/1000px 1000px repeat;opacity:.55}
+main,section,article,.films-head,.site-foot{position:relative;z-index:1}
+.topbar .mark img{height:46px;width:auto;display:block}
+.topbar nav{display:flex;gap:clamp(.8rem,2vw,1.6rem);flex-wrap:wrap;justify-content:flex-end;
+  font:500 clamp(1.05rem,1.3vw,1.25rem) "Cormorant SC",serif;letter-spacing:.16em}
+.topbar nav a{color:rgba(243,229,245,.84);text-shadow:0 1px 10px rgba(0,0,0,.7);text-decoration:none}
+.topbar nav a:hover,.topbar nav a[aria-current]{color:var(--light)}
+@media (max-width:600px){.topbar .mark img{height:36px}.topbar nav{gap:.25rem .8rem;font-size:.86rem;letter-spacing:.08em;max-width:15rem}}
+.site-foot{border-top:1px solid var(--hair);padding:2rem 16px 3rem;text-align:center;font:500 .92rem "Cormorant SC",serif;letter-spacing:.2em;color:var(--dim)}
+.site-foot nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:var(--light)}
+.site-foot img{height:30px;width:auto;margin:1.4rem auto 0;display:block;opacity:.8}
+
+body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant SC",Georgia,serif;padding:max(9vh,5.5rem) 0 0;overflow-x:hidden}
+main{margin-bottom:12vh}
+.films-head{max-width:72rem;margin:0 auto 3.5rem;padding:0 16px;text-align:center}
+.films-head h1{font-weight:500;letter-spacing:.16em;font-size:clamp(1.3rem,2.2vw,1.8rem);margin:0}
+.films-head p{margin:.6rem auto 0;max-width:36rem;color:var(--dim);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.05rem}
+.film{margin:0 0 clamp(3rem,7vh,5rem)}
+.caption{max-width:72rem;margin:1.1rem auto 0;padding:0 16px;display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:.4rem 2rem;align-items:baseline}
+.caption h2{margin:0;font-weight:500;letter-spacing:.1em;font-size:clamp(1.15rem,1.8vw,1.5rem)}
+.caption h2 a{color:inherit;text-decoration:none}
+.logline{margin:0;font-family:"Cormorant Garamond",serif;font-size:1.08rem;line-height:1.5;color:rgba(243,229,245,.86)}
+.meta{grid-column:2;margin:0;font-size:.72rem;letter-spacing:.22em;color:var(--dim)}
+.awards{grid-column:2;margin:.2rem 0 0;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.98rem;color:rgba(243,229,245,.75)}
+@media (max-width:640px){.caption{grid-template-columns:1fr}.meta,.awards{grid-column:1}}
+</style>
+
+<style>
+.topbar::before{display:none}
+body::before{background:url(pollen-gold.png) center top/100% auto no-repeat,
+  linear-gradient(to bottom,rgba(219,160,72,.10),rgba(219,160,72,.03) 28%,rgba(219,160,72,0) 45%),
+  url(../../assets/img/site/sparks-gold.png) 0 0/1000px 1000px repeat;opacity:.7}
+</style>
+
+<style>
+.winks{position:fixed;inset:0;z-index:0;pointer-events:none}
+.winks i{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;opacity:0;
+  background:radial-gradient(circle,rgba(255,226,160,1) 0,rgba(219,160,72,.85) 22%,rgba(219,160,72,0) 70%);
+  animation:wink var(--d) ease-in-out var(--w) infinite}
+@keyframes wink{0%,100%{opacity:0;transform:scale(.4)}6%{opacity:.95;transform:scale(1.25)}14%{opacity:0;transform:scale(.6)}}
+@media (prefers-reduced-motion:reduce){.winks{display:none}}
+</style>
+</head>
+<body>
+<div class="winks" aria-hidden="true"><i style="top:7.8%;left:12.7%;width:8px;height:8px;margin:-4.0px 0 0 -4.0px;--d:9.8s;--w:-1.5s"></i><i style="top:1.6%;left:54.6%;width:8px;height:8px;margin:-4.0px 0 0 -4.0px;--d:9.0s;--w:-8.9s"></i><i style="top:7.4%;left:53.4%;width:8px;height:8px;margin:-4.0px 0 0 -4.0px;--d:8.9s;--w:-1.5s"></i><i style="top:8.6%;left:91.6%;width:12px;height:12px;margin:-6.0px 0 0 -6.0px;--d:7.2s;--w:-4.6s"></i><i style="top:24.2%;left:21.2%;width:12px;height:12px;margin:-6.0px 0 0 -6.0px;--d:9.2s;--w:-5.7s"></i><i style="top:3.5%;left:60.0%;width:10px;height:10px;margin:-5.0px 0 0 -5.0px;--d:11.7s;--w:-5.9s"></i><i style="top:8.2%;left:29.3%;width:18px;height:18px;margin:-9.0px 0 0 -9.0px;--d:13.6s;--w:-11.1s"></i><i style="top:25.4%;left:3.7%;width:12px;height:12px;margin:-6.0px 0 0 -6.0px;--d:9.0s;--w:-6.4s"></i><i style="top:25.6%;left:50.8%;width:14px;height:14px;margin:-7.0px 0 0 -7.0px;--d:9.9s;--w:-5.9s"></i><i style="top:14.1%;left:24.9%;width:8px;height:8px;margin:-4.0px 0 0 -4.0px;--d:8.8s;--w:-7.0s"></i><i style="top:37.8%;left:61.9%;width:14px;height:14px;margin:-7.0px 0 0 -7.0px;--d:9.0s;--w:-4.8s"></i><i style="top:77.1%;left:16.6%;width:10px;height:10px;margin:-5.0px 0 0 -5.0px;--d:11.7s;--w:-0.8s"></i><i style="top:73.1%;left:44.5%;width:18px;height:18px;margin:-9.0px 0 0 -9.0px;--d:8.3s;--w:-3.6s"></i><i style="top:54.2%;left:55.5%;width:8px;height:8px;margin:-4.0px 0 0 -4.0px;--d:13.3s;--w:-1.3s"></i><i style="top:15.4%;left:37.8%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;--d:5.1s;--w:-4.4s"></i><i style="top:11.5%;left:46.5%;width:6px;height:6px;margin:-3.0px 0 0 -3.0px;--d:7.2s;--w:-2.4s"></i><i style="top:22.7%;left:71.9%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;--d:5.3s;--w:-5.0s"></i><i style="top:5.9%;left:24.8%;width:6px;height:6px;margin:-3.0px 0 0 -3.0px;--d:5.0s;--w:-2.5s"></i><i style="top:3.0%;left:68.1%;width:4px;height:4px;margin:-2.0px 0 0 -2.0px;--d:8.1s;--w:-7.1s"></i><i style="top:7.4%;left:23.5%;width:4px;height:4px;margin:-2.0px 0 0 -2.0px;--d:8.1s;--w:-7.2s"></i><i style="top:29.3%;left:40.1%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;--d:6.0s;--w:-0.3s"></i><i style="top:28.3%;left:7.3%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;--d:6.2s;--w:-3.1s"></i><i style="top:8.3%;left:72.7%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;--d:8.3s;--w:-8.0s"></i><i style="top:4.8%;left:57.6%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;--d:8.5s;--w:-1.7s"></i><i style="top:28.7%;left:14.8%;width:6px;height:6px;margin:-3.0px 0 0 -3.0px;--d:8.6s;--w:-4.3s"></i><i style="top:64.8%;left:90.4%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;--d:6.4s;--w:-2.5s"></i><i style="top:77.1%;left:16.0%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;--d:8.7s;--w:-6.3s"></i><i style="top:38.3%;left:55.3%;width:4px;height:4px;margin:-2.0px 0 0 -2.0px;--d:7.2s;--w:-1.1s"></i><i style="top:79.2%;left:57.2%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;--d:4.7s;--w:-4.0s"></i><i style="top:92.1%;left:24.7%;width:4px;height:4px;margin:-2.0px 0 0 -2.0px;--d:7.3s;--w:-0.3s"></i></div>
+<header class="topbar">
+  <a class="mark" href="../../index.html" aria-label="Amata Lynner, home"><img src="../../assets/img/brand/monogram-lavender.png" alt="AL"></a>
+  <nav aria-label="Main">
+    <a href="../../films.html" aria-current="page">Films</a>
+    <a href="../../projects.html">Photography</a>
+    <a href="../../commercial.html">Commercial</a>
+    <a href="../../about.html">About</a>
+    <a href="../../contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+<header class="films-head"><h1>Films</h1><p>Short films directed with generative tools. Story first — the technology is just the camera.</p></header>
+  <article class="film">
+    <a class="strip" href="../../step-sequence.html" aria-label="Step Sequence">
+      <div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>STEP SEQUENCE · 2026 · DRAMA · 5.5 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>STEP SEQUENCE · 2026 · DRAMA · 5.5 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/step-sequence-laurels.jpg" alt="Title of Step Sequence"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-hero.jpg" alt="Still 1 from Step Sequence" loading="lazy"><span class="fn">01A</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-1.jpg" alt="Still 2 from Step Sequence" loading="lazy"><span class="fn">01B</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-2.jpg" alt="Still 3 from Step Sequence" loading="lazy"><span class="fn">01C</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-3.jpg" alt="Still 4 from Step Sequence" loading="lazy"><span class="fn">01D</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-4.jpg" alt="Still 5 from Step Sequence" loading="lazy"><span class="fn">01E</span></figure></div>
+        <div class="edge bottom"><span>▸ 01</span><span>▸ 01A</span><span>▸ 01B</span><span>▸ 01C</span><span>▸ 01D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>STEP SEQUENCE · 2026 · DRAMA · 5.5 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>STEP SEQUENCE · 2026 · DRAMA · 5.5 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/step-sequence-laurels.jpg" alt="Title of Step Sequence"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-hero.jpg" alt="Still 1 from Step Sequence" loading="lazy"><span class="fn">01A</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-1.jpg" alt="Still 2 from Step Sequence" loading="lazy"><span class="fn">01B</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-2.jpg" alt="Still 3 from Step Sequence" loading="lazy"><span class="fn">01C</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-3.jpg" alt="Still 4 from Step Sequence" loading="lazy"><span class="fn">01D</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-4.jpg" alt="Still 5 from Step Sequence" loading="lazy"><span class="fn">01E</span></figure></div>
+        <div class="edge bottom"><span>▸ 01</span><span>▸ 01A</span><span>▸ 01B</span><span>▸ 01C</span><span>▸ 01D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>STEP SEQUENCE · 2026 · DRAMA · 5.5 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>STEP SEQUENCE · 2026 · DRAMA · 5.5 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/step-sequence-laurels.jpg" alt="Title of Step Sequence"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-hero.jpg" alt="Still 1 from Step Sequence" loading="lazy"><span class="fn">01A</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-1.jpg" alt="Still 2 from Step Sequence" loading="lazy"><span class="fn">01B</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-2.jpg" alt="Still 3 from Step Sequence" loading="lazy"><span class="fn">01C</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-3.jpg" alt="Still 4 from Step Sequence" loading="lazy"><span class="fn">01D</span></figure><figure class="frame"><img src="../../assets/img/films/step-sequence-still-4.jpg" alt="Still 5 from Step Sequence" loading="lazy"><span class="fn">01E</span></figure></div>
+        <div class="edge bottom"><span>▸ 01</span><span>▸ 01A</span><span>▸ 01B</span><span>▸ 01C</span><span>▸ 01D</span></div>
+        <div class="perf"></div>
+      </div></div>
+    </a>
+    <div class="caption"><h2><a href="../../step-sequence.html">Step Sequence</a></h2>
+      <p class="logline">Years after putting her own dream away, a woman returns to the rink where it started — and has to decide whether joy is still worth the risk.</p><p class="meta">2026 · Drama · 5.5 MIN</p><p class="awards">Official Nominee — OMNI Ningbo · Official Selection — NOMOREFROG AI Film Awards 2026</p></div>
+  </article>
+  <article class="film">
+    <a class="strip" href="../../plus.html" aria-label="+">
+      <div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/img/films/plus-hero.jpg" alt="Still 1 from +" loading="lazy"><span class="fn">02A</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-1.jpg" alt="Still 2 from +" loading="lazy"><span class="fn">02B</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-2.jpg" alt="Still 3 from +" loading="lazy"><span class="fn">02C</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-3.jpg" alt="Still 4 from +" loading="lazy"><span class="fn">02D</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-4.jpg" alt="Still 5 from +" loading="lazy"><span class="fn">02E</span></figure></div>
+        <div class="edge bottom"><span>▸ 02</span><span>▸ 02A</span><span>▸ 02B</span><span>▸ 02C</span><span>▸ 02D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/img/films/plus-hero.jpg" alt="Still 1 from +" loading="lazy"><span class="fn">02A</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-1.jpg" alt="Still 2 from +" loading="lazy"><span class="fn">02B</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-2.jpg" alt="Still 3 from +" loading="lazy"><span class="fn">02C</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-3.jpg" alt="Still 4 from +" loading="lazy"><span class="fn">02D</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-4.jpg" alt="Still 5 from +" loading="lazy"><span class="fn">02E</span></figure></div>
+        <div class="edge bottom"><span>▸ 02</span><span>▸ 02A</span><span>▸ 02B</span><span>▸ 02C</span><span>▸ 02D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>+ · 2026 · ANIMATED SHORT · 1.51 MIN</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/plus-title.jpg" alt="Title of +"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/img/films/plus-hero.jpg" alt="Still 1 from +" loading="lazy"><span class="fn">02A</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-1.jpg" alt="Still 2 from +" loading="lazy"><span class="fn">02B</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-2.jpg" alt="Still 3 from +" loading="lazy"><span class="fn">02C</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-3.jpg" alt="Still 4 from +" loading="lazy"><span class="fn">02D</span></figure><figure class="frame"><img src="../../assets/img/films/plus-still-4.jpg" alt="Still 5 from +" loading="lazy"><span class="fn">02E</span></figure></div>
+        <div class="edge bottom"><span>▸ 02</span><span>▸ 02A</span><span>▸ 02B</span><span>▸ 02C</span><span>▸ 02D</span></div>
+        <div class="perf"></div>
+      </div></div>
+    </a>
+    <div class="caption"><h2><a href="../../plus.html">+</a></h2>
+      <p class="logline">Sixteen scenes from one ordinary day in a city where danger became part of everyday life.</p><p class="meta">2026 · ANIMATED SHORT · 1.51 MIN</p></div>
+  </article>
+  <article class="film">
+    <a class="strip" href="../../nominal.html" aria-label="nominal">
+      <div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-1.jpg" alt="Still 2 from nominal" loading="lazy"><span class="fn">03B</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-2.jpg" alt="Still 3 from nominal" loading="lazy"><span class="fn">03C</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-3.jpg" alt="Still 4 from nominal" loading="lazy"><span class="fn">03D</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-4.jpg" alt="Still 5 from nominal" loading="lazy"><span class="fn">03E</span></figure></div>
+        <div class="edge bottom"><span>▸ 03</span><span>▸ 03A</span><span>▸ 03B</span><span>▸ 03C</span><span>▸ 03D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-1.jpg" alt="Still 2 from nominal" loading="lazy"><span class="fn">03B</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-2.jpg" alt="Still 3 from nominal" loading="lazy"><span class="fn">03C</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-3.jpg" alt="Still 4 from nominal" loading="lazy"><span class="fn">03D</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-4.jpg" alt="Still 5 from nominal" loading="lazy"><span class="fn">03E</span></figure></div>
+        <div class="edge bottom"><span>▸ 03</span><span>▸ 03A</span><span>▸ 03B</span><span>▸ 03C</span><span>▸ 03D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-1.jpg" alt="Still 2 from nominal" loading="lazy"><span class="fn">03B</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-2.jpg" alt="Still 3 from nominal" loading="lazy"><span class="fn">03C</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-3.jpg" alt="Still 4 from nominal" loading="lazy"><span class="fn">03D</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-4.jpg" alt="Still 5 from nominal" loading="lazy"><span class="fn">03E</span></figure></div>
+        <div class="edge bottom"><span>▸ 03</span><span>▸ 03A</span><span>▸ 03B</span><span>▸ 03C</span><span>▸ 03D</span></div>
+        <div class="perf"></div>
+      </div></div>
+    </a>
+    <div class="caption"><h2><a href="../../nominal.html">nominal</a></h2>
+      <p class="logline">A team lands at the last station on the list, looking for what happened to time. The station is empty. Only the keeper's log is left.</p><p class="meta">2026 · SHORT · 4 MIN · SCI-FI</p></div>
+  </article>
+  <article class="film">
+    <a class="strip" href="../../wearenotalone.html" aria-label="we are not alone">
+      <div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>WE ARE NOT ALONE · 2026 · SCI-FI · 1 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>WE ARE NOT ALONE · 2026 · SCI-FI · 1 MIN</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/wearenotalone-hero.jpg" alt="Still 1 from we are not alone" loading="lazy"><span class="fn">04A</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-1.jpg" alt="Still 2 from we are not alone" loading="lazy"><span class="fn">04B</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-2.jpg" alt="Still 3 from we are not alone" loading="lazy"><span class="fn">04C</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-3.jpg" alt="Still 4 from we are not alone" loading="lazy"><span class="fn">04D</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-4.jpg" alt="Still 5 from we are not alone" loading="lazy"><span class="fn">04E</span></figure></div>
+        <div class="edge bottom"><span>▸ 04</span><span>▸ 04A</span><span>▸ 04B</span><span>▸ 04C</span><span>▸ 04D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>WE ARE NOT ALONE · 2026 · SCI-FI · 1 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>WE ARE NOT ALONE · 2026 · SCI-FI · 1 MIN</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/wearenotalone-hero.jpg" alt="Still 1 from we are not alone" loading="lazy"><span class="fn">04A</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-1.jpg" alt="Still 2 from we are not alone" loading="lazy"><span class="fn">04B</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-2.jpg" alt="Still 3 from we are not alone" loading="lazy"><span class="fn">04C</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-3.jpg" alt="Still 4 from we are not alone" loading="lazy"><span class="fn">04D</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-4.jpg" alt="Still 5 from we are not alone" loading="lazy"><span class="fn">04E</span></figure></div>
+        <div class="edge bottom"><span>▸ 04</span><span>▸ 04A</span><span>▸ 04B</span><span>▸ 04C</span><span>▸ 04D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>WE ARE NOT ALONE · 2026 · SCI-FI · 1 MIN</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>WE ARE NOT ALONE · 2026 · SCI-FI · 1 MIN</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/wearenotalone-hero.jpg" alt="Still 1 from we are not alone" loading="lazy"><span class="fn">04A</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-1.jpg" alt="Still 2 from we are not alone" loading="lazy"><span class="fn">04B</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-2.jpg" alt="Still 3 from we are not alone" loading="lazy"><span class="fn">04C</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-3.jpg" alt="Still 4 from we are not alone" loading="lazy"><span class="fn">04D</span></figure><figure class="frame"><img src="../../assets/img/films/wearenotalone-still-4.jpg" alt="Still 5 from we are not alone" loading="lazy"><span class="fn">04E</span></figure></div>
+        <div class="edge bottom"><span>▸ 04</span><span>▸ 04A</span><span>▸ 04B</span><span>▸ 04C</span><span>▸ 04D</span></div>
+        <div class="perf"></div>
+      </div></div>
+    </a>
+    <div class="caption"><h2><a href="../../wearenotalone.html">we are not alone</a></h2>
+      <p class="logline">A first-contact signal arrives. What answers isn't what anyone expected.</p><p class="meta">2026 · SCI-FI · 1 MIN</p></div>
+  </article>
+  <article class="film">
+    <a class="strip" href="../../06percents.html" aria-label="0.6%">
+      <div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>0.6% · 2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>0.6% · 2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/06percents-title.jpg" alt="Title of 0.6%"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-1.jpg" alt="Still 1 from 0.6%" loading="lazy"><span class="fn">05A</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-2.jpg" alt="Still 2 from 0.6%" loading="lazy"><span class="fn">05B</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-3.jpg" alt="Still 3 from 0.6%" loading="lazy"><span class="fn">05C</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-4.jpg" alt="Still 4 from 0.6%" loading="lazy"><span class="fn">05D</span></figure></div>
+        <div class="edge bottom"><span>▸ 05</span><span>▸ 05A</span><span>▸ 05B</span><span>▸ 05C</span><span>▸ 05D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>0.6% · 2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>0.6% · 2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/06percents-title.jpg" alt="Title of 0.6%"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-1.jpg" alt="Still 1 from 0.6%" loading="lazy"><span class="fn">05A</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-2.jpg" alt="Still 2 from 0.6%" loading="lazy"><span class="fn">05B</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-3.jpg" alt="Still 3 from 0.6%" loading="lazy"><span class="fn">05C</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-4.jpg" alt="Still 4 from 0.6%" loading="lazy"><span class="fn">05D</span></figure></div>
+        <div class="edge bottom"><span>▸ 05</span><span>▸ 05A</span><span>▸ 05B</span><span>▸ 05C</span><span>▸ 05D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>0.6% · 2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>0.6% · 2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</span></div>
+        <div class="frames"><figure class="frame titlecard real"><img src="../../assets/site/films/frames/06percents-title.jpg" alt="Title of 0.6%"><span class="fn">00</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-1.jpg" alt="Still 1 from 0.6%" loading="lazy"><span class="fn">05A</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-2.jpg" alt="Still 2 from 0.6%" loading="lazy"><span class="fn">05B</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-3.jpg" alt="Still 3 from 0.6%" loading="lazy"><span class="fn">05C</span></figure><figure class="frame"><img src="../../assets/site/films/frames/06percents-trailer-4.jpg" alt="Still 4 from 0.6%" loading="lazy"><span class="fn">05D</span></figure></div>
+        <div class="edge bottom"><span>▸ 05</span><span>▸ 05A</span><span>▸ 05B</span><span>▸ 05C</span><span>▸ 05D</span></div>
+        <div class="perf"></div>
+      </div></div>
+    </a>
+    <div class="caption"><h2><a href="../../06percents.html">0.6%</a></h2>
+      <p class="logline">Three people discover in one day that free will isn't where they thought it was.</p><p class="meta">2026 · FESTIVAL SHORT · 12 MIN · IN PRODUCTION</p></div>
+  </article>
+</main>
+<footer class="site-foot">
+  <nav aria-label="Elsewhere">
+    <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
+    <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
+    <a href="https://www.youtube.com/@alynner">YouTube</a>
+    <a href="https://x.com/amatalynner">X</a>
+  </nav>
+  <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
+  <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>
+  <img src="../../assets/img/brand/monogram-lavender.png" alt="">
+</footer>
+<script src="../../assets/site/films/strip.js"></script>
+</body>
+</html>
