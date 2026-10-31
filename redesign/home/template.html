@@ -26,15 +26,16 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(rgba(21,8,48,.62) 0%,rgba(32,15,58,0) 16%,rgba(32,15,58,0) 55%,rgba(32,15,58,.66))}
 .seam-line{position:absolute;top:0;bottom:0;left:var(--seam,50%);width:1px;background:var(--light);opacity:.85;z-index:3;pointer-events:none}
 .seam-handle{position:absolute;top:50%;left:var(--seam,50%);transform:translate(-50%,-50%);z-index:3;pointer-events:none;
-  border:1px solid var(--light);background:var(--depth);font:500 .62rem "Cormorant SC",serif;letter-spacing:.26em;padding:.45rem .6rem;white-space:nowrap}
+  border:1px solid var(--light);background:var(--depth);font:500 .8rem "Cormorant SC",serif;letter-spacing:.24em;padding:.55rem .8rem;white-space:nowrap}
 .diptych input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4;margin:0;
   -webkit-appearance:none;appearance:none}
 .diptych h1{position:absolute;z-index:3;left:0;right:0;bottom:4.6rem;margin:0;text-align:center;pointer-events:none;
   font:500 clamp(1.05rem,2.3vw,1.75rem)/1.25 "Cormorant SC",serif;letter-spacing:.06em;padding:0 16px;
   text-shadow:0 1px 18px rgba(21,8,48,.85)}
 .diptych h1 span{display:block}
-.side{position:absolute;bottom:1.3rem;z-index:5;font:500 .74rem "Cormorant SC",serif;letter-spacing:.28em}
-.side small{display:block;margin-top:.3rem;font:italic .85rem "Cormorant Garamond",serif;letter-spacing:.04em;color:var(--dim)}
+.side{position:absolute;bottom:1.3rem;z-index:5;text-shadow:0 1px 10px rgba(0,0,0,.75);font:500 clamp(.92rem,1.2vw,1.1rem) "Cormorant SC",serif;letter-spacing:.24em}
+.side small{display:block;margin-top:.3rem;font:italic clamp(1rem,1.25vw,1.15rem) "Cormorant Garamond",serif;letter-spacing:.04em;color:var(--dim)}
+@media (max-width:600px){.side{max-width:44vw;letter-spacing:.16em}.side small{font-size:.92rem;line-height:1.3;letter-spacing:0}}
 .side.camera{left:16px}
 .side.machine{right:16px;text-align:right}
 .side a{border-bottom:1px solid var(--hair);padding-bottom:.12rem}
@@ -45,7 +46,7 @@ a{color:inherit;text-decoration:none}
 .hands .seam{background:var(--hair)}
 .hand h2{margin:0 0 1rem;font:500 clamp(1.3rem,2.4vw,1.8rem) "Cormorant SC",serif;letter-spacing:.12em}
 .hand p{margin:0 0 1.6rem;font-size:1.16rem;line-height:1.6;color:rgba(243,229,245,.86);max-width:34rem}
-.go{display:inline-block;margin-top:1.2rem;font:500 .78rem "Cormorant SC",serif;letter-spacing:.24em;border-bottom:1px solid var(--hair);padding-bottom:.15rem}
+.go{display:inline-block;margin-top:1.2rem;font:500 .95rem "Cormorant SC",serif;letter-spacing:.22em;border-bottom:1px solid var(--hair);padding-bottom:.15rem}
 .go:hover{border-color:var(--light)}
 
 /* camera: album covers */
