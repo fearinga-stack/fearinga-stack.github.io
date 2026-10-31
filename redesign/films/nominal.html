@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>nominal — Amata Lynner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="strip.css">
+<style>
+body{margin:0;background:var(--night);color:var(--light);font-family:"Cormorant Garamond",Georgia,serif;padding:0 0 12vh;overflow-x:hidden}
+.back{display:inline-block;margin:3.5vh 16px 2.5vh;color:var(--dim);font:500 .78rem "Cormorant SC",serif;letter-spacing:.24em;text-decoration:none}
+.back:hover{color:var(--light)}
+.strip{display:block;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+:root{--mono:ui-monospace,"SFMono-Regular",Consolas,monospace;--hair:rgba(243,229,245,.18);--col:44rem}
+main{max-width:var(--col);margin:0 auto;padding:0 16px}
+.obs{margin:clamp(2.5rem,7vh,4.5rem) 0 2.2rem}
+.obs h1{font:500 clamp(2rem,5vw,3.4rem)/1.1 "Cormorant SC",serif;letter-spacing:.08em;margin:0 0 1rem}
+.obs .tag{display:inline-block;margin:0 0 1rem;padding:.25rem .6rem;border:1px solid var(--hair);font:.7rem var(--mono);letter-spacing:.22em;color:var(--dim)}
+.obs .meta{margin:0;padding:.7rem 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);font:.74rem var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.obs-laurels{display:flex;gap:1.6rem;margin:1.6rem 0 .4rem;flex-wrap:wrap}
+.obs-laurels img{height:clamp(54px,8vw,74px);width:auto;opacity:.9}
+.awards{margin:.6rem 0 0;font-style:italic;color:rgba(243,229,245,.72)}
+.lead{font-style:italic;font-size:clamp(1.35rem,2.6vw,1.75rem);line-height:1.45;margin:0 0 2.6rem}
+.label{font:.72rem var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin:2.4rem 0 .9rem;font-weight:400}
+.flow p,.cell p{font-size:1.16rem;line-height:1.62;margin:0 0 1rem;color:rgba(243,229,245,.88)}
+.flow strong,.cell strong{font-family:"Cormorant SC",serif;font-weight:500;letter-spacing:.06em;color:var(--light)}
+.note{margin:2rem 0;padding:.2rem 0 .2rem 1.2rem;border-left:1px solid rgba(243,229,245,.35)}
+.note p{font-style:italic;font-size:1.12rem;color:rgba(243,229,245,.78)}
+.screen{position:relative;aspect-ratio:16/9;margin:0 0 1.4rem;background:#000;box-shadow:0 0 0 1px var(--hair),0 14px 34px rgba(0,0,0,.5)}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.flow.watch .label:first-child{margin-top:0}
+.card{margin:2.6rem 0;border-top:1px solid var(--hair)}
+.card .row{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--hair)}
+.card .label{margin:.35rem 0 0}
+.cell p:last-child{margin-bottom:0}
+.stills-block{margin:3rem 0 0}
+.stills-block .label.wide{max-width:var(--col);margin:0 auto .9rem;padding:0 16px}
+.still-strip{background:var(--base);overflow-x:auto;scrollbar-width:none;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.still-strip::-webkit-scrollbar{display:none}
+.still-strip .perf{width:0;min-width:100%}
+.still-strip>.frames,.still-strip>.perf{width:max-content}
+.still-strip .frame img{filter:none}
+.pager{display:flex;justify-content:space-between;gap:1rem;margin:3.5rem 0 0;padding-top:1.2rem;border-top:1px solid var(--hair)}
+.pager a{color:var(--dim);text-decoration:none;font:500 .8rem "Cormorant SC",serif;letter-spacing:.22em}
+.pager a:hover{color:var(--light)}
+@media (max-width:640px){.card .row{grid-template-columns:1fr;gap:.2rem}}
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← FILMS</a>
+<div class="strip" aria-hidden="true"><div class="reel"><div class="set">
+        <div class="perf"></div>
+        <div class="edge top"><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-1.jpg" alt="Still 2 from nominal" loading="lazy"><span class="fn">03B</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-2.jpg" alt="Still 3 from nominal" loading="lazy"><span class="fn">03C</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-3.jpg" alt="Still 4 from nominal" loading="lazy"><span class="fn">03D</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-4.jpg" alt="Still 5 from nominal" loading="lazy"><span class="fn">03E</span></figure></div>
+        <div class="edge bottom"><span>▸ 03</span><span>▸ 03A</span><span>▸ 03B</span><span>▸ 03C</span><span>▸ 03D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-1.jpg" alt="Still 2 from nominal" loading="lazy"><span class="fn">03B</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-2.jpg" alt="Still 3 from nominal" loading="lazy"><span class="fn">03C</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-3.jpg" alt="Still 4 from nominal" loading="lazy"><span class="fn">03D</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-4.jpg" alt="Still 5 from nominal" loading="lazy"><span class="fn">03E</span></figure></div>
+        <div class="edge bottom"><span>▸ 03</span><span>▸ 03A</span><span>▸ 03B</span><span>▸ 03C</span><span>▸ 03D</span></div>
+        <div class="perf"></div>
+      </div><div class="set" aria-hidden="true">
+        <div class="perf"></div>
+        <div class="edge top"><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>NOMINAL · 2026 · SHORT · 4 MIN · SCI-FI</span></div>
+        <div class="frames"><figure class="frame"><img src="../../assets/img/films/nominal-hero.jpg" alt="Still 1 from nominal" loading="lazy"><span class="fn">03A</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-1.jpg" alt="Still 2 from nominal" loading="lazy"><span class="fn">03B</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-2.jpg" alt="Still 3 from nominal" loading="lazy"><span class="fn">03C</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-3.jpg" alt="Still 4 from nominal" loading="lazy"><span class="fn">03D</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-4.jpg" alt="Still 5 from nominal" loading="lazy"><span class="fn">03E</span></figure></div>
+        <div class="edge bottom"><span>▸ 03</span><span>▸ 03A</span><span>▸ 03B</span><span>▸ 03C</span><span>▸ 03D</span></div>
+        <div class="perf"></div>
+      </div></div></div>
+<main>
+<header class="obs"><h1>nominal</h1><p class="meta">2026 · SHORT FILM · SCI-FI· 4MIN</p></header>
+<section class="lead-block"><p class="lead">A team lands at the last station on the list, looking for what happened to time. The station is empty. Only the keeper's log is left.</p></section>
+<section class="flow watch"><h2 class="label">watch</h2>
+<div class="screen"><iframe src="https://www.youtube.com/embed/b7AyJx2yEQU" title="nominal" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></section>
+<section class="flow prose"><p>Three people land at an abandoned time-standard station on a terraformed planet. Their watches no longer agree with each other, and nobody knows why. The station is dead, so they power the terminal themselves and play back the log of the man who was posted here.</p>
+<p>He found the discrepancy years ago and traced it to a single human typo, copied forward through the record. He wrote down the correction.</p>
+<p>There was no way to send it.</p></section>
+<section class="card"><div class="row"><h2 class="label">role</h2><div class="cell"><p>Written and directed in conversation with Claude AI. Edit, grade and sound mix by me.</p></div></div><div class="row"><h2 class="label">process</h2><div class="cell"><p><strong>Time on screen</strong></p>
+<p>Nothing in this film says how long the keeper was there. The room does. In the first log entry the surfaces are bare — the previous keeper took his things. Then a mug appears, then a coat on a hook, then a lamp on a bracket he made himself. Then something that isn't work at all: a stone from the surface, on a shelf. Then more stones. The station counts in the other direction — one patch of tape on the wall, then three, then tape over tape. His shelf grows, the station falls apart, and the two counters cross somewhere in the middle.</p>
+<p><strong>The camera loses its place</strong></p>
+<p>The first entries are shot from where the terminal physically stands: frontal, level, procedural. Later the camera steps off that axis. By the seventh entry it is behind his shoulder, where no terminal could be. In the last one it doesn't follow him out at all — he leaves, and it stays on the empty room. The picture says what the film says: this started as a report and stopped being one. Nothing marks the moment it changed.</p>
+<p><strong>The thing in the first ten seconds</strong></p>
+<p>A broken block lies on the ground by the tower before anyone speaks. It is scenery. Four minutes later the keeper says he'll go and look at the generator, and the block becomes an answer — to why the transmitter never worked, and to why the station stood empty afterwards. The reveal happens in the viewer's head, not on screen.</p>
+<p><strong>What isn't shown</strong></p>
+<p>The meteorite. The ship. The explanation. There is a trace and no event, and that rule holds everywhere in the film: the correction is never sent, the answer is never given, the man never comes back into frame.</p></div></div></section>
+<section class="stills-block"><h2 class="label wide">STILLS</h2><div class="still-strip"><div class="perf"></div><div class="frames"><figure class="frame"><img src="../../assets/img/films/nominal-still-1.jpg" alt="Still from nominal" loading="lazy"><span class="fn">01</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-2.jpg" alt="Still from nominal" loading="lazy"><span class="fn">02</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-3.jpg" alt="Still from nominal" loading="lazy"><span class="fn">03</span></figure><figure class="frame"><img src="../../assets/img/films/nominal-still-4.jpg" alt="Still from nominal" loading="lazy"><span class="fn">04</span></figure></div><div class="perf"></div></div></section>
+<nav class="pager"><a href="index.html">←FILMS</a><a href="06percents.html">NEXT FILM→</a></nav>
+</main>
+<script src="strip.js"></script>
+</body>
+</html>

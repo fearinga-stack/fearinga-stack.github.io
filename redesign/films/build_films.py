@@ -59,7 +59,8 @@ def title_card(f, extra):
             f'<span class="fn">00</span></figure>')
 
 
-def strip(i, f, extra):
+def reel(i, f, extra):
+    """The endless strip itself (three identical lengths), without a link around it."""
     edge = f'{f["title"].upper()} · {f["meta"].upper()}'
     srcs = extra.get("frames") or [f"../../assets/img/films/{name}" for name in f["frames"]]
     frames = "".join(
@@ -68,7 +69,6 @@ def strip(i, f, extra):
         for k, src in enumerate(srcs))
     if not extra.get("no_title_card"):        # some films open on their own title already
         frames = title_card(f, extra) + frames
-    awards = f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else ""
     one = f'''<div class="set">
         <div class="perf"></div>
         <div class="edge top"><span>{html.escape(edge)}</span><span>AMATA LYNNER · RENDERED AT HOME</span><span>{html.escape(edge)}</span></div>
@@ -77,11 +77,18 @@ def strip(i, f, extra):
         <div class="perf"></div>
       </div>'''
     # three identical lengths of film: the page keeps the view on the middle one, so the strip has no end
+    hidden = one.replace('<div class="set">', '<div class="set" aria-hidden="true">')
+    return f'<div class="reel">{one}{hidden}{hidden}</div>'
+
+
+def strip(i, f, extra):
+    awards = f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else ""
+    page = f'{f["slug"]}.html'
     return f'''  <article class="film">
-    <a class="strip" href="../../{f["link"]}" aria-label="{html.escape(f["title"])}">
-      <div class="reel">{one}{one.replace('<div class="set">', '<div class="set" aria-hidden="true">')}{one.replace('<div class="set">', '<div class="set" aria-hidden="true">')}</div>
+    <a class="strip" href="{page}" aria-label="{html.escape(f["title"])}">
+      {reel(i, f, extra)}
     </a>
-    <div class="caption"><h2><a href="../../{f["link"]}">{html.escape(f["title"])}</a></h2>
+    <div class="caption"><h2><a href="{page}">{html.escape(f["title"])}</a></h2>
       <p class="logline">{f["logline"]}</p><p class="meta">{f["meta"]}</p>{awards}</div>
   </article>'''
 

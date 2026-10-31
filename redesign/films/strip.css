@@ -1,0 +1,26 @@
+/* film strip: shared by the films list and the film pages */
+:root{--night:#200F3A;--light:#F3E5F5;--depth:#150830;--dim:rgba(243,229,245,.55);--base:#0b0710;--frameh:clamp(96px,11.5vw,158px)}
+.strip{display:block;text-decoration:none;color:inherit;background:var(--base);overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;cursor:grab;position:relative;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.reel{display:flex;width:max-content}
+.set{display:flex;flex-direction:column;flex:none}
+.perf{height:20px;width:0;min-width:100%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='20'%3E%3Crect x='8' y='5' width='10' height='11' rx='2' fill='%23200F3A'/%3E%3C/svg%3E") repeat-x 0 0}
+.strip::-webkit-scrollbar{display:none}
+.strip:active{cursor:grabbing}
+.edge{display:flex;gap:4rem;white-space:nowrap;padding:0 4px;height:16px;align-items:center;overflow:hidden;
+  font:9px/1 ui-monospace,"SFMono-Regular",Consolas,monospace;letter-spacing:.24em;color:rgba(243,229,245,.32);width:0;min-width:100%;box-sizing:border-box}
+.edge.top{padding-top:0}
+.frames{display:flex;gap:8px;padding:2px 4px;width:max-content}
+.frame{margin:0;height:var(--frameh);position:relative;flex:none;background:#000}
+.frame img{height:100%;width:auto;display:block;filter:brightness(.82) saturate(.9);transition:filter .5s ease}
+.strip:hover .frame img{filter:brightness(.6) saturate(.8)}
+.strip .frame:hover img,.strip:focus-visible .frame img{filter:none}
+.fn{position:absolute;right:6px;bottom:4px;font:8px ui-monospace,Consolas,monospace;letter-spacing:.2em;color:rgba(243,229,245,.4)}
+.titlecard{background:#050308}
+.tc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6%}
+.tc-title{font-family:"Cormorant SC",serif;font-weight:500;letter-spacing:.24em;color:var(--light);font-size:calc(var(--frameh)*.13);text-align:center;padding:0 8%}
+.laurels{display:flex;gap:6%;justify-content:center;width:78%}
+.laurels img{height:calc(var(--frameh)*.4);width:auto;opacity:.85}
+.titlecard.real{background:#000}
+.titlecard.real .laurels{position:absolute;left:11%;right:11%;bottom:9%;width:auto}
+.titlecard.real .laurels img{height:calc(var(--frameh)*.27)}
