@@ -66,7 +66,8 @@ def strip(i, f, extra):
         f'<figure class="frame"><img src="{src}" alt="Still {k + 1} from {html.escape(f["title"])}" '
         f'loading="lazy"><span class="fn">{i:02d}{"ABCDEFGH"[k]}</span></figure>'
         for k, src in enumerate(srcs))
-    frames = title_card(f, extra) + frames
+    if not extra.get("no_title_card"):        # some films open on their own title already
+        frames = title_card(f, extra) + frames
     awards = f'<p class="awards">{html.escape(extra["awards"])}</p>' if extra.get("awards") else ""
     return f'''  <article class="film">
     <a class="strip" href="../../{f["link"]}" aria-label="{html.escape(f["title"])}">

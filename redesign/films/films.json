@@ -1,7 +1,6 @@
 {
   "step-sequence": {
-    "title_image": "frames/step-sequence-title.jpg",
-    "laurels": ["omni-ningbo.png", "nomorefrog-2026.png"],
+    "title_image": "frames/step-sequence-laurels.jpg",
     "awards": "Official Nominee — OMNI Ningbo · Official Selection — NOMOREFROG AI Film Awards 2026"
   },
   "plus": {
@@ -9,6 +8,17 @@
   },
   "06percents": {
     "title_image": "frames/06percents-title.jpg",
-    "frames": ["frames/06percents-trailer-1.jpg", "frames/06percents-trailer-2.jpg", "frames/06percents-trailer-3.jpg", "frames/06percents-trailer-4.jpg"]
+    "frames": [
+      "frames/06percents-trailer-1.jpg",
+      "frames/06percents-trailer-2.jpg",
+      "frames/06percents-trailer-3.jpg",
+      "frames/06percents-trailer-4.jpg"
+    ]
+  },
+  "nominal": {
+    "no_title_card": true
+  },
+  "wearenotalone": {
+    "no_title_card": true
   }
 }
