@@ -1,0 +1,403 @@
+/* Amata Lynner — interim site.
+   Palette is the owner's (see DESIGN.md): night ground, lavender light, depth indigo.
+   The UI stays cool and quiet; warmth lives only in the images. */
+
+:root {
+  --night: #200F3A;
+  --light: #F3E5F5;
+  --depth: #150830;
+  --soft: rgba(243, 229, 245, 0.72);
+  --faint: rgba(243, 229, 245, 0.5);
+  --hair: rgba(243, 229, 245, 0.14);
+
+  --serif: "Cormorant SC", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --wide: 78rem;
+  --measure: 40rem;
+  --space: clamp(3.5rem, 9vw, 7.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--night);
+  color: var(--light);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--light);
+  font: 400 1rem/1.7 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--light); color: var(--depth); }
+
+img { display: block; max-width: 100%; height: auto; }
+figure { margin: 0; }
+
+/* ---------- type */
+
+h1, h2, h3, .site-name, .site-header nav, .label, .pager, .more, .lead, .meta, .tag, dt, .steps .num {
+  font-family: var(--serif);
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.6em;
+  overflow-wrap: anywhere;
+}
+
+h1 { font-size: clamp(2.6rem, 8vw, 5.25rem); font-weight: 400; }
+h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); }
+h3 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); }
+
+p { margin: 0 0 1.1em; }
+
+a {
+  color: var(--light);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--hair);
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color 0.25s ease, opacity 0.25s ease;
+}
+a:hover { text-decoration-color: var(--light); }
+a:focus-visible { outline: 1px solid var(--light); outline-offset: 4px; }
+
+/* section labels: lowercase so Cormorant SC renders them as even small caps */
+.label {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--soft);
+  margin-bottom: 1.25rem;
+}
+
+.lead {
+  font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.meta, .tag {
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--soft);
+  margin: 0;
+}
+.tag { color: var(--light); }
+
+.note {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: var(--soft);
+}
+
+/* ---------- skip link (a light element: depth text on lavender) */
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--light);
+  color: var(--depth);
+  text-decoration: none;
+}
+.skip:focus { top: 1rem; }
+
+/* ---------- header */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 1.5rem var(--gutter);
+}
+
+.site-name {
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.site-header ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header nav a {
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: var(--soft);
+}
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] { color: var(--light); }
+.site-header nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--faint);
+}
+
+/* ---------- layout */
+
+main {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+main > *, .film > *, .project > * { margin-top: 0; margin-bottom: var(--space); }
+main > :last-child, .film > :last-child, .project > :last-child { margin-bottom: 0; }
+main { padding-bottom: var(--space); }
+
+.hero, .page-head { padding-top: clamp(2rem, 7vw, 5rem); }
+.hero .lead, .page-head .lead { max-width: 36ch; color: var(--soft); }
+
+.prose { max-width: var(--measure); }
+.prose h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+.band {
+  background: var(--depth);
+  padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
+  margin-left: calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
+}
+.band .lead { max-width: 34ch; margin: 0; }
+
+blockquote { margin: 0; }
+.prose blockquote {
+  padding-left: clamp(1rem, 3vw, 2rem);
+  border-left: 1px solid var(--hair);
+}
+
+.columns {
+  display: grid;
+  gap: 2.5rem clamp(2rem, 6vw, 5rem);
+}
+@media (min-width: 760px) {
+  .columns { grid-template-columns: minmax(12rem, 1fr) 2fr; }
+  .columns-tight { grid-template-columns: 1fr 1fr; }
+}
+.columns > div > :last-child { margin-bottom: 0; }
+
+.plain { list-style: none; margin: 0; padding: 0; }
+.plain li { margin-bottom: 0.4em; }
+
+/* ---------- images: the only warm thing on the page */
+
+.frame { background: var(--depth); }
+.frame img { width: 100%; }
+a .frame img, a.tile img, a.thumb img { transition: opacity 0.3s ease; }
+a:hover .frame img { opacity: 0.86; }
+
+figcaption {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--soft);
+  padding: 0.75rem 0 0;
+  background: var(--night);
+}
+
+.hero-image { margin-bottom: 2rem; }
+
+/* film page */
+.film-hero { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
+.film-hero .hero-image { margin-bottom: 2rem; }
+.film-title { padding: 0 var(--gutter); }
+.film-title h1 { margin-bottom: 0.3em; }
+.film-title .tag { margin-bottom: 0.35em; }
+
+.film .band { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
+
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--depth);
+}
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.watch .video + p, .watch p + .video { margin-top: 1.5rem; }
+.watch > p { max-width: var(--measure); }
+
+.stills-grid {
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+@media (min-width: 700px) {
+  .stills-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--hair);
+}
+.pager a {
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  text-decoration: none;
+}
+.pager a:hover { text-decoration: underline; text-decoration-color: var(--faint); }
+
+/* cards: films index, home selection, commercial */
+.cards {
+  display: grid;
+  gap: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+}
+@media (min-width: 900px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  .cards > :first-child { grid-column: 1 / -1; }
+  .cards-three { grid-template-columns: repeat(3, 1fr); }
+  .cards-three > :first-child { grid-column: auto; }
+  .cards-single { grid-template-columns: 1fr; }
+}
+.card > a { display: block; text-decoration: none; }
+.card .frame { margin-bottom: 1.25rem; }
+.card h2, .card h3 { margin-bottom: 0.35em; }
+.card p { max-width: var(--measure); }
+.card p.meta { margin-top: 0.25em; }
+
+.more { font-size: 1.3rem; letter-spacing: 0.1em; text-transform: lowercase; margin-top: 2rem; }
+.more a { text-decoration: none; }
+.more a:hover { text-decoration: underline; text-decoration-color: var(--faint); }
+
+/* home */
+.tiles {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+}
+@media (min-width: 760px) { .tiles { grid-template-columns: 1fr 1fr; align-items: start; } }
+.tile { display: block; text-decoration: none; }
+.tile .frame { margin-bottom: 1.1rem; }
+.tile h2 { margin-bottom: 0.2em; }
+
+.row-three {
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+@media (min-width: 700px) { .row-three { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+
+/* projects index */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: 2.5rem clamp(1rem, 3vw, 2rem);
+}
+.thumb { display: block; text-decoration: none; }
+.thumb .frame { aspect-ratio: 1; overflow: hidden; margin-bottom: 0.9rem; }
+.thumb .frame img { height: 100%; object-fit: cover; }
+.thumb h2 { font-size: 1.4rem; letter-spacing: 0.04em; }
+
+/* photo galleries: masonry columns keep every frame's own proportions */
+.gallery { columns: 1; column-gap: clamp(0.75rem, 2vw, 1.25rem); }
+@media (min-width: 640px) { .gallery { columns: 2; } }
+@media (min-width: 1100px) { .gallery { columns: 3; } }
+.gallery figure {
+  break-inside: avoid;
+  margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.story { display: grid; gap: clamp(1.5rem, 4vw, 2.5rem); }
+.story > .text { max-width: var(--measure); }
+.story > .text > :last-child { margin-bottom: 0; }
+@media (min-width: 900px) {
+  .story { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+
+.pair {
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+@media (min-width: 700px) { .pair { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+.portrait { max-width: 44rem; margin-left: auto; margin-right: auto; }
+.portrait img { max-height: 92vh; width: auto; margin: 0 auto; }
+.portrait figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  justify-content: center;
+  text-align: center;
+}
+.portrait .name { font-family: var(--serif); font-size: 1.4rem; color: var(--light); letter-spacing: 0.04em; }
+.portrait .word, .portrait .aside { font-family: var(--serif); font-size: 1.2rem; text-transform: lowercase; letter-spacing: 0.12em; }
+
+.pull {
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.35;
+  text-align: center;
+}
+.pull p { margin: 0; }
+
+/* about */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.steps li { font-family: var(--serif); font-size: 1.6rem; letter-spacing: 0.04em; }
+.steps .num { display: inline-block; min-width: 2.5em; color: var(--faint); }
+
+.facts { display: grid; gap: 1.5rem 3rem; margin: 0; }
+@media (min-width: 640px) { .facts { grid-template-columns: 1fr 1fr; } }
+.facts dt { font-size: 1.15rem; letter-spacing: 0.14em; text-transform: lowercase; color: var(--soft); }
+.facts dd { margin: 0; font-weight: 600; }
+
+.email { font-size: 1.15rem; }
+
+/* ---------- footer: the monogram closes the page */
+
+.site-footer {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 3rem var(--gutter) 3.5rem;
+  border-top: 1px solid var(--hair);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--soft);
+}
+.site-footer .social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+.site-footer .social a { color: var(--soft); text-decoration: none; }
+.site-footer .social a:hover { color: var(--light); }
+.site-footer .signature { width: 72px; height: auto; margin: 2rem auto 0; opacity: 0.9; }
+
+/* ---------- motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
