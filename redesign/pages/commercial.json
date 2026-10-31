@@ -1,0 +1,11 @@
+{
+  "_note": "Commercial pieces that have no page of their own on the old site. Frames are relative to redesign/films/. logline: draft, Lin to approve.",
+  "blood-orange": {
+    "title": "Blood Orange Soda",
+    "meta": "2026 · BEVERAGE SPOT · 18SEC",
+    "logline": "A drop of juice turns into a Rorschach test. What do you see?",
+    "frames": ["frames/blood-1.jpg", "frames/blood-2.jpg", "frames/blood-3.jpg", "frames/blood-4.jpg",
+               "frames/blood-5.jpg", "frames/blood-6.jpg", "frames/blood-7.jpg"],
+    "no_title_card": true
+  }
+}

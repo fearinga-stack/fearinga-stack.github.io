@@ -8,6 +8,7 @@ Every text node inside <main> of the source must turn up in the output, or the b
 Run after build_films.py:  python build_pages.py
 """
 import html
+import json
 import re
 import sys
 from pathlib import Path
@@ -133,8 +134,19 @@ def commercial():
     meta = re.search(r'<p class="meta">(.*?)</p>', film).group(1).strip()
     f = dict(slug="scent-of-imagination", title=title, meta=meta,
              frames=["scent-of-imagination-hero.jpg"] + sorted(p.name for p in bf.IMG.glob("scent-of-imagination-still-*.jpg")))
-    strip = bf.reel(6, f, {})            # sixth after the five films; frame paths already point at ../../assets
+    extra = json.loads((RD / "films" / "films.json").read_text(encoding="utf-8")).get(f["slug"], {})
+    strip = bf.reel(6, f, extra)         # sixth after the five films; same frames as its own page
+    strip = re.sub(r'src="(frames|laurels)/', r'src="../films/\1/', strip)
     page = "../films/scent-of-imagination.html"
+    more_pieces = []
+    for n, (slug, p) in enumerate((k, v) for k, v in json.loads(
+            (HERE / "commercial.json").read_text(encoding="utf-8")).items() if not k.startswith("_")):
+        g = dict(slug=slug, title=p["title"], meta=p["meta"], frames=[])
+        reel = re.sub(r'src="(frames|laurels)/', r'src="../films/\1/', bf.reel(7 + n, g, p))
+        more_pieces.append(f'''<article class="film">
+  <div class="strip" aria-label="{html.escape(p["title"])}">{reel}</div>
+  <div class="caption"><h2>{html.escape(p["title"])}</h2><p class="logline">{html.escape(p["logline"])}</p><p class="meta">{p["meta"]}</p></div>
+</article>''')
     out = f'''<header class="page-head">
   <h1>{h1}</h1>
   <p class="lead">{lead}</p>
@@ -144,6 +156,7 @@ def commercial():
   <div class="caption"><h2><a href="{page}">{title}</a></h2><p class="logline">{logline}</p><p class="meta">{meta}</p>
     <p class="more"><a href="{page}">{more}</a></p></div>
 </article>
+{chr(10).join(more_pieces)}
 <section class="reel-text">
   <h2>{reel_h}</h2>
   {comment}

@@ -42,7 +42,6 @@ FOOTER = '''<footer class="site-foot">
     <a href="https://www.instagram.com/amata_lynner/">Instagram</a>
     <a href="https://www.linkedin.com/in/amata-lynner/">LinkedIn</a>
     <a href="https://www.youtube.com/@alynner">YouTube</a>
-    <a href="https://www.behance.net/amatalynner">Behance</a>
   </nav>
   <p><a href="mailto:info@amatalynner.com">info@amatalynner.com</a></p>
   <p>© 2026 · Amata Lynner · Dnipro, Ukraine</p>

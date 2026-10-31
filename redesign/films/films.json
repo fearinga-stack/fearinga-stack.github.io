@@ -20,5 +20,14 @@
   },
   "wearenotalone": {
     "no_title_card": true
+  },
+  "scent-of-imagination": {
+    "title_image": "frames/scent-title.jpg",
+    "frames": [
+      "../../assets/img/films/scent-of-imagination-hero.jpg",
+      "frames/scent-book.jpg",
+      "../../assets/img/films/scent-of-imagination-still-2.jpg",
+      "frames/scent-spritz.jpg"
+    ]
   }
 }
