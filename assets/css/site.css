@@ -401,3 +401,6 @@ figcaption {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+.site-logo { height: 34px; width: auto; display: block; }
+@media (max-width: 600px) { .site-logo { height: 26px; } }
