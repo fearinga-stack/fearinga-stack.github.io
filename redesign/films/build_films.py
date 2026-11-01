@@ -50,12 +50,20 @@ def jpeg_size(path):
     return 16, 9
 
 
+def wh(src):
+    """width/height attributes for a frame image (src is relative to redesign/films/).
+    Without them a frame is 0px wide until its lazy picture arrives, and on a phone the frame numbers of a whole
+    strip pile up into one smear ("0020100201E"); with them the frame keeps its real width from the first paint."""
+    w, h = jpeg_size((HERE / src).resolve())
+    return f'width="{w}" height="{h}"'
+
+
 def title_card(f, extra):
     laurels = "".join(f'<img src="laurels/{n}" alt="">' for n in extra.get("laurels", []))
     lau = f'<div class="laurels">{laurels}</div>' if laurels else ""
     if extra.get("title_image"):
         # a real title frame from the film; laurels sit under the title
-        return (f'<figure class="frame titlecard real"><img src="{extra["title_image"]}" alt="Title of {html.escape(f["title"])}">'
+        return (f'<figure class="frame titlecard real"><img src="{extra["title_image"]}" {wh(extra["title_image"])} alt="Title of {html.escape(f["title"])}">'
                 f'{lau}<span class="fn">00</span></figure>')
     w, h = jpeg_size(IMG / f["frames"][0])
     return (f'<figure class="frame titlecard" style="aspect-ratio:{w}/{h}">'
@@ -68,7 +76,7 @@ def reel(i, f, extra):
     edge = f'{f["title"].upper()} · {f["meta"].upper()}'
     srcs = extra.get("frames") or [f"../../assets/img/films/{name}" for name in f["frames"]]
     frames = "".join(
-        f'<figure class="frame"><img src="{src}" alt="Still {k + 1} from {html.escape(f["title"])}" '
+        f'<figure class="frame"><img src="{src}" {wh(src)} alt="Still {k + 1} from {html.escape(f["title"])}" '
         f'loading="lazy"><span class="fn">{i:02d}{"ABCDEFGH"[k]}</span></figure>'
         for k, src in enumerate(srcs))
     if not extra.get("no_title_card"):        # some films open on their own title already
