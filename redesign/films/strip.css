@@ -15,7 +15,7 @@
 .frame img{height:100%;width:auto;display:block;filter:brightness(.82) saturate(.9);transition:filter .5s ease}
 .strip:hover .frame img{filter:brightness(.6) saturate(.8)}
 .strip .frame:hover img,.strip:focus-visible .frame img{filter:none}
-.fn{position:absolute;right:6px;bottom:4px;font:8px ui-monospace,Consolas,monospace;letter-spacing:.2em;color:rgba(243,229,245,.4)}
+.fn{position:absolute;right:6px;bottom:4px;white-space:nowrap;font:8px ui-monospace,Consolas,monospace;letter-spacing:.2em;color:rgba(243,229,245,.4)}
 .titlecard{background:#050308}
 .tc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6%}
 .tc-title{font-family:"Cormorant SC",serif;font-weight:500;letter-spacing:.24em;color:var(--light);font-size:calc(var(--frameh)*.13);text-align:center;padding:0 8%}
